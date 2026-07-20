@@ -1,0 +1,2539 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta -->
+  <title>Masjid Jami Ar-Rustendi — Bantu Kami Membangun Rumah Allah</title>
+  <meta name="description" content="Dukung pembangunan Masjid Jami Ar-Rustendi di Kp. Rumpin, Kabupaten Bogor. Dana terkumpul Rp 312 juta dari Rp 625 juta (49,9%). Setiap donasi adalah amal jariyah.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Masjid Jami Ar-Rustendi — Bantu Kami Membangun Rumah Allah">
+  <meta property="og:description" content="Dukung pembangunan masjid di Rumpin Bogor. Sudah 49,9% terkumpul. Donasi via transfer bank.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='630' viewBox='0 0 1200 630'><rect width='1200' height='630' fill='%230D1B4B'/><text x='100' y='300' font-family='serif' font-size='64' fill='%23C9A84C' font-weight='bold'>Masjid Jami Ar-Rustendi</text><text x='100' y='400' font-family='sans-serif' font-size='32' fill='white'>Fundraising Pembangunan Masjid · Rumpin, Bogor</text></svg>">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <!-- Favicon (inline SVG data URI) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%231B2B6B' rx='6'/><text y='22' x='4' font-size='18' fill='%23C9A84C' font-family='serif' font-weight='bold'>AR</text></svg>">
+  
+  <!-- 1. Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- 2. Tailwind CSS v4 -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  
+  <!-- 3. Lucide Icons -->
+  <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.js"></script>
+  
+  <!-- 4. Alpine.js 3.15.12 -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
+
+  <style>
+    /* Tailwind v4 custom theme setup */
+    @theme {
+      --color-navy-deepest: #0D1B4B;
+      --color-navy-primary: #1B2B6B;
+      --color-navy-hover: #2A3F8F;
+      --color-gold: #C9A84C;
+      --color-gold-light: #E8D08A;
+      --color-offwhite: #F5F3EE;
+      --font-display: 'Lora', serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Base reset & Custom Scrollbars */
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #374151;
+      background: #ffffff;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Alpine.js x-cloak */
+    [x-cloak] { display: none !important; }
+
+    /* Section Label */
+    .section-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #C9A84C;
+    }
+
+    /* Gold Divider */
+    .divider-gold {
+      width: 48px;
+      height: 3px;
+      background: #C9A84C;
+      border-radius: 99px;
+    }
+
+    /* Font Display */
+    .font-display {
+      font-family: 'Lora', serif;
+    }
+
+    /* Scrollbar Style */
+    body::-webkit-scrollbar {
+      width: 10px;
+    }
+    body::-webkit-scrollbar-track {
+      background: #F5F3EE;
+    }
+    body::-webkit-scrollbar-thumb {
+      background-color: #1B2B6B;
+      border-radius: 20px;
+      border: 3px solid #F5F3EE;
+    }
+
+    /* Reveal animations on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* Arabesque Geometrical SVG Background Pattern */
+    .pattern-arabesque {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M20 0L40 20L20 40L0 20Z' fill='none' stroke='%23C9A84C' stroke-width='0.5' opacity='0.08'/%3E%3Ccircle cx='20' cy='20' r='3' fill='none' stroke='%23C9A84C' stroke-width='0.5' opacity='0.08'/%3E%3Cpath d='M20 0L20 8M20 32L20 40M0 20L8 20M32 20L40 20' stroke='%23C9A84C' stroke-width='0.3' opacity='0.06'/%3E%3C/svg%3E");
+    }
+    .pattern-arabesque-light {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M20 0L40 20L20 40L0 20Z' fill='none' stroke='%231B2B6B' stroke-width='0.5' opacity='0.06'/%3E%3Ccircle cx='20' cy='20' r='3' fill='none' stroke='%231B2B6B' stroke-width='0.5' opacity='0.06'/%3E%3Cpath d='M20 0L20 8M20 32L20 40M0 20L8 20M32 20L40 20' stroke='%231B2B6B' stroke-width='0.3' opacity='0.04'/%3E%3C/svg%3E");
+    }
+
+    /* Premium Button Shimmer & Transitions */
+    .btn-gold {
+      position: relative; overflow: hidden;
+      background: #C9A84C; color: #0D1B4B; font-weight: 600;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+    }
+    .btn-gold::after {
+      content: ''; position: absolute; top: -50%; left: -75%;
+      width: 50%; height: 200%; background: rgba(255,255,255,0.25);
+      transform: skewX(-20deg); transition: left 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201,168,76,0.35); }
+    .btn-gold:hover::after { left: 125%; }
+
+    .btn-navy {
+      background: #1B2B6B; color: #ffffff; font-weight: 600;
+      transition: background-color 0.2s, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+    }
+    .btn-navy:hover { background-color: #2A3F8F; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(27,43,107,0.25); }
+
+    .btn-ghost {
+      border: 1.5px solid rgba(255,255,255,0.35); color: #ffffff; font-weight: 500;
+      transition: border-color 0.2s, background-color 0.2s, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.8); background-color: rgba(255,255,255,0.08); transform: translateY(-2px); }
+
+    /* Glassmorphism panel styling */
+    .glass {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    /* Metric cards hover */
+    .metric-card {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+      border: 1px solid rgba(13, 27, 75, 0.08);
+    }
+    .metric-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(13, 27, 75, 0.08);
+      border-color: #C9A84C;
+    }
+
+    /* SVG Semicircle Gauge */
+    .gauge-track { fill: none; stroke: rgba(13, 27, 75, 0.08); stroke-width: 14; stroke-linecap: round; }
+    .gauge-track-dark { fill: none; stroke: rgba(255, 255, 255, 0.1); stroke-width: 14; stroke-linecap: round; }
+    .gauge-fill { fill: none; stroke: #C9A84C; stroke-width: 14; stroke-linecap: round; transition: stroke-dashoffset 2s cubic-bezier(0.16, 1, 0.3, 1); }
+
+    /* Header scroll style */
+    header.scrolled {
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 30px rgba(13, 27, 75, 0.06);
+      border-bottom-color: rgba(13, 27, 75, 0.06);
+    }
+
+    /* Navigation links hover */
+    .nav-link {
+      position: relative;
+      transition: color 0.2s ease;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 100%;
+      height: 2px; background-color: #C9A84C;
+      transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-link:hover::after { right: 0; }
+
+    /* Custom Toast Notification */
+    .toast {
+      position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(100px);
+      background: #1B2B6B; color: white; padding: 14px 28px; border-radius: 100px;
+      font-size: 14px; font-weight: 500; z-index: 9999; box-shadow: 0 10px 40px rgba(13, 27, 75, 0.25);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+      opacity: 0; pointer-events: none;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+    /* Interactive visual image placeholders */
+    .img-placeholder {
+      background: linear-gradient(135deg, rgba(27, 43, 107, 0.05) 0%, rgba(201, 168, 76, 0.05) 100%);
+      border: 1.5px dashed rgba(201, 168, 76, 0.3);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: #6B7280; font-size: 13px; text-align: center; gap: 8px;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+    .img-placeholder:hover {
+      border-color: #C9A84C;
+      background: linear-gradient(135deg, rgba(27, 43, 107, 0.08) 0%, rgba(201, 168, 76, 0.08) 100%);
+    }
+
+    /* Mobile bottom navigation sticky bar */
+    .mobile-donate-bar {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 40;
+      background: #1B2B6B; padding: 14px 20px;
+      box-shadow: 0 -8px 40px rgba(13, 27, 75, 0.2);
+      transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      border-top: 1px solid rgba(201, 168, 76, 0.2);
+    }
+    @media (max-width: 768px) { .mobile-donate-bar { display: flex; align-items: center; justify-content: space-between; } }
+    .mobile-donate-bar.visible { transform: translateY(0); }
+
+    /* Pastikan semua gambar tidak overflow container */
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Object-fit untuk gambar dalam card */
+    .img-card {
+      overflow: hidden;
+      border-radius: var(--radius, 12px);
+    }
+    .img-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .img-card:hover img {
+      transform: scale(1.04);
+    }
+
+    /* Subtle Cinematic Background Overlay for Hero */
+    .hero-bg-image {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/render-tampak-depan-malam.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.08;   /* sangat subtle — jangan lebih dari 0.1 */
+      mix-blend-mode: luminosity;
+    }
+
+    /* ==========================================================
+       SURGICAL OVERRIDES & FIXES FOR THE 8 SPECIFIC TASKS
+       ========================================================== */
+
+    /* General section padding override (FIX 8) */
+    section:not(#hero) {
+      padding-top: 5rem !important; /* py-20 */
+      padding-bottom: 5rem !important; /* py-20 */
+    }
+
+    /* FIX 1 — HERO BACKGROUND */
+    #hero {
+      background: #0D1B4B !important;
+      background-image: url('images/render-tampak-depan-malam.jpg') !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-blend-mode: multiply !important;
+      position: relative !important;
+    }
+    #hero .hero-bg-image {
+      display: none !important; /* disabled original luminosity bg */
+    }
+    #hero-container {
+      position: relative !important;
+      z-index: 1 !important;
+    }
+    #hero h1 {
+      color: #ffffff !important;
+    }
+    #hero blockquote p {
+      color: rgba(255,255,255,0.8) !important;
+    }
+    #hero blockquote cite {
+      color: rgba(255,255,255,0.4) !important;
+    }
+    #hero p.reveal-delay-3 {
+      color: rgba(255,255,255,0.7) !important;
+    }
+    #hero-badge {
+      color: #C9A84C !important;
+      border-color: rgba(201,168,76,0.5) !important;
+      background: rgba(201, 168, 76, 0.1) !important;
+    }
+    #hero-progress-label {
+      color: rgba(255,255,255,0.6) !important;
+    }
+    #hero-progress-val {
+      color: #ffffff !important;
+      font-weight: 600 !important;
+    }
+    #hero-progress-bg {
+      background: rgba(255,255,255,0.2) !important;
+    }
+    #hero-progress-bar {
+      background: #C9A84C !important;
+    }
+
+    /* FIX 2 — HERO RENDER 3D CARD */
+    #hero-glass-card {
+      background: rgba(255,255,255,0.08) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border: 1px solid rgba(255,255,255,0.15) !important;
+      border-radius: 16px !important;
+      padding: 16px !important;
+    }
+    #hero-glass-card img {
+      border-radius: 12px !important;
+      width: 100% !important;
+      object-fit: cover !important;
+    }
+
+    /* FIX 3 — PROGRESS SECTION METRIC CARDS */
+    #progress-metric-grid {
+      margin-top: 2rem !important;
+    }
+    #progress-metric-grid .metric-card {
+      background: #ffffff !important;
+      border: 1px solid rgba(13,27,75,0.08) !important;
+      border-radius: 16px !important;
+      padding: 20px 24px !important;
+      transition: border-color 0.3s, transform 0.3s !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      justify-content: space-between !important;
+      gap: 12px !important;
+    }
+    #progress-metric-grid .metric-card:hover {
+      transform: translateY(-4px) !important;
+      border-color: #C9A84C !important;
+    }
+    #progress-metric-grid .metric-card-highlighted {
+      border: 2px solid #C9A84C !important;
+    }
+
+    /* FIX 4 — TAHAPAN SECTION BACKGROUND */
+    #tahapan {
+      background: #0D1B4B !important;
+    }
+    #tahapan .section-label {
+      color: #C9A84C !important;
+    }
+    #tahapan h2 {
+      color: #ffffff !important;
+    }
+    #tahapan h2 + p {
+      color: rgba(255,255,255,0.6) !important;
+    }
+    #tahapan-footer-note {
+      color: rgba(255,255,255,0.4) !important;
+    }
+    #tahapan .glass {
+      background: rgba(255,255,255,0.06) !important;
+      border: 1px solid rgba(255,255,255,0.12) !important;
+      border-radius: 16px !important;
+      padding: 24px !important;
+      color: #ffffff !important;
+    }
+    #tahapan .glass h3 {
+      color: #ffffff !important;
+      font-weight: 600 !important;
+    }
+    #tahapan .glass p {
+      color: rgba(255,255,255,0.65) !important;
+    }
+    #tahapan .glass .font-semibold {
+      color: rgba(255,255,255,0.5) !important;
+    }
+    #tahapan .glass .bg-white\/10 {
+      background: rgba(255,255,255,0.15) !important;
+    }
+    #tahapan .glass .h-full {
+      background: #C9A84C !important;
+    }
+    .badge-running {
+      background: rgba(5,150,105,0.2) !important; 
+      color: #34d399 !important; 
+      border: 1px solid rgba(52,211,153,0.3) !important;
+    }
+    .badge-pending {
+      background: rgba(255,255,255,0.1) !important; 
+      color: rgba(255,255,255,0.4) !important;
+      border: 1px solid rgba(255,255,255,0.1) !important;
+    }
+
+    /* FIX 5 — GALERI SECTION GRID */
+    #gallery-grid-desain, #gallery-grid-lapangan {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 16px !important;
+    }
+    #gallery-grid-desain .img-card, #gallery-grid-lapangan .img-card {
+      border-radius: 12px !important;
+      overflow: hidden !important;
+      aspect-ratio: 4/3 !important;
+    }
+    #gallery-grid-desain .img-card img, #gallery-grid-lapangan .img-card img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    #gallery-grid-desain .img-card:hover img, #gallery-grid-lapangan .img-card:hover img {
+      transform: scale(1.04) !important;
+    }
+    @media (max-width: 768px) {
+      #gallery-grid-desain, #gallery-grid-lapangan {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* FIX 6 — REKENING UTAMA BSI CARD */
+    #bsi-rekening-card {
+      background: #1B2B6B !important;
+      border: 1px solid rgba(201,168,76,0.35) !important;
+      border-radius: 20px !important;
+      padding: 32px !important;
+      max-width: 480px !important;
+      margin: 0 auto !important;
+    }
+    #bsi-card-bank-label {
+      color: rgba(255,255,255,0.6) !important;
+      font-size: 12px !important; 
+      letter-spacing: 0.1em !important;
+      background: transparent !important;
+      padding: 0 !important;
+    }
+    #bsi-card-main-label {
+      color: #C9A84C !important;
+      font-size: 12px !important;
+    }
+    #bsi-card-norek-label {
+      color: rgba(255,255,255,0.6) !important;
+      font-size: 12px !important;
+    }
+    #bsi-card-number {
+      color: #ffffff !important;
+      font-size: 2rem !important;
+      font-weight: 700 !important; 
+      letter-spacing: 0.06em !important;
+      font-family: 'Lora', serif !important;
+    }
+    #bsi-card-copy-btn {
+      border: 1px solid rgba(201,168,76,0.4) !important;
+      color: #C9A84C !important;
+      background: transparent !important;
+      border-radius: 10px !important;
+      padding: 10px 16px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    #bsi-card-an {
+      color: rgba(255,255,255,0.8) !important;
+    }
+    .btn-wa-confirm {
+      background: #C9A84C !important;
+      color: #0D1B4B !important;
+      font-weight: 700 !important;
+      border-radius: 10px !important;
+      padding: 14px 24px !important;
+      width: 100% !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      transition: transform 0.2s, box-shadow 0.2s !important;
+    }
+    .btn-wa-confirm:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 10px 25px rgba(201,168,76,0.3) !important;
+    }
+
+    /* FIX 7 — DONASI SECTION BACKGROUND */
+    #donasi {
+      background: #0D1B4B !important;
+    }
+    #donasi .section-label {
+      color: #C9A84C !important;
+    }
+    #donasi h2 {
+      color: #ffffff !important;
+    }
+    #donasi h2 + p {
+      color: rgba(255,255,255,0.7) !important;
+    }
+    #alternative-account-label {
+      color: rgba(255,255,255,0.4) !important;
+    }
+    
+    /* Additional Custom Responsive Grids */
+    @media(max-width:600px){
+      .galeri-grid-wrap { grid-template-columns: 1fr !important; }
+    }
+    @media(max-width:1024px){
+      .tahap-grid { grid-template-columns:repeat(2,1fr) !important; }
+    }
+    @media(max-width:600px){
+      .tahap-grid { grid-template-columns:1fr !important; }
+    }
+    @media(max-width:768px){
+      #footer .footer-3col { grid-template-columns:1fr !important; }
+    }
+
+    @media (max-width:1024px) {
+      .progress-outer-grid {
+        grid-template-columns: 300px 1fr !important;
+      }
+    }
+    @media (max-width:768px) {
+      .progress-outer-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .metric-cards-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- ============================================ -->
+  <!-- [01] STICKY HEADER                           -->
+  <!-- ============================================ -->
+  <header x-data="{ mobileMenu: false }" id="main-header" class="fixed top-0 left-0 right-0 z-50 border-b border-transparent transition-all duration-400 ease-out" style="position:fixed;top:0;left:0;right:0;z-index:100;background:transparent;">
+    <div class="max-w-[1240px] mx-auto px-6 md:px-12 h-[72px] md:h-[80px] flex items-center justify-between">
+      
+   <a href="#" id="logo-link"
+     style="display:flex;align-items:center;gap:10px;
+       text-decoration:none;flex-shrink:0;">
+     
+     <img 
+       src="images/Logo_Atas.png"
+       alt="Masjid Ar-Rustendi"
+       id="header-logo"
+       style="height:44px;width:auto;object-fit:contain;
+         display:block;
+         filter:brightness(0) invert(1);
+         transition:filter 0.35s ease;"
+     >
+     
+     <div style="display:flex;flex-direction:column;
+       gap:1px;line-height:1;">
+       <span id="header-nama"
+         style="font-family:'Lora',serif;font-weight:700;
+           font-size:15px;letter-spacing:0.01em;
+           color:#ffffff;
+           transition:color 0.35s ease;
+           white-space:nowrap;">
+         Masjid Ar-Rustendi
+       </span>
+       <span id="header-sub"
+         style="font-family:'Plus Jakarta Sans',sans-serif;
+           font-size:10px;font-weight:600;
+           letter-spacing:0.12em;text-transform:uppercase;
+           color:rgba(255,255,255,0.55);
+           transition:color 0.35s ease;
+           white-space:nowrap;">
+         Rumpin · Kab. Bogor
+       </span>
+     </div>
+   </a>
+
+      <!-- Desktop Center Menu links -->
+      <nav class="hidden lg:flex items-center gap-8">
+        <a href="#tentang" class="nav-link text-white/85 text-[14px] header-nav-link">Tentang</a>
+        <a href="#progress" class="nav-link text-white/85 text-[14px] header-nav-link">Progress</a>
+        <a href="#tahapan" class="nav-link text-white/85 text-[14px] header-nav-link">Tahapan</a>
+        <a href="#rab" class="nav-link text-white/85 text-[14px] header-nav-link">RAB</a>
+        <a href="#donatur" class="nav-link text-white/85 text-[14px] header-nav-link">Donatur</a>
+        <a href="#dkm" class="nav-link text-white/85 text-[14px] header-nav-link">DKM</a>
+        <a href="#lokasi" class="nav-link text-white/85 text-[14px] header-nav-link">Lokasi</a>
+        <a href="#donasi" class="nav-link text-white/85 text-[14px] header-nav-link">Donasi</a>
+      </nav>
+
+      <!-- CTA Button (Desktop) / Hamburger Trigger (Mobile) -->
+      <div class="flex items-center gap-4">
+        <a href="#donasi" class="hidden sm:inline-flex btn-gold rounded-full px-5 py-2.5 text-xs tracking-wider uppercase font-semibold">
+          Donasi Sekarang
+        </a>
+        <button @click="mobileMenu = !mobileMenu" aria-label="Toggle Menu" class="lg:hidden p-2 text-white header-icon-color focus:outline-none">
+          <i x-show="!mobileMenu" data-lucide="menu" class="w-6 h-6"></i>
+          <i x-show="mobileMenu" data-lucide="x" class="w-6 h-6" x-cloak></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div x-show="mobileMenu" 
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 -translate-y-4"
+         x-transition:enter-end="opacity-100 translate-y-0"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100 translate-y-0"
+         x-transition:leave-end="opacity-0 -translate-y-4"
+         class="lg:hidden bg-white border-t border-gray-100 py-6 px-6 shadow-xl" x-cloak>
+      <nav class="flex flex-col gap-4">
+        <a href="#tentang" @click="mobileMenu = false" class="text-navy-primary font-semibold text-base py-2 border-b border-gray-50 flex items-center justify-between">
+          <span>Tentang Masjid</span> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+        </a>
+        <a href="#progress" @click="mobileMenu = false" class="text-navy-primary font-semibold text-base py-2 border-b border-gray-50 flex items-center justify-between">
+          <span>Progress & Anggaran</span> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+        </a>
+        <a href="#tahapan" @click="mobileMenu = false" class="text-navy-primary font-semibold text-base py-2 border-b border-gray-50 flex items-center justify-between">
+          <span>Tahapan Konstruksi</span> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+        </a>
+        <a href="#rab" @click="mobileMenu = false" class="text-navy-primary font-semibold text-base py-2 border-b border-gray-50 flex items-center justify-between">
+          <span>Uraian RAB</span> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+        </a>
+        <a href="#donatur" @click="mobileMenu = false" class="text-navy-primary font-semibold text-base py-2 border-b border-gray-50 flex items-center justify-between">
+          <span>Daftar Donatur</span> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+        </a>
+        <a href="#dkm" @click="mobileMenu = false" class="text-navy-primary font-semibold text-base py-2 border-b border-gray-50 flex items-center justify-between">
+          <span>DKM Pengurus</span> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+        </a>
+        <a href="#lokasi" @click="mobileMenu = false" class="text-navy-primary font-semibold text-base py-2 border-b border-gray-50 flex items-center justify-between">
+          <span>Alamat & Lokasi</span> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+        </a>
+        <a href="#donasi" @click="mobileMenu = false" class="btn-gold rounded-xl py-3 text-center text-sm font-semibold tracking-wide uppercase mt-4">
+          Salurkan Donasi
+        </a>
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- ============================================ -->
+  <!-- [02] HERO SECTION                            -->
+  <!-- ============================================ -->
+  <section id="hero" style="background:#0D1B4B !important; 
+    background-image:url('images/render-tampak-depan-malam.jpg') !important;
+    background-size:cover !important; background-position:center !important;
+    position:relative; min-height:100vh; display:flex; align-items:center;">
+    
+    <div style="position:absolute;inset:0;background:linear-gradient(
+      135deg,rgba(13,27,75,0.96) 0%,rgba(13,27,75,0.85) 55%,
+      rgba(13,27,75,0.72) 100%);z-index:0;pointer-events:none;"></div>
+
+    <div id="hero-container" style="position:relative;z-index:1;" class="max-w-[1240px] mx-auto px-6 md:px-12 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Kolom Kiri - Story & Heading -->
+        <div class="lg:col-span-7 flex flex-col items-start text-left">
+          
+          <div id="hero-badge" class="reveal inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gold/10 mb-6" style="color:#C9A84C; border: 1px solid rgba(201,168,76,0.4);">
+            <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+            <span class="text-[11px] font-semibold tracking-wider text-gold uppercase">Pembangunan Aktif · 2026</span>
+          </div>
+
+          <blockquote class="reveal reveal-delay-1 border-l-2 pl-4 mb-8" style="color:rgba(255,255,255,0.75); border-left-color:#C9A84C;">
+            <p class="font-display italic text-sm md:text-base leading-relaxed">
+              "Siapa yang membangun masjid karena Allah, maka Allah bangunkan baginya rumah di Surga."
+            </p>
+            <cite class="block mt-2 text-xs font-semibold uppercase tracking-wider text-white/40 not-italic">(H.R. Bukhari & Muslim)</cite>
+          </blockquote>
+
+          <h1 class="reveal reveal-delay-2 font-display text-[2.5rem] sm:text-[3.25rem] md:text-[4.25rem] font-bold leading-tight" style="color:#ffffff !important;">
+            Masjid Jami<br>
+            <span style="color:#C9A84C !important;">Ar-Rustendi</span>
+          </h1>
+
+          <svg height="8" viewBox="0 0 200 8" class="reveal reveal-delay-3 my-6 text-gold opacity-60 w-48">
+            <path d="M0 4 Q50 1 100 4 Q150 7 200 4" stroke="currentColor" stroke-width="2" fill="none"/>
+          </svg>
+
+          <p class="reveal reveal-delay-3 text-sm md:text-base leading-relaxed mb-8 max-w-xl" style="color:rgba(255,255,255,0.7) !important;">
+            Menghadirkan rumah ibadah yang asri, nyaman, dan representatif bagi warga Kp. Rumpin Tegal Indah, Bogor. Bergabunglah menanam investasi akhirat (amal jariyah) yang pahalanya terus mengalir tanpa terputus.
+          </p>
+
+          <!-- Progress bar Mini -->
+          <div class="reveal reveal-delay-4 w-full max-w-xl bg-white/10 rounded-full p-4 mb-8 border border-white/5">
+            <div class="flex items-center justify-between mb-2">
+              <span id="hero-progress-label" class="text-xs uppercase font-bold tracking-wider" style="color:rgba(255,255,255,0.6) !important;">Dana Terkumpul</span>
+              <span id="hero-progress-val" class="text-sm font-bold text-white" style="color:#ffffff !important; font-weight:600;"><span id="hero-progress-text">49.9</span>% · Rp 312.000.000</span>
+            </div>
+            <div id="hero-progress-bg" style="background:rgba(255,255,255,0.15); height:6px; border-radius:99px;" class="w-full overflow-hidden">
+              <div id="hero-progress-bar" style="background:#C9A84C; width:49.9%; height:100%; border-radius:99px; transition:width 1.5s ease 0.5s;"></div>
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="reveal reveal-delay-5 flex flex-wrap gap-4">
+            <a href="#donasi" class="btn-gold rounded-full px-8 py-4 text-sm inline-flex items-center gap-2">
+              <span>Donasi Sekarang</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+            <a href="#progress" class="btn-ghost rounded-full px-8 py-4 text-sm inline-flex items-center gap-2">
+              <span>Lihat Progress</span>
+              <i data-lucide="trending-up" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Kolom Kanan - Rendering Glass Panel -->
+        <div class="lg:col-span-5 relative">
+          <div id="hero-glass-card" class="reveal reveal-delay-3 glass rounded-2xl p-6 md:p-8">
+            <span class="block text-[11px] font-bold text-gold uppercase tracking-wider mb-4">Visualisasi Arsitektur</span>
+            
+            <div class="img-card rounded-xl aspect-[4/3] mb-6 overflow-hidden relative shadow-xs">
+              <img 
+                src="images/render-tampak-depan-malam.jpg" 
+                alt="Render 3D Masjid Jami Ar-Rustendi tampak depan" 
+                class="w-full h-full object-cover"
+                loading="eager"
+              >
+              <div class="absolute bottom-3 right-3 px-2.5 py-1 bg-navy-deepest/70 rounded text-[10px] text-gold font-semibold uppercase border border-gold/10 z-10">Deay Arsitekture</div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-3 gap-4 pt-4 border-t border-white/10">
+              <div class="text-center">
+                <span class="block font-display text-base md:text-lg font-bold text-gold">168 m²</span>
+                <span class="block text-[10px] text-white/50 uppercase font-semibold mt-1">Luas Tanah</span>
+              </div>
+              <div class="w-px h-8 bg-white/10 mx-auto self-center"></div>
+              <div class="text-center">
+                <span class="block font-display text-base md:text-lg font-bold text-gold">4 Tahap</span>
+                <span class="block text-[10px] text-white/50 uppercase font-semibold mt-1">Roadmap</span>
+              </div>
+              <div class="w-px h-8 bg-white/10 mx-auto self-center"></div>
+              <div class="text-center">
+                <span class="block font-display text-base md:text-lg font-bold text-gold">2026</span>
+                <span class="block text-[10px] text-white/50 uppercase font-semibold mt-1">Target</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Decorative element subtle glow -->
+          <div class="absolute -top-12 -right-12 w-64 h-64 bg-gold/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Down anim indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 animate-bounce text-white/40 pointer-events-none">
+      <span class="text-[10px] uppercase font-bold tracking-widest">Scroll</span>
+      <i data-lucide="chevron-down" class="w-4 h-4"></i>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- [03] PROGRESS DONASI & TRANSMUTASI          -->
+  <!-- ============================================ -->
+  <section id="progress" class="py-24 md:py-32 bg-offwhite relative">
+    <div class="max-w-[1240px] mx-auto px-6 md:px-12 relative z-10">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="section-label">Transparansi Dana</span>
+        <div class="divider-gold mx-auto mt-3 mb-4"></div>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-navy-primary">Kondisi Pengumpulan Dana</h2>
+        <p class="text-gray-500 text-sm md:text-base mt-4">
+          Laporan keuangan pembangunan yang valid dan diperbarui berkala secara transparan.
+        </p>
+      </div>
+
+      <!-- SVG Gauge & Metric Panel -->
+      <div class="progress-outer-grid" style="display:grid;
+        grid-template-columns:340px 1fr;
+        gap:24px;
+        align-items:start;
+        width:100%;
+        min-width:0;">
+        
+        <!-- Sektor Kiri - Semicircle Progress Gauge -->
+        <div class="reveal flex flex-col items-center justify-center shadow-sm" style="width:340px;
+          flex-shrink:0;
+          min-width:0;
+          background:#ffffff;
+          border:1px solid rgba(13,27,75,0.1);
+          border-radius:16px;
+          padding:24px;">
+          <span class="text-xs uppercase font-bold text-navy-primary tracking-widest mb-6">Pencapaian Anggaran</span>
+          
+          <div class="relative w-72 h-44 flex items-center justify-center overflow-hidden">
+            <svg viewBox="-10 -10 220 130" class="w-full">
+              <!-- Semicircle background track -->
+              <path class="gauge-track" d="M 10 100 A 90 90 0 0 1 190 100"/>
+              <!-- Semicircle progress fill -->
+              <path id="gauge-fill" class="gauge-fill animate-gauge" d="M 10 100 A 90 90 0 0 1 190 100" stroke-dasharray="282.7" stroke-dashoffset="282.7"/>
+            </svg>
+            <div class="absolute bottom-2 text-center">
+              <span id="gauge-percent-text" class="block font-display text-4xl font-bold text-navy-primary">0%</span>
+              <span class="block text-[11px] text-gray-400 font-medium uppercase tracking-wider mt-1">Terpenuhi</span>
+            </div>
+          </div>
+          
+          <div class="w-full border-t border-gray-100 pt-5 text-center mt-2 flex items-center justify-between px-4 text-xs text-gray-400">
+            <span>Nilai Kontrak: <strong class="text-navy-primary">Rp 625.050.247</strong></span>
+            <span>Update: <strong class="text-navy-primary">20 Juni 2026</strong></span>
+          </div>
+        </div>
+
+        <!-- Sektor Kanan - Angka-Angka Metrik Penting -->
+        <div id="progress-metric-grid" class="metric-cards-grid" style="display:grid;
+          grid-template-columns:repeat(3,1fr);
+          gap:12px;
+          min-width:0;
+          width:100%;">
+          
+          <!-- Metrik 1: Total Anggaran -->
+          <div class="reveal reveal-delay-1 metric-card bg-white rounded-2xl p-6 flex flex-col justify-between gap-4" style="min-width:0; overflow:hidden; word-break:break-word;">
+            <div class="flex items-start gap-4">
+              <div class="p-3.5 rounded-xl bg-navy-primary/5 text-navy-primary flex-shrink-0">
+                <i data-lucide="target" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <span class="block" style="font-size:11px;
+                  font-weight:700;
+                  letter-spacing:0.08em;
+                  text-transform:uppercase;
+                  color:#6B7280;
+                  line-height:1.4;
+                  word-break:break-word;">Total Rencana Anggaran Biaya</span>
+                <span class="block text-xs text-gray-500 mt-1">Total kebutuhan dana pembangunan</span>
+              </div>
+            </div>
+            <div class="text-left">
+              <span class="block" style="font-family:'Lora',serif;
+                font-weight:700;
+                font-size:clamp(1rem,2vw,1.5rem);
+                color:#1B2B6B;
+                line-height:1.2;
+                word-break:break-word;
+                overflow-wrap:break-word;">Rp 625.050.247</span>
+              <span class="block text-[11px] text-gray-400 mt-1 uppercase tracking-wide">RAB Keseluruhan</span>
+            </div>
+          </div>
+
+          <!-- Metrik 2: Terkumpul -->
+          <div class="reveal reveal-delay-2 metric-card metric-card-highlighted bg-white border-2 border-gold rounded-2xl p-6 flex flex-col justify-between gap-4 relative overflow-hidden" style="min-width:0; overflow:hidden; word-break:break-word;">
+            <div class="absolute top-0 right-0 px-3 py-1 bg-gold text-navy-deepest text-[9px] font-bold uppercase tracking-widest rounded-bl-xl">✓ Terkumpul</div>
+            <div class="flex items-start gap-4">
+              <div class="p-3.5 rounded-xl bg-gold/10 text-gold flex-shrink-0">
+                <i data-lucide="trending-up" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <span class="block" style="font-size:11px;
+                  font-weight:700;
+                  letter-spacing:0.08em;
+                  text-transform:uppercase;
+                  color:#6B7280;
+                  line-height:1.4;
+                  word-break:break-word;">Dana yang Sudah Masuk</span>
+                <span class="block text-xs text-emerald-600 font-semibold mt-1">✓ Laporan Terverifikasi Akurat</span>
+              </div>
+            </div>
+            <div class="text-left">
+              <span id="counter-terkumpul" class="block" style="font-family:'Lora',serif;
+                font-weight:700;
+                font-size:clamp(1rem,2vw,1.5rem);
+                color:#1B2B6B;
+                line-height:1.2;
+                word-break:break-word;
+                overflow-wrap:break-word;">Rp 0</span>
+              <span class="block text-[11px] text-gray-400 mt-1">49.9% dari Anggaran RAB</span>
+            </div>
+          </div>
+
+          <!-- Metrik 3: Sisa -->
+          <div class="reveal reveal-delay-3 metric-card bg-white rounded-2xl p-6 flex flex-col justify-between gap-4" style="min-width:0; overflow:hidden; word-break:break-word;">
+            <div class="flex items-start gap-4">
+              <div class="p-3.5 rounded-xl bg-red-500/5 text-red-500 flex-shrink-0">
+                <i data-lucide="info" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <span class="block" style="font-size:11px;
+                  font-weight:700;
+                  letter-spacing:0.08em;
+                  text-transform:uppercase;
+                  color:#6B7280;
+                  line-height:1.4;
+                  word-break:break-word;">Sisa Kekurangan Anggaran</span>
+                <span class="block text-xs text-gray-500 mt-1">Sisa kebutuhan dana pembangunan</span>
+              </div>
+            </div>
+            <div class="text-left">
+              <span class="block" style="font-family:'Lora',serif;
+                font-weight:700;
+                font-size:clamp(1rem,2vw,1.5rem);
+                color:#1B2B6B;
+                line-height:1.2;
+                word-break:break-word;
+                overflow-wrap:break-word;">Rp 313.050.247</span>
+              <span class="block text-[11px] text-red-500 font-semibold mt-1 uppercase tracking-wide">Kekurangan 50.1%</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Mini Donation Interactive Calculator -->
+      <div class="reveal reveal-delay-4 max-w-xl mx-auto mt-16 bg-white border border-gray-100 rounded-2xl p-6 md:p-8 shadow-sm">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="p-2.5 rounded-lg bg-navy-primary/5 text-navy-primary">
+            <i data-lucide="calculator" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-display text-lg font-bold text-navy-primary">Simulasi Kontribusi Donasi Anda</h3>
+        </div>
+
+        <div x-data="{ nominal: 1000000, get persen() { return ((this.nominal / 313050247) * 100).toFixed(4) }, get orang() { return Math.ceil(313050247 / (this.nominal || 1)) } }">
+          <label for="donation-calc" class="block text-xs uppercase font-bold text-gray-400 tracking-wider mb-2">Rencana Nominal Donasi Anda</label>
+          <div class="relative rounded-xl overflow-hidden mb-4">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-navy-primary text-base">Rp</span>
+            <input id="donation-calc" type="number" x-model.number="nominal" class="w-full bg-offwhite rounded-xl py-3.5 pl-12 pr-4 text-base font-bold text-navy-primary focus:outline-none focus:ring-2 focus:ring-gold border border-transparent transition-all">
+          </div>
+
+          <div class="bg-gold/5 rounded-xl p-4 border border-gold/10 mb-6">
+            <p class="text-sm text-gray-700 leading-relaxed">
+              Donasi senilai <strong class="text-navy-primary" x-text="'Rp ' + Math.round(nominal).toLocaleString('id-ID')"></strong> setara dengan <strong class="text-gold" x-text="persen + '%'"></strong> dari sisa total kebutuhan dana.
+            </p>
+            <p class="text-[11px] text-gray-500 mt-2 leading-relaxed">
+              Jika <strong class="text-navy-primary" x-text="orang.toLocaleString('id')"></strong> orang sholeh berdonasi dengan nominal yang sama seperti Anda, maka target pembangunan masjid segera tercapai!
+            </p>
+          </div>
+
+          <a :href="`https://wa.me/6285780694377?text=Assalamu'alaikum%20Pak%20Hari,%20saya%20berencana%20berdonasi%20senilai%20Rp%20` + Math.round(nominal).toLocaleString('id-ID') + `%20untuk%20Masjid%20Ar-Rustendi.%20Mohon%20panduan%20verifikasinya.`" target="_blank" class="btn-navy w-full rounded-xl py-3.5 flex items-center justify-center gap-2 text-sm tracking-wide uppercase font-semibold">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            <span>Konfirmasi Donasi via WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Share Action buttons row -->
+      <div class="flex flex-wrap gap-4 items-center justify-center mt-12 text-sm text-gray-500">
+        <span class="font-medium">Bantu sebarkan halaman:</span>
+        <a href="https://api.whatsapp.com/send?text=Mari%20bantu%20pembangunan%20Masjid%20Ar-Rustendi%20Rumpin%20Bogor.%20https://arrustendi.vercel.app" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 text-emerald-600 rounded-full hover:bg-emerald-500/20 transition-colors">
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          <span>WhatsApp</span>
+        </a>
+        <a href="https://twitter.com/intent/tweet?text=Bantu%20pembangunan%20Masjid%20Ar-Rustendi%20Rumpin%20Bogor%20&url=https://arrustendi.vercel.app" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-sky-500/10 text-sky-600 rounded-full hover:bg-sky-500/20 transition-colors">
+          <svg class="w-4 h-4 fill-currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.244 2.25h3.308l-7.227 7.746 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.286L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+          <span>Twitter</span>
+        </a>
+        <button onclick="copyToClipboard('https://arrustendi.vercel.app')" class="inline-flex items-center gap-2 px-4 py-2 bg-navy-primary/5 text-navy-primary rounded-full hover:bg-navy-primary/10 transition-colors">
+          <i data-lucide="link" class="w-4 h-4"></i>
+          <span>Salin Tautan</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- [04] LATAR BELAKANG & TUJUAN                 -->
+  <!-- ============================================ -->
+  <section id="tentang" class="py-24 md:py-32 bg-white">
+    <div class="max-w-[1240px] mx-auto px-6 md:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        
+        <!-- Kolom Kiri: Latar Belakang & Urgensi -->
+        <div class="lg:col-span-7 flex flex-col justify-center">
+          <span class="section-label">Mengapa Masjid Ini Penting?</span>
+          <div class="divider-gold mt-3 mb-5"></div>
+          
+          <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-navy-primary leading-tight mb-6">
+            Kebutuhan yang Sudah Sangat Mendesak
+          </h2>
+
+          <p class="text-body text-gray-600 mb-5 leading-relaxed">
+            Masyarakat muslim di Kp. Tegal Desa Rumpin menghadapi keterbatasan dalam melaksanakan ibadah berjamaah. Masjid terdekat berada cukup jauh dari permukiman warga, menyulitkan lansia, anak-anak, dan ibu-ibu untuk hadir dalam shalat lima waktu tepat waktu.
+          </p>
+          
+          <p class="text-body text-gray-600 mb-8 leading-relaxed">
+            Masjid yang ada pun sudah tidak lagi mampu menampung kapasitas jamaah yang terus bertambah pesat. Pada shalat Jumat, Shalat Tarawih Ramadhan, maupun Shalat Id, jamaah seringkali meluber hingga ke halaman luar dan badan jalan sekitar. Kehadiran Masjid Ar-Rustendi adalah solusi mulia bagi kebutuhan spiritual komunitas di sini.
+          </p>
+
+          <div class="border-l-4 border-gold bg-gold/5 rounded-r-2xl p-5 mb-8">
+            <p class="font-display italic text-navy-primary text-base leading-relaxed">
+              "Setiap sujud, setiap shalat berjamaah, dan setiap hafalan ayat suci yang dilisankan di masjid ini adalah aliran pahala abadi yang akan terus mengalir untuk setiap donatur."
+            </p>
+          </div>
+        </div>
+
+        <!-- Kolom Kanan: 4 Tujuan Mulia & Dokumentasi -->
+        <div class="lg:col-span-5 flex flex-col gap-6 justify-center">
+          
+          <!-- Grid Tujuan -->
+          <div class="flex flex-col gap-4">
+            
+            <!-- Tujuan 1 -->
+            <div class="flex items-start gap-4 bg-offwhite p-4 rounded-xl hover:bg-white hover:border border-transparent hover:border-gold/30 transition-all duration-300">
+              <div class="p-2.5 rounded-lg bg-navy-primary/5 text-navy-primary mt-1">
+                <i data-lucide="home" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="font-display text-sm md:text-base font-bold text-navy-primary">Ibadah yang Representatif</h4>
+                <p class="text-xs text-gray-500 mt-1">Menyediakan sarana shalat fardhu berjamaah yang aman, asri, bersih, dan khusyuk.</p>
+              </div>
+            </div>
+
+            <!-- Tujuan 2 -->
+            <div class="flex items-start gap-4 bg-offwhite p-4 rounded-xl hover:bg-white hover:border border-transparent hover:border-gold/30 transition-all duration-300">
+              <div class="p-2.5 rounded-lg bg-navy-primary/5 text-navy-primary mt-1">
+                <i data-lucide="book-open" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="font-display text-sm md:text-base font-bold text-navy-primary">Pusat Keilmuan & Kajian</h4>
+                <p class="text-xs text-gray-500 mt-1">Menjadi wadah majelis taklim, sekolah Al-Qur'an (TPA), belajar hadits, dan pengembangan perpustakaan.</p>
+              </div>
+            </div>
+
+            <!-- Tujuan 3 -->
+            <div class="flex items-start gap-4 bg-offwhite p-4 rounded-xl hover:bg-white hover:border border-transparent hover:border-gold/30 transition-all duration-300">
+              <div class="p-2.5 rounded-lg bg-navy-primary/5 text-navy-primary mt-1">
+                <i data-lucide="hand-heart" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="font-display text-sm md:text-base font-bold text-navy-primary">Baitul Maal (Ekonomi Syariah)</h4>
+                <p class="text-xs text-gray-500 mt-1">Pengelolaan dana zakat, infaq, dan sedekah produktif untuk mengangkat taraf hidup warga pra-sejahtera.</p>
+              </div>
+            </div>
+
+            <!-- Tujuan 4 -->
+            <div class="flex items-start gap-4 bg-offwhite p-4 rounded-xl hover:bg-white hover:border border-transparent hover:border-gold/30 transition-all duration-300">
+              <div class="p-2.5 rounded-lg bg-navy-primary/5 text-navy-primary mt-1">
+                <i data-lucide="users" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="font-display text-sm md:text-base font-bold text-navy-primary">Sinergi & Ukhuwah Islamiyah</h4>
+                <p class="text-xs text-gray-500 mt-1">Menjadi sarana silaturahmi, musyawarah desa, integrasi sosial, serta merekatkan kerukunan antar keluarga.</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- [05] TAHAPAN PEMBANGUNAN                     -->
+  <!-- ============================================ -->
+  <section id="tahapan" style="background:#0D1B4B !important; position:relative; overflow:hidden;">
+    <div style="position:absolute;inset:0;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M20 0L40 20L20 40L0 20Z' fill='none' stroke='%23C9A84C' stroke-width='0.5' opacity='0.08'/%3E%3Ccircle cx='20' cy='20' r='3' fill='none' stroke='%23C9A84C' stroke-width='0.5' opacity='0.08'/%3E%3Cpath d='M20 0L20 8M20 32L20 40M0 20L8 20M32 20L40 20' stroke='%23C9A84C' stroke-width='0.3' opacity='0.06'/%3E%3C/svg%3E&quot;);pointer-events:none;z-index:0;opacity:0.15;"></div>
+    
+    <div style="position:relative;z-index:1;" class="max-w-[1240px] mx-auto px-6 md:px-12 w-full">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="section-label" style="color:#C9A84C;">Roadmap Konstruksi</span>
+        <div class="divider-gold mx-auto mt-3 mb-4"></div>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold" style="color:#ffffff !important;">4 Tahap Pembangunan</h2>
+        <p class="text-sm md:text-base mt-4" style="color:rgba(255,255,255,0.6) !important;">
+          Kami membagi pembangunan dalam rencana berjangka yang akuntabel guna memastikan keberlanjutan proyek teratur.
+        </p>
+      </div>
+
+      <!-- Roadmap Grid -->
+      <div class="tahap-grid relative" style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px;">
+        
+        <!-- Tahap 1 -->
+        <div class="reveal relative flex flex-col justify-between" style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); border-radius:16px; padding:24px;">
+          <div class="absolute top-4 right-4 font-display text-5xl font-bold text-white/5 select-none">01</div>
+          <div>
+            <span class="inline-flex items-center gap-1.5 uppercase mb-4" style="background:rgba(52,211,153,0.15); color:#34d399; border:1px solid rgba(52,211,153,0.3); border-radius:99px; padding:3px 10px; font-size:11px; font-weight:700;">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              SEDANG BERJALAN
+            </span>
+            <div class="w-12 h-12 rounded-xl bg-gold/10 text-gold flex items-center justify-center mb-4 border border-gold/10">
+              <i data-lucide="layers" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-display text-base md:text-lg mb-2" style="color:#ffffff !important; font-weight:600;">Pondasi & Struktur</h3>
+            <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,0.6) !important;">Pekerjaan galian, pancang pondasi batu kali, sloof penguat, kolom, balok beton struktural utama.</p>
+          </div>
+          <div class="mt-6 border-t border-white/5 pt-4">
+            <div class="flex items-center justify-between text-[11px] font-semibold mb-1.5" style="color:rgba(255,255,255,0.5) !important;">
+              <span>Progres Fisik</span>
+              <span class="text-gold">60%</span>
+            </div>
+            <div class="h-1 bg-white/10 rounded-full overflow-hidden">
+              <div class="h-full bg-gold rounded-full w-[60%]"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tahap 2 -->
+        <div class="reveal relative flex flex-col justify-between" style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); border-radius:16px; padding:24px;">
+          <div class="absolute top-4 right-4 font-display text-5xl font-bold text-white/5 select-none">02</div>
+          <div>
+            <span class="inline-flex items-center gap-1.5 uppercase mb-4" style="background:rgba(255,255,255,0.08); color:rgba(255,255,255,0.4); border:1px solid rgba(255,255,255,0.15); border-radius:99px; padding:3px 10px; font-size:11px; font-weight:700;">
+              <span class="w-1.5 h-1.5 rounded-full bg-white/30"></span>
+              BELUM DIMULAI
+            </span>
+            <div class="w-12 h-12 rounded-xl bg-white/5 text-white/40 flex items-center justify-center mb-4">
+              <i data-lucide="building-2" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-display text-base md:text-lg mb-2" style="color:#ffffff !important; font-weight:600;">Dinding & Atap</h3>
+            <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,0.6) !important;">Pemasangan dinding bata hebel kokoh, plester acian, rangka atap baja ringan, genteng, kubah utama.</p>
+          </div>
+          <div class="mt-6 border-t border-white/5 pt-4">
+            <div class="flex items-center justify-between text-[11px] font-semibold mb-1.5" style="color:rgba(255,255,255,0.5) !important;">
+              <span>Progres Fisik</span>
+              <span>0%</span>
+            </div>
+            <div class="h-1 bg-white/10 rounded-full overflow-hidden">
+              <div class="h-full bg-gold rounded-full w-0"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tahap 3 -->
+        <div class="reveal relative flex flex-col justify-between" style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); border-radius:16px; padding:24px;">
+          <div class="absolute top-4 right-4 font-display text-5xl font-bold text-white/5 select-none">03</div>
+          <div>
+            <span class="inline-flex items-center gap-1.5 uppercase mb-4" style="background:rgba(255,255,255,0.08); color:rgba(255,255,255,0.4); border:1px solid rgba(255,255,255,0.15); border-radius:99px; padding:3px 10px; font-size:11px; font-weight:700;">
+              <span class="w-1.5 h-1.5 rounded-full bg-white/30"></span>
+              BELUM DIMULAI
+            </span>
+            <div class="w-12 h-12 rounded-xl bg-white/5 text-white/40 flex items-center justify-center mb-4">
+              <i data-lucide="paintbrush" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-display text-base md:text-lg mb-2" style="color:#ffffff !important; font-weight:600;">Pekerjaan Finishing</h3>
+            <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,0.6) !important;">Pemasangan keramik lantai, plafon gipsum, pengecatan dinding dalam & luar, kusen pintu serta jendela kaca.</p>
+          </div>
+          <div class="mt-6 border-t border-white/5 pt-4">
+            <div class="flex items-center justify-between text-[11px] font-semibold mb-1.5" style="color:rgba(255,255,255,0.5) !important;">
+              <span>Progres Fisik</span>
+              <span>0%</span>
+            </div>
+            <div class="h-1 bg-white/10 rounded-full overflow-hidden">
+              <div class="h-full bg-gold rounded-full w-0"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tahap 4 -->
+        <div class="reveal relative flex flex-col justify-between" style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); border-radius:16px; padding:24px;">
+          <div class="absolute top-4 right-4 font-display text-5xl font-bold text-white/5 select-none">04</div>
+          <div>
+            <span class="inline-flex items-center gap-1.5 uppercase mb-4" style="background:rgba(255,255,255,0.08); color:rgba(255,255,255,0.4); border:1px solid rgba(255,255,255,0.15); border-radius:99px; padding:3px 10px; font-size:11px; font-weight:700;">
+              <span class="w-1.5 h-1.5 rounded-full bg-white/30"></span>
+              BELUM DIMULAI
+            </span>
+            <div class="w-12 h-12 rounded-xl bg-white/5 text-white/40 flex items-center justify-center mb-4">
+              <i data-lucide="settings" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-display text-base md:text-lg mb-2" style="color:#ffffff !important; font-weight:600;">Fasilitas Penunjang</h3>
+            <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,0.6) !important;">Tempat wudhu berbilik asri, toilet bersih, mihrab mihram imam, sound system, area halaman parkir paving.</p>
+          </div>
+          <div class="mt-6 border-t border-white/5 pt-4">
+            <div class="flex items-center justify-between text-[11px] font-semibold mb-1.5" style="color:rgba(255,255,255,0.5) !important;">
+              <span>Progres Fisik</span>
+              <span>0%</span>
+            </div>
+            <div class="h-1 bg-white/10 rounded-full overflow-hidden">
+              <div class="h-full bg-gold rounded-full w-0"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>        </div>
+
+      </div>
+
+      <p id="tahapan-footer-note" class="text-center text-white/50 text-xs mt-10">Total target masa pembangunan penuh diselesaikan dalam sisa tahun anggaran 2026.</p>
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- [06] TRANSPARANSI RAB TABLE                  -->
+  <!-- ============================================ -->
+  <section id="rab" class="py-24 md:py-32 bg-white">
+    <div class="max-w-[1240px] mx-auto px-6 md:px-12">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="section-label">Transparansi Anggaran</span>
+        <div class="divider-gold mx-auto mt-3 mb-4"></div>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-navy-primary">Rencana Anggaran Biaya (RAB)</h2>
+        <p class="text-gray-500 text-sm md:text-base mt-4">
+          Penjabaran komprehensif alokasi pengeluaran anggaran fisik pembangunan Masjid Jami Ar-Rustendi.
+        </p>
+      </div>
+
+      <!-- Table Container -->
+      <div class="reveal max-w-3xl mx-auto overflow-hidden rounded-2xl border border-gray-100 shadow-sm">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-navy-primary text-white">
+                <th class="py-4 px-6 text-xs uppercase font-bold tracking-wider w-16 text-center">No</th>
+                <th class="py-4 px-6 text-xs uppercase font-bold tracking-wider">Uraian Pekerjaan</th>
+                <th class="py-4 px-6 text-xs uppercase font-bold tracking-wider text-right w-48">Rencana Anggaran</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-50 text-sm">
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3.5 px-6 text-center text-gray-400 font-bold">I</td>
+                <td class="py-3.5 px-6 text-gray-700 font-medium">Pekerjaan Persiapan</td>
+                <td class="py-3.5 px-6 text-right font-display font-semibold text-navy-primary">Rp 16.307.303</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
+                <td class="py-3.5 px-6 text-center text-gray-400 font-bold">II</td>
+                <td class="py-3.5 px-6 text-gray-700 font-medium">Pekerjaan Tanah dan Pasir</td>
+                <td class="py-3.5 px-6 text-right font-display font-semibold text-navy-primary">Rp 29.791.240</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3.5 px-6 text-center text-gray-400 font-bold">III</td>
+                <td class="py-3.5 px-6 text-gray-700 font-medium">Pekerjaan Pondasi dan Beton</td>
+                <td class="py-3.5 px-6 text-right font-display font-semibold text-navy-primary">Rp 318.192.350</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
+                <td class="py-3.5 px-6 text-center text-gray-400 font-bold">IV</td>
+                <td class="py-3.5 px-6 text-gray-700 font-medium">Pekerjaan Dinding dan Plesteran</td>
+                <td class="py-3.5 px-6 text-right font-display font-semibold text-navy-primary">Rp 104.843.533</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3.5 px-6 text-center text-gray-400 font-bold">V</td>
+                <td class="py-3.5 px-6 text-gray-500 italic">Pekerjaan Atap & Penutup</td>
+                <td class="py-3.5 px-6 text-right text-gray-400 italic">Dalam Perhitungan</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
+                <td class="py-3.5 px-6 text-center text-gray-400 font-bold">VI</td>
+                <td class="py-3.5 px-6 text-gray-500 italic">Pekerjaan Kusen & Pintu</td>
+                <td class="py-3.5 px-6 text-right text-gray-400 italic">Dalam Perhitungan</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3.5 px-6 text-center text-gray-400 font-bold">VII</td>
+                <td class="py-3.5 px-6 text-gray-500 italic">Pekerjaan Lantai & Keramik</td>
+                <td class="py-3.5 px-6 text-right text-gray-400 italic">Dalam Perhitungan</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
+                <td class="py-3.5 px-6 text-center text-gray-400 font-bold">VIII</td>
+                <td class="py-3.5 px-6 text-gray-500 italic">Pekerjaan Plafon</td>
+                <td class="py-3.5 px-6 text-right text-gray-400 italic">Dalam Perhitungan</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3.5 px-6 text-center text-gray-400 font-bold">IX</td>
+                <td class="py-3.5 px-6 text-gray-700 font-medium">Pekerjaan Penggantung Kunci</td>
+                <td class="py-3.5 px-6 text-right font-display font-semibold text-navy-primary">Rp 4.870.018</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
+                <td class="py-3.5 px-6 text-center text-gray-400 font-bold">X</td>
+                <td class="py-3.5 px-6 text-gray-700 font-medium">Pekerjaan Pengecatan</td>
+                <td class="py-3.5 px-6 text-right font-display font-semibold text-navy-primary">Rp 31.653.623</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3.5 px-6 text-center text-gray-400 font-bold">XI</td>
+                <td class="py-3.5 px-6 text-gray-700 font-medium">Pekerjaan Mekanikal & Elektrikal</td>
+                <td class="py-3.5 px-6 text-right font-display font-semibold text-navy-primary">Rp 15.579.661</td>
+              </tr>
+              <tr class="bg-navy-deepest text-white font-bold">
+                <td class="py-4 px-6 text-center text-gold">RAB</td>
+                <td class="py-4 px-6 tracking-wide text-xs uppercase">TOTAL ESTIMASI ANGGARAN (TAHAP I)</td>
+                <td class="py-4 px-6 text-right font-display text-base text-gold">Rp 625.050.247</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Legal Protection Shield Callout -->
+      <div class="reveal reveal-delay-2 mt-8 max-w-3xl mx-auto flex items-start gap-4 p-5 bg-gold/5 rounded-2xl border border-gold/15">
+        <div class="p-2 rounded-xl bg-gold/10 text-gold flex-shrink-0 mt-0.5">
+          <i data-lucide="shield-check" class="w-5 h-5"></i>
+        </div>
+        <div class="text-xs md:text-sm text-gray-600 leading-relaxed">
+          Rencana Anggaran Biaya disusun secara profesional oleh tim penilai teknik **Deay Arsitekture** dan divalidasi oleh panitia kepengurusan DKM Ar-Rustendi. Seluruh invoice, bukti pembayaran material, dan laporan audit penggunaan dana siap dibuka kepada donatur secara terbuka demi menjaga amanah ibadah.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- [07] GALERI DESAIN 3D & DOKUMENTASI TAB      -->
+  <!-- ============================================ -->
+  <section id="galeri" class="py-24 md:py-32 bg-offwhite">
+    <div class="max-w-[1240px] mx-auto px-6 md:px-12">
+      
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <span class="section-label">Galeri Visualisasi</span>
+        <div class="divider-gold mx-auto mt-3 mb-4"></div>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-navy-primary">Galeri Pembangunan</h2>
+      </div>
+
+      <!-- Alpine.js Tabs Layout -->
+      <div x-data="{ currentTab: 'desain' }" class="max-w-[1000px] mx-auto">
+        
+        <!-- Tab Buttons Navigation -->
+        <div class="flex items-center justify-center gap-6 md:gap-10 border-b border-gray-200 mb-10 text-sm font-semibold">
+          <button @click="currentTab = 'desain'" :class="currentTab === 'desain' ? 'border-b-2 border-gold text-navy-primary' : 'text-gray-400 hover:text-gray-600'" class="pb-4 transition-all focus:outline-none">
+            Rancangan Desain 3D
+          </button>
+          <button @click="currentTab = 'lapangan'" :class="currentTab === 'lapangan' ? 'border-b-2 border-gold text-navy-primary' : 'text-gray-400 hover:text-gray-600'" class="pb-4 transition-all focus:outline-none">
+            Dokumentasi Progress Lapangan
+          </button>
+        </div>
+
+        <!-- TAB CONTENT 1: DESAIN 3D -->
+        <div x-show="currentTab === 'desain'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0">
+          <div id="gallery-grid-desain" class="galeri-grid-wrap" style="display:grid; grid-template-columns:repeat(2,1fr); gap:16px;">
+            
+            <div class="relative group flex flex-col">
+              <div class="img-card" style="border-radius:14px; overflow:hidden; aspect-ratio:4/3; position:relative;">
+                <img 
+                  src="images/render-tampak-depan-malam.jpg"
+                  alt="Rendering Tampak Depan — Minimalis, pilar vertikal megah"
+                  style="width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;"
+                  loading="lazy"
+                >
+              </div>
+              <div class="mt-3">
+                <h4 class="font-display font-bold text-navy-primary text-sm transition-colors group-hover:text-gold">Rendering Tampak Depan</h4>
+                <p class="text-[11px] text-gray-500 mt-1">Minimalis, pilar vertikal megah</p>
+              </div>
+            </div>
+
+            <div class="relative group flex flex-col">
+              <div class="img-card" style="border-radius:14px; overflow:hidden; aspect-ratio:4/3; position:relative;">
+                <img 
+                  src="images/render-perspektif-malam.jpg"
+                  alt="Visual Sudut Perspektif Malam — Pencahayaan temaram hangat dramatis"
+                  style="width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;"
+                  loading="lazy"
+                >
+              </div>
+              <div class="mt-3">
+                <h4 class="font-display font-bold text-navy-primary text-sm transition-colors group-hover:text-gold">Visual Sudut Perspektif Malam</h4>
+                <p class="text-[11px] text-gray-500 mt-1">Pencahayaan temaram hangat dramatis</p>
+              </div>
+            </div>
+
+            <div class="relative group flex flex-col">
+              <div class="img-card" style="border-radius:14px; overflow:hidden; aspect-ratio:4/3; position:relative;">
+                <img 
+                  src="images/render-tampak-depan-2.jpg"
+                  alt="Detail Ornamen Gerbang Masuk — Aksen ukiran arabesque emas islami"
+                  style="width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;"
+                  loading="lazy"
+                >
+              </div>
+              <div class="mt-3">
+                <h4 class="font-display font-bold text-navy-primary text-sm transition-colors group-hover:text-gold">Detail Ornamen Gerbang Masuk</h4>
+                <p class="text-[11px] text-gray-500 mt-1">Aksen ukiran arabesque emas islami</p>
+              </div>
+            </div>
+
+            <div class="relative group flex flex-col">
+              <div class="img-card" style="border-radius:14px; overflow:hidden; aspect-ratio:4/3; position:relative;">
+                <img 
+                  src="images/render-samping.jpg"
+                  alt="Tampak Samping & Menara — Susunan simetris arsitektur minimalis"
+                  style="width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;"
+                  loading="lazy"
+                >
+              </div>
+              <div class="mt-3">
+                <h4 class="font-display font-bold text-navy-primary text-sm transition-colors group-hover:text-gold">Tampak Samping & Menara</h4>
+                <p class="text-[11px] text-gray-500 mt-1">Susunan simetris arsitektur minimalis</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- TAB CONTENT 2: PROGRESS LAPANGAN -->
+        <div x-show="currentTab === 'lapangan'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-cloak>
+          <div id="gallery-grid-lapangan" class="galeri-grid-wrap" style="display:grid; grid-template-columns:repeat(2,1fr); gap:16px;">
+            
+            <div class="relative group flex flex-col">
+              <div class="img-card" style="border-radius:14px; overflow:hidden; aspect-ratio:4/3; position:relative;">
+                <img 
+                  src="images/progress-pengukuran.jpg"
+                  alt="Pengukuran arah kiblat menggunakan kompas — tahap awal pembangunan"
+                  style="width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;"
+                  loading="lazy"
+                >
+              </div>
+              <div class="mt-3">
+                <h4 class="font-display font-bold text-navy-primary text-sm transition-colors group-hover:text-gold">Pengukuran Arah Kiblat & Lahan</h4>
+                <p class="text-[11px] text-gray-500 mt-1">Bekerjasama dengan tim BPN Bogor</p>
+              </div>
+            </div>
+
+            <div class="relative group flex flex-col">
+              <div class="img-card" style="border-radius:14px; overflow:hidden; aspect-ratio:4/3; position:relative;">
+                <img 
+                  src="images/progress-galian-pondasi.jpg"
+                  alt="Proses penggalian pondasi oleh tim pekerja"
+                  style="width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;"
+                  loading="lazy"
+                >
+              </div>
+              <div class="mt-3">
+                <h4 class="font-display font-bold text-navy-primary text-sm transition-colors group-hover:text-gold">Penggalian Tanah Pondasi Cakar Ayam</h4>
+                <p class="text-[11px] text-gray-500 mt-1">Urukan kedalaman struktur kokoh</p>
+              </div>
+            </div>
+
+            <div class="relative group flex flex-col">
+              <div class="img-card" style="border-radius:14px; overflow:hidden; aspect-ratio:4/3; position:relative;">
+                <img 
+                  src="images/progress-material-besi.jpg"
+                  alt="Material besi tulangan dan batu pondasi siap dipasang"
+                  style="width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;"
+                  loading="lazy"
+                >
+              </div>
+              <div class="mt-3">
+                <h4 class="font-display font-bold text-navy-primary text-sm transition-colors group-hover:text-gold">Pemasangan Tulangan Besi Sloof</h4>
+                <p class="text-[11px] text-gray-500 mt-1">Sertifikasi material besi tebal standar SNI</p>
+              </div>
+            </div>
+
+            <div class="relative group flex flex-col">
+              <div class="img-card" style="border-radius:14px; overflow:hidden; aspect-ratio:4/3; position:relative;">
+                <img 
+                  src="images/progress-doa-bersama.jpg"
+                  alt="Doa bersama warga dan panitia DKM sebelum pembangunan dimulai"
+                  style="width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;"
+                  loading="lazy"
+                >
+              </div>
+              <div class="mt-3">
+                <h4 class="font-display font-bold text-navy-primary text-sm transition-colors group-hover:text-gold">Pengecoran Tapak Kolom Pertama</h4>
+                <p class="text-[11px] text-gray-500 mt-1">Disaksikan oleh Ketua DKM & tokoh desa</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Instagram Teaser -->
+      <div class="flex items-center justify-center mt-12">
+        <a href="https://instagram.com/masjid_arrustendi" target="_blank" class="inline-flex items-center gap-3 bg-white rounded-full px-6 py-3.5 border border-gray-100 hover:border-gold transition-colors duration-300 group shadow-xs">
+          <svg class="w-5 h-5 text-[#E1306C]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+          </svg>
+          <span class="text-sm font-bold text-navy-primary group-hover:text-gold transition-colors">@masjid_arrustendi</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-gray-300"></span>
+          <span class="text-xs text-gray-400 font-medium">Ikuti Instagram kami untuk update berkala</span>
+          <i data-lucide="external-link" class="w-4 h-4 text-gray-300"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- [08] SUSUNAN KEPENGURUSAN DKM                -->
+  <!-- ============================================ -->
+  <section id="dkm" class="py-24 md:py-32 bg-white">
+    <div class="max-w-[1240px] mx-auto px-6 md:px-12">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="section-label">Struktur Kepengurusan</span>
+        <div class="divider-gold mx-auto mt-3 mb-4"></div>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-navy-primary">Dewan Kemakmuran Masjid (DKM)</h2>
+        <p class="text-gray-500 text-sm md:text-base mt-4">
+          Tim pengurus berintegritas tinggi yang diberi amanah untuk mengelola pembangunan dan operasional masjid.
+        </p>
+      </div>
+
+      <!-- LEVEL 1: Penasehat & Pembina -->
+      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-6">
+        
+        <div class="reveal bg-offwhite rounded-2xl p-6 text-center w-52 border border-gray-100 shadow-2xs">
+          <div class="w-14 h-14 rounded-full bg-navy-primary/5 text-navy-primary flex items-center justify-center font-display font-bold text-lg mx-auto mb-4 border border-navy-primary/10">KB</div>
+          <span class="inline-flex px-2.5 py-0.5 rounded-full bg-gold/10 text-gold text-[9px] font-bold uppercase tracking-wider mb-2">Dewan Penasehat</span>
+          <h4 class="font-display text-sm font-bold text-navy-primary">Kyai Bustomi</h4>
+          <span class="block text-[11px] text-gray-400 mt-1">Tokoh Sesepuh Desa</span>
+        </div>
+
+        <div class="reveal reveal-delay-1 bg-offwhite rounded-2xl p-6 text-center w-52 border border-gray-100 shadow-2xs">
+          <div class="w-14 h-14 rounded-full bg-navy-primary/5 text-navy-primary flex items-center justify-center font-display font-bold text-lg mx-auto mb-4 border border-navy-primary/10">HA</div>
+          <span class="inline-flex px-2.5 py-0.5 rounded-full bg-gold/10 text-gold text-[9px] font-bold uppercase tracking-wider mb-2">Dewan Pembina</span>
+          <h4 class="font-display text-sm font-bold text-navy-primary">Kyai Hasbi Alloh</h4>
+          <span class="block text-[11px] text-gray-400 mt-1">Pimpinan Pondok Pesantren</span>
+        </div>
+
+      </div>
+
+      <!-- LEVEL 2: Ketua DKM (Featured) -->
+      <div class="reveal reveal-delay-2 max-w-[280px] mx-auto text-center mb-6 relative z-10">
+        <div class="bg-navy-primary rounded-2xl p-8 border border-gold/30 shadow-lg group hover:border-gold transition-all duration-300">
+          <div class="w-16 h-14 rounded-full bg-white/10 text-gold flex items-center justify-center font-display font-bold text-xl mx-auto mb-4 border border-white/10">HD</div>
+          <span class="inline-flex px-3 py-0.5 rounded-full bg-gold/15 text-gold text-[10px] font-bold uppercase tracking-wider mb-3 border border-gold/10">Ketua DKM</span>
+          <h4 class="font-display text-base md:text-lg font-bold text-white">Hari Din Nugraha, M.Pd</h4>
+          <span class="block text-xs text-white/55 mt-1 leading-normal">Dosen Universitas Negeri Jakarta</span>
+          
+          <a href="https://wa.me/6285780694377" target="_blank" class="inline-flex items-center gap-1.5 text-gold hover:text-white text-xs font-semibold mt-4 transition-colors">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            <span>Hubungi Ketua</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- LEVEL 3: Sekretaris & Bendahara -->
+      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-6">
+        
+        <div class="reveal bg-white border border-gray-100 rounded-2xl p-6 text-center w-52 hover:border-gold/30 transition-all duration-300">
+          <div class="w-14 h-14 rounded-full bg-navy-primary/5 text-navy-primary flex items-center justify-center font-display font-bold text-lg mx-auto mb-4 border border-navy-primary/10">MA</div>
+          <span class="inline-flex px-2.5 py-0.5 rounded-full bg-navy-primary/5 text-navy-primary text-[9px] font-bold uppercase tracking-wider mb-2">Sekretaris</span>
+          <h4 class="font-display text-sm font-bold text-navy-primary">Maulana Arif Pratama, S.E</h4>
+          <span class="block text-[11px] text-gray-400 mt-1">Koordinator IT & IT Consultant</span>
+        </div>
+
+        <div class="reveal reveal-delay-1 bg-white border border-gray-100 rounded-2xl p-6 text-center w-52 hover:border-gold/30 transition-all duration-300">
+          <div class="w-14 h-14 rounded-full bg-navy-primary/5 text-navy-primary flex items-center justify-center font-display font-bold text-lg mx-auto mb-4 border border-navy-primary/10">AY</div>
+          <span class="inline-flex px-2.5 py-0.5 rounded-full bg-navy-primary/5 text-navy-primary text-[9px] font-bold uppercase tracking-wider mb-2">Bendahara</span>
+          <h4 class="font-display text-sm font-bold text-navy-primary">Aenul Yaqin, S.Pd</h4>
+          <span class="block text-[11px] text-gray-400 mt-1">Akuntan & Staff Keuangan</span>
+        </div>
+
+      </div>
+
+      <!-- LEVEL 4: Divisi-Divisi Pembantu -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4 max-w-4xl mx-auto">
+        
+        <div class="reveal bg-offwhite p-4 rounded-xl text-center border border-transparent hover:border-gold/20 transition-all duration-300">
+          <div class="w-9 h-9 rounded-lg bg-navy-primary/5 text-navy-primary flex items-center justify-center mx-auto mb-3">
+            <i data-lucide="megaphone" class="w-4 h-4"></i>
+          </div>
+          <span class="block text-[10px] text-gold uppercase font-bold tracking-wider mb-1">Div. Dakwah</span>
+          <span class="block text-xs font-semibold text-navy-primary">Jayin Nantapi, S.Pd</span>
+        </div>
+
+        <div class="reveal reveal-delay-1 bg-offwhite p-4 rounded-xl text-center border border-transparent hover:border-gold/20 transition-all duration-300">
+          <div class="w-9 h-9 rounded-lg bg-navy-primary/5 text-navy-primary flex items-center justify-center mx-auto mb-3">
+            <i data-lucide="heart-handshake" class="w-4 h-4"></i>
+          </div>
+          <span class="block text-[10px] text-gold uppercase font-bold tracking-wider mb-1">Div. Sosial</span>
+          <span class="block text-xs font-semibold text-navy-primary">Ofiq Sodiqin</span>
+        </div>
+
+        <div class="reveal reveal-delay-2 bg-offwhite p-4 rounded-xl text-center border border-transparent hover:border-gold/20 transition-all duration-300">
+          <div class="w-9 h-9 rounded-lg bg-navy-primary/5 text-navy-primary flex items-center justify-center mx-auto mb-3">
+            <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+          </div>
+          <span class="block text-[10px] text-gold uppercase font-bold tracking-wider mb-1">Div. Pendidikan</span>
+          <span class="block text-xs font-semibold text-navy-primary">Abdul Wahid, S.Pd</span>
+        </div>
+
+        <div class="reveal reveal-delay-3 bg-offwhite p-4 rounded-xl text-center border border-transparent hover:border-gold/20 transition-all duration-300">
+          <div class="w-9 h-9 rounded-lg bg-navy-primary/5 text-navy-primary flex items-center justify-center mx-auto mb-3">
+            <i data-lucide="camera" class="w-4 h-4"></i>
+          </div>
+          <span class="block text-[10px] text-gold uppercase font-bold tracking-wider mb-1">Div. Media</span>
+          <span class="block text-xs font-semibold text-navy-primary">Khoiruttamami, S.Pd</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- [09] PETA LOKASI & DETAIL KONTAK             -->
+  <!-- ============================================ -->
+  <section id="lokasi" class="py-24 md:py-32 bg-offwhite">
+    <div class="max-w-[1240px] mx-auto px-6 md:px-12">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="section-label">Lokasi Masjid</span>
+        <div class="divider-gold mx-auto mt-3 mb-4"></div>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-navy-primary">Temukan Masjid Ar-Rustendi</h2>
+        <p class="text-gray-500 text-sm md:text-base mt-4">
+          Lokasi fisik masjid dan akses transportasi yang mudah dijangkau dari pusat Kabupaten Bogor.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Sektor Kiri: Detail Informasi Lokasi -->
+        <div class="reveal lg:col-span-5 flex flex-col justify-between bg-white border border-gray-100 rounded-2xl p-6 md:p-8 shadow-xs">
+          <div>
+            <div class="mb-6">
+              <img
+                src="images/Logo_Atas.png"
+                alt="Masjid Jami Ar-Rustendi"
+                style="height:52px;width:auto;object-fit:contain;
+                  display:block;margin-bottom:10px;
+                  filter:brightness(0) saturate(100%) invert(15%) 
+                    sepia(60%) saturate(700%) hue-rotate(200deg) 
+                    brightness(85%);"
+              >
+              <h3 style="font-family:'Lora',serif;font-weight:700;
+                font-size:18px;color:#1B2B6B;">Masjid Jami Ar-Rustendi</h3>
+            </div>
+
+            <!-- Detail list rows -->
+            <div class="flex flex-col gap-5">
+              
+              <div class="flex items-start gap-3">
+                <i data-lucide="map-pin" class="w-5 h-5 text-gold flex-shrink-0 mt-0.5"></i>
+                <div>
+                  <span class="block text-[11px] uppercase font-bold tracking-wider" style="color:#6B7280;">Alamat Fisik</span>
+                  <p class="text-xs md:text-sm leading-relaxed mt-0.5" style="color:#374151;">
+                    Kp. Rumpin Tegal Indah RT. 02, RW. 01, Desa Rumpin, Kec. Rumpin, Kab. Bogor, Jawa Barat 16350
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <i data-lucide="compass" class="w-5 h-5 text-gold flex-shrink-0 mt-0.5"></i>
+                <div>
+                  <span class="block text-[11px] uppercase font-bold tracking-wider" style="color:#6B7280;">Penunjuk Arah / Landmark</span>
+                  <p class="text-xs md:text-sm leading-relaxed mt-0.5" style="color:#374151;">
+                    Samping Pesantren Al-Muawanah Rumpin, Bogor
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <i data-lucide="shield-check" class="w-5 h-5 text-gold flex-shrink-0 mt-0.5"></i>
+                <div>
+                  <span class="block text-[11px] uppercase font-bold tracking-wider" style="color:#6B7280;">Legalitas Tanah</span>
+                  <p class="text-xs md:text-sm leading-relaxed mt-0.5" style="color:#374151;">
+                    Wakaf Resmi Ahli Waris (Proses Pengesahan KUA Rumpin)
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="flex flex-col gap-3 mt-8">
+            <a href="https://maps.google.com/?q=Kp+Rumpin+Tegal+Indah+RT+02+RW+01+Desa+Rumpin+Kec+Rumpin+Kab+Bogor" target="_blank" class="btn-navy w-full rounded-xl py-3.5 flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider">
+              <i data-lucide="map" class="w-4 h-4"></i>
+              <span>Navigasi Google Maps</span>
+            </a>
+            <a href="https://wa.me/6285780694377?text=Assalamu'alaikum,%20boleh%20minta%20share%20lokasi%20fisik%20Masjid%20Ar-Rustendi?" target="_blank" class="w-full bg-emerald-500/10 text-emerald-600 hover:bg-emerald-500/15 border border-transparent rounded-xl py-3.5 flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider transition-all duration-300">
+              <i data-lucide="share-2" class="w-4 h-4"></i>
+              <span>Bagikan Lokasi via WA</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Sektor Kanan: Google Maps Embed Iframe -->
+        <div class="reveal reveal-delay-2 lg:col-span-7 rounded-2xl overflow-hidden shadow-sm h-[320px] md:h-auto min-h-[300px] border border-gray-100">
+          <iframe
+            src="https://maps.google.com/maps?q=Pondok+Pesantren+Al+Muawanah+Rumpin+Bogor&output=embed&z=15"
+            width="100%" height="100%"
+            style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Peta Lokasi Masjid Ar-Rustendi">
+          </iframe>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- [10] SECTION DONASI UTAMA (CTA FINAL)        -->
+  <!-- ============================================ -->
+  <section id="donasi" style="background:#0D1B4B !important; position:relative; overflow:hidden;">
+    <div style="position:absolute;inset:0;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M20 0L40 20L20 40L0 20Z' fill='none' stroke='%23C9A84C' stroke-width='0.5' opacity='0.08'/%3E%3Ccircle cx='20' cy='20' r='3' fill='none' stroke='%23C9A84C' stroke-width='0.5' opacity='0.08'/%3E%3Cpath d='M20 0L20 8M20 32L20 40M0 20L8 20M32 20L40 20' stroke='%23C9A84C' stroke-width='0.3' opacity='0.06'/%3E%3C/svg%3E&quot;);pointer-events:none;z-index:0;opacity:0.15;"></div>
+
+    <div style="position:relative;z-index:1;" class="max-w-[1240px] mx-auto px-6 md:px-12 w-full">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="section-label" style="color:#C9A84C;">Pintu Amal Jariyah</span>
+        <div class="divider-gold mx-auto mt-3 mb-4"></div>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold" style="color:#ffffff !important;">Salurkan Infaq & Sedekah Anda</h2>
+        <p class="text-sm md:text-base mt-4" style="color:rgba(255,255,255,0.65) !important;">
+          Pilihlah metode transfer perbankan resmi di bawah ini. Satu klik untuk menyalin nomor rekening secara praktis.
+        </p>
+      </div>
+
+      <!-- Cards Grid Rekening -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Sektor Kiri: Kartu Rekening (BSI Utama - BRI - BNI) -->
+        <div class="lg:col-span-7 flex flex-col gap-6">
+          
+          <!-- Rekening Utama (BSI) -->
+          <div id="bsi-rekening-card" class="reveal relative overflow-hidden group hover:border-gold transition-all duration-300" style="background:#1B2B6B !important; border:1px solid rgba(201,168,76,0.35) !important; border-radius:20px; padding:28px 32px; max-width:480px; margin:0 auto 20px;">
+            <div class="absolute -right-8 -bottom-8 w-44 h-44 bg-gold/5 rounded-full blur-xl pointer-events-none"></div>
+            
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+              <span style="color:rgba(255,255,255,0.5); font-size:11px; font-weight:700; text-transform:uppercase; tracking-widest;">BANK BSI</span>
+              <span style="color:#C9A84C; font-size:11px; font-weight:700; text-transform:uppercase; tracking-widest;">REKENING UTAMA</span>
+            </div>
+
+            <div style="margin-bottom:16px; text-align:center;">
+              <span style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; font-weight:600; tracking-wider; display:block; margin-bottom:8px;">Nomor Rekening BSI</span>
+              <span id="bsi-card-number" style="color:#ffffff !important; font-size:2rem; font-weight:700; letter-spacing:0.06em; font-family:'Lora',serif; display:block; margin-bottom:12px;">7363122013</span>
+              <button id="bsi-card-copy-btn" onclick="copyToClipboard('7363122013')" style="border:1.5px solid rgba(201,168,76,0.4); color:#C9A84C; background:transparent; border-radius:10px; padding:10px 20px; width:100%; cursor:pointer; font-weight:600; display:inline-flex; align-items:center; justify-content:center; gap:8px;">
+                <i data-lucide="copy" style="width:16px; height:16px;"></i>
+                <span>Salin Nomor Rekening</span>
+              </button>
+            </div>
+
+            <div style="height:1px; background:rgba(255,255,255,0.1); margin:16px 0;"></div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; text-align:left; margin-bottom:16px;">
+              <div>
+                <span style="color:rgba(255,255,255,0.4); font-size:10px; text-transform:uppercase;">Atas Nama</span>
+                <strong id="bsi-card-an" style="color:rgba(255,255,255,0.75); font-size:14px; display:block; margin-top:2px;">Masjid Jami Ar-Rustendi</strong>
+              </div>
+              <span style="color:#C9A84C; font-weight:600; text-transform:uppercase; tracking-wide; font-size:10px;">DKM AR-RUSTENDI</span>
+            </div>
+
+            <div>
+              <a href="https://wa.me/6285780694377?text=Assalamu'alaikum%20Pak%20Hari,%20saya%20sudah%20transfer%20donasi%20ke%20rekening%20BSI%20Masjid%20Ar-Rustendi." target="_blank" style="background:#C9A84C; color:#0D1B4B; border:none; border-radius:10px; padding:14px 20px; width:100%; font-weight:700; font-size:15px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; gap:8px; text-decoration:none;">
+                <i data-lucide="message-circle" style="width:18px; height:18px;"></i>
+                <span>Konfirmasi via WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Rekening Alternatif (BRI & BNI) -->
+          <div class="text-xs font-semibold uppercase tracking-wider mb-2" id="alternative-account-label" style="color:rgba(255,255,255,0.4);">ATAU TRANSFER VIA REKENING ALTERNATIF</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <!-- BRI Card -->
+            <div class="reveal reveal-delay-1 bg-white border border-gray-100 rounded-2xl p-5 shadow-sm relative">
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-2.5 py-0.5 rounded bg-blue-600/10 text-blue-600 text-[10px] font-bold uppercase tracking-wider">Bank BRI</span>
+                <button onclick="copyToClipboard('7178571006')" class="p-1.5 rounded-lg text-gray-400 hover:text-gold transition-colors focus:outline-none" aria-label="Copy">
+                  <i data-lucide="copy" class="w-4 h-4"></i>
+                </button>
+              </div>
+              <span class="block text-[9px] text-gray-400 uppercase tracking-wide">Nomor Rekening BRI</span>
+              <span class="block font-display text-lg font-bold text-navy-primary mt-1">7178571006</span>
+              <span class="block text-[11px] text-gray-500 mt-2 leading-tight">a.n. Hari Din Nugraha</span>
+            </div>
+
+            <!-- BNI Card -->
+            <div class="reveal reveal-delay-2 bg-white border border-gray-100 rounded-2xl p-5 shadow-sm relative">
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-2.5 py-0.5 rounded bg-[#FF6B00]/10 text-[#FF6B00] text-[10px] font-bold uppercase tracking-wider">Bank BNI</span>
+                <button onclick="copyToClipboard('4949498281')" class="p-1.5 rounded-lg text-gray-400 hover:text-gold transition-colors focus:outline-none" aria-label="Copy">
+                  <i data-lucide="copy" class="w-4 h-4"></i>
+                </button>
+              </div>
+              <span class="block text-[9px] text-gray-400 uppercase tracking-wide">Nomor Rekening BNI</span>
+              <span class="block font-display text-lg font-bold text-navy-primary mt-1">4949498281</span>
+              <span class="block text-[11px] text-gray-500 mt-2 leading-tight">a.n. Rumah Pembangunan Berkelanjutan</span>
+            </div>
+
+          </div>
+
+          <!-- 3-Step Guide Panel -->
+          <div class="reveal reveal-delay-3 bg-white/5 border border-white/10 rounded-2xl p-6">
+            <span class="block text-[11px] font-bold text-gold uppercase tracking-wider mb-4">Panduan Penyaluran Dana</span>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-white/70">
+              <div>
+                <strong class="text-gold block mb-1">1. Transfer Dana</strong>
+                Transfer nominal shadaqah seikhlasnya ke salah satu rekening di atas.
+              </div>
+              <div class="border-t sm:border-t-0 sm:border-l border-white/10 pt-3 sm:pt-0 sm:pl-4">
+                <strong class="text-gold block mb-1">2. Ambil Bukti</strong>
+                Simpan tangkapan layar / kertas resi bukti transaksi transfer perbankan Anda.
+              </div>
+              <div class="border-t sm:border-t-0 sm:border-l border-white/10 pt-3 sm:pt-0 sm:pl-4">
+                <strong class="text-gold block mb-1">3. Konfirmasi</strong>
+                Kirim pesan konfirmasi foto resi melalui whatsapp / form konfirmasi di sebelah kanan.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Sektor Kanan: Formulir Konfirmasi Donasi -->
+        <div class="reveal reveal-delay-2 lg:col-span-5">
+          <div class="bg-white border border-gray-100 rounded-2xl p-6 md:p-8 shadow-sm">
+            <span class="block text-[11px] font-bold text-navy-primary uppercase tracking-wider mb-2">Form Konfirmasi Donasi</span>
+            <h3 class="font-display text-lg font-bold text-navy-primary mb-6">Laporkan Amal Sedekah Anda</h3>
+            
+            <form onsubmit="event.preventDefault(); showToast('✓ Terimakasih, laporan Anda berhasil dikirim ke Pengurus DKM')" class="flex flex-col gap-4 text-xs">
+              
+              <div>
+                <label for="form-nama" class="block text-gray-400 uppercase font-bold tracking-wider mb-2">Nama Lengkap Donatur</label>
+                <input id="form-nama" required type="text" placeholder="Hamba Allah / Nama Anda" class="w-full bg-offwhite rounded-xl py-3 px-4 text-sm font-semibold text-navy-primary focus:outline-none focus:ring-1 focus:ring-gold border border-transparent transition-all">
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="form-nominal" class="block text-gray-400 uppercase font-bold tracking-wider mb-2">Nominal Transfer</label>
+                  <input id="form-nominal" required type="number" placeholder="Contoh: 1000000" class="w-full bg-offwhite rounded-xl py-3 px-4 text-sm font-semibold text-navy-primary focus:outline-none focus:ring-1 focus:ring-gold border border-transparent transition-all">
+                </div>
+                <div>
+                  <label for="form-bank" class="block text-gray-400 uppercase font-bold tracking-wider mb-2">Melalui Bank</label>
+                  <select id="form-bank" class="w-full bg-offwhite rounded-xl py-3 px-4 text-sm font-semibold text-navy-primary focus:outline-none focus:ring-1 focus:ring-gold border border-transparent transition-all">
+                    <option value="BRI">BRI (Utama)</option>
+                    <option value="BNI">BNI</option>
+                    <option value="BSI">BSI</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="form-wa" class="block text-gray-400 uppercase font-bold tracking-wider mb-2">Nomor WhatsApp Aktif</label>
+                <input id="form-wa" required type="tel" placeholder="Contoh: 085780694377" class="w-full bg-offwhite rounded-xl py-3 px-4 text-sm font-semibold text-navy-primary focus:outline-none focus:ring-1 focus:ring-gold border border-transparent transition-all">
+              </div>
+
+              <div>
+                <label for="form-doa" class="block text-gray-400 uppercase font-bold tracking-wider mb-2">Pesan & Doa (Opsional)</label>
+                <textarea id="form-doa" rows="3" placeholder="Semoga berkah untuk keluarga..." class="w-full bg-offwhite rounded-xl py-3 px-4 text-sm font-semibold text-navy-primary focus:outline-none focus:ring-1 focus:ring-gold border border-transparent transition-all resize-none"></textarea>
+              </div>
+
+              <button type="submit" class="btn-navy w-full rounded-xl py-3.5 text-xs font-bold uppercase tracking-wider mt-2 flex items-center justify-center gap-2">
+                <i data-lucide="check-circle" class="w-4 h-4"></i>
+                <span>Kirim Bukti Pembayaran</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- [11] FREQUENTLY ASKED QUESTIONS (FAQ)        -->
+  <!-- ============================================ -->
+  <section class="py-24 md:py-32 bg-white">
+    <div class="max-w-[1240px] mx-auto px-6 md:px-12">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="section-label">Pertanyaan Umum</span>
+        <div class="divider-gold mx-auto mt-3 mb-4"></div>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-navy-primary">Frequently Asked Questions</h2>
+        <p class="text-gray-500 text-sm md:text-base mt-4">
+          Jawaban komprehensif atas beberapa pertanyaan mendasar seputar tata kelola pembangunan Masjid Ar-Rustendi.
+        </p>
+      </div>
+
+      <!-- Accordion Grid -->
+      <div class="max-w-3xl mx-auto flex flex-col border border-gray-100 rounded-2xl shadow-2xs divide-y divide-gray-100 overflow-hidden">
+        
+        <!-- Accordion Item 1 -->
+        <div x-data="{ open: false }" class="bg-white p-5 md:p-6">
+          <button @click="open = !open" class="w-full flex items-center justify-between text-left font-display font-semibold text-navy-primary text-sm md:text-base focus:outline-none">
+            <span>Bagaimana status kepemilikan tanah Masjid Ar-Rustendi?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform duration-300" :class="open ? 'rotate-180' : ''"></i>
+          </button>
+          <div x-show="open" 
+               x-transition:enter="transition ease-out duration-300"
+               x-transition:enter-start="opacity-0 -translate-y-2"
+               x-transition:enter-end="opacity-100 translate-y-0"
+               class="mt-4 text-xs md:text-sm text-gray-500 leading-relaxed" x-cloak>
+            Tanah lokasi pembangunan Masjid Jami Ar-Rustendi merupakan murni tanah **Wakaf** yang dihibahkan secara resmi oleh ahli waris keluarga besar Ar-Rustendi. Berkas administrasi KTA & ikrar wakaf sedang diproses legalitasnya di hadapan Pejabat Pembuat Akta Ikrar Wakaf (PPAIW) Kantor Urusan Agama (KUA) Kecamatan Rumpin.
+          </div>
+        </div>
+
+        <!-- Accordion Item 2 -->
+        <div x-data="{ open: false }" class="bg-white p-5 md:p-6">
+          <button @click="open = !open" class="w-full flex items-center justify-between text-left font-display font-semibold text-navy-primary text-sm md:text-base focus:outline-none">
+            <span>Bagaimana cara donatur mengkonfirmasi transaksi transfer?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform duration-300" :class="open ? 'rotate-180' : ''"></i>
+          </button>
+          <div x-show="open" 
+               x-transition:enter="transition ease-out duration-300"
+               x-transition:enter-start="opacity-0 -translate-y-2"
+               x-transition:enter-end="opacity-100 translate-y-0"
+               class="mt-4 text-xs md:text-sm text-gray-500 leading-relaxed" x-cloak>
+            Anda dapat memanfaatkan form digital "Form Konfirmasi Donasi" yang tersedia di halaman ini atau langsung melakukan tangkapan layar bukti transfer lalu kirim melalui layanan WhatsApp Bendahara / Ketua DKM Ar-Rustendi di kontak yang tertera.
+          </div>
+        </div>
+
+        <!-- Accordion Item 3 -->
+        <div x-data="{ open: false }" class="bg-white p-5 md:p-6">
+          <button @click="open = !open" class="w-full flex items-center justify-between text-left font-display font-semibold text-navy-primary text-sm md:text-base focus:outline-none">
+            <span>Apakah laporan penggunaan dana disajikan secara terbuka?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform duration-300" :class="open ? 'rotate-180' : ''"></i>
+          </button>
+          <div x-show="open" 
+               x-transition:enter="transition ease-out duration-300"
+               x-transition:enter-start="opacity-0 -translate-y-2"
+               x-transition:enter-end="opacity-100 translate-y-0"
+               class="mt-4 text-xs md:text-sm text-gray-500 leading-relaxed" x-cloak>
+            Sangat Terbuka. Setiap pengeluaran kas material dicatat terperinci dalam buku besar DKM. Laporan rekap bulanan diunggah berkala di kanal sosial media resmi Instagram kami atau dapat diaudit langsung dengan mendatangi Sekretariat Panitia.
+          </div>
+        </div>
+
+        <!-- Accordion Item 4 -->
+        <div x-data="{ open: false }" class="bg-white p-5 md:p-6">
+          <button @click="open = !open" class="w-full flex items-center justify-between text-left font-display font-semibold text-navy-primary text-sm md:text-base focus:outline-none">
+            <span>Bisakah berdonasi dalam wujud material fisik semen / besi?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform duration-300" :class="open ? 'rotate-180' : ''"></i>
+          </button>
+          <div x-show="open" 
+               x-transition:enter="transition ease-out duration-300"
+               x-transition:enter-start="opacity-0 -translate-y-2"
+               x-transition:enter-end="opacity-100 translate-y-0"
+               class="mt-4 text-xs md:text-sm text-gray-500 leading-relaxed" x-cloak>
+            Tentu bisa. Kami menerima sumbangan dalam wujud hebel, semen, pasir cor, besi tulangan uluk, atau ornamen fisik penunjang lainnya. Silakan berkonsultasi terlebih dahulu dengan Ketua DKM melalui fitur WhatsApp guna sinkronisasi spek fisik bangunan yang dibutuhkan panitia di lokasi.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- [12] DAFTAR DONATUR WAQAF                   -->
+  <!-- ============================================ -->
+  <section id="donatur" class="py-24 md:py-32 bg-white">
+    <div class="max-w-[1240px] mx-auto px-6 md:px-12">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="section-label">Transparansi Donasi</span>
+        <div class="divider-gold mx-auto mt-3 mb-4"></div>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-navy-primary">Daftar Donatur Waqaf</h2>
+        <p class="text-gray-500 text-sm md:text-base mt-4">
+          Laporan pemasukan dana waqaf dari para donatur yang telah menyalurkan amal jariyahnya untuk pembangunan Masjid Jami Ar-Rustendi.
+        </p>
+      </div>
+
+      <!-- Summary Card -->
+      <div class="reveal max-w-2xl mx-auto mb-10 bg-offwhite border border-gray-100 rounded-2xl p-6 md:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="text-center sm:text-left">
+          <span class="block text-[11px] uppercase font-bold tracking-wider text-gray-400 mb-1">Total Pemasukan Waqaf</span>
+          <span class="block font-display text-3xl md:text-4xl font-bold text-navy-primary">Rp 22.512.000</span>
+        </div>
+        <div class="flex items-center gap-3 px-5 py-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
+          <i data-lucide="users" class="w-5 h-5 text-emerald-600"></i>
+          <div>
+            <span class="block text-sm font-bold text-emerald-700">34 Donatur</span>
+            <span class="block text-[10px] text-emerald-600/70 uppercase tracking-wider">Tercatat</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Donor List Table -->
+      <div class="reveal reveal-delay-1 max-w-3xl mx-auto overflow-hidden rounded-2xl border border-gray-100 shadow-sm">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-navy-primary text-white">
+                <th class="py-3.5 px-5 text-xs uppercase font-bold tracking-wider w-12 text-center">No</th>
+                <th class="py-3.5 px-5 text-xs uppercase font-bold tracking-wider">Nama Donatur</th>
+                <th class="py-3.5 px-5 text-xs uppercase font-bold tracking-wider text-right w-36">Nominal</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-50 text-sm">
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">1</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Ary Widiyoseno</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 500.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">2</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Hamba Allah</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.000.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">3</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Bpk. Adhitya Prakoso bin Suyoso</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.000.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">4</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Meilia Putri</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.100.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">5</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Shela Angraini</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 200.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">6</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Shodaqoh Jama'ah Kajian Khatmil Qur'an</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 2.062.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">7</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Dafa Al Ghifari</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 50.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">8</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Wajihudin</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 250.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">9</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Parlin Tambunan</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 100.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">10</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Nuryadi Lio</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 400.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">11</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Dhita Fitria Muti</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 100.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">12</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Nana</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 200.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">13</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Ibu Kasianti</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 500.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">14</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Hamba Allah</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 100.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">15</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Utiko Rochman</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.000.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">16</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Novriandi Saputra</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 100.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">17</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Eka Yuliani</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 200.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">18</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Nurdin</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 350.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">19</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Keluarga Alm. H. Marwiyah</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 2.000.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">20</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Villa Kahayang</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 2.000.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">21</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Mang Jarkasih</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.000.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">22</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Ceu Arum</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 50.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">23</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Raden Bentara Putra Utama</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.000.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">24</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Kak Puspita</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.000.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">25</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Ibu Hj. Nurmala</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.500.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">26</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Ibu Hj. Pariah / Bpk. Warisman</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 500.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">27</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Jama'ah Mushola At-Taqwa</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.700.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">28</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Bos Ozi</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.000.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">29</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Bpk. Mawar Bin Alm. Bpk. Syafri</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 500.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">30</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Teh Nuraeni</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 100.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">31</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Sadam</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 100.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">32</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Ibu Gina</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 100.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">33</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Ibu Dwi Lestari</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 100.000</td>
+              </tr>
+              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
+                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">34</td>
+                <td class="py-3 px-5 text-gray-700 font-medium">Bu Eni</td>
+                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 100.000</td>
+              </tr>
+              <!-- Total Row -->
+              <tr class="bg-navy-deepest text-white font-bold">
+                <td class="py-4 px-5 text-center text-gold" colspan="2">TOTAL PEMASUKAN WAQAF</td>
+                <td class="py-4 px-5 text-right font-display text-base text-gold">Rp 22.512.000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Callout Note -->
+      <div class="reveal reveal-delay-2 mt-8 max-w-3xl mx-auto flex items-start gap-4 p-5 bg-gold/5 rounded-2xl border border-gold/15">
+        <div class="p-2 rounded-xl bg-gold/10 text-gold flex-shrink-0 mt-0.5">
+          <i data-lucide="heart" class="w-5 h-5"></i>
+        </div>
+        <div class="text-xs md:text-sm text-gray-600 leading-relaxed">
+          Daftar di atas merupakan data pemasukan waqaf yang telah terverifikasi dan layak dipublikasikan. Seluruh donasi akan digunakan sepenuhnya untuk pembangunan Masjid Jami Ar-Rustendi. Semoga menjadi amal jariyah bagi seluruh donatur. Aamiin.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- [13] DUKUNGAN & TESTIMONI TOKOH              -->
+  <!-- ============================================ -->
+  <section class="py-24 md:py-32 bg-offwhite overflow-hidden">
+    <div class="max-w-[1240px] mx-auto px-6 md:px-12">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="section-label">Dukungan & Testimoni</span>
+        <div class="divider-gold mx-auto mt-3 mb-4"></div>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-navy-primary">Dukungan Tokoh Agama</h2>
+      </div>
+
+      <!-- Testimony Slider Layout -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        
+        <!-- Testimony 1 -->
+        <div class="reveal bg-white p-6 md:p-8 rounded-2xl shadow-2xs border border-gray-100 flex flex-col justify-between">
+          <div>
+            <i data-lucide="quote" class="w-8 h-8 text-gold/30 mb-4"></i>
+            <p class="font-display italic text-gray-600 text-sm leading-relaxed mb-6">
+              "Pembangunan Masjid Jami Ar-Rustendi ini adalah jawaban luhur dari penantian panjang warga Tegal Rumpin. Insya Allah, sarana ibadah ini akan menghidupkan kebiasaan shalat berjamaah serta memperkokoh pondasi akhlakul karimah anak-anak santri kita di sini."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-gray-50">
+            <div class="w-11 h-11 rounded-full bg-navy-primary/5 text-navy-primary flex items-center justify-center font-display font-bold text-sm border border-navy-primary/10">KH</div>
+            <div>
+              <strong class="block text-navy-primary text-sm font-bold">Kyai Hasbi Alloh</strong>
+              <span class="block text-[10px] text-gray-400 font-medium uppercase tracking-wider mt-0.5">Pimpinan Pondok Pesantren Al-Muawanah</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimony 2 -->
+        <div class="reveal reveal-delay-2 bg-white p-6 md:p-8 rounded-2xl shadow-2xs border border-gray-100 flex flex-col justify-between">
+          <div>
+            <i data-lucide="quote" class="w-8 h-8 text-gold/30 mb-4"></i>
+            <p class="font-display italic text-gray-600 text-sm leading-relaxed mb-6">
+              "DKM pengurus Ar-Rustendi berisikan barisan pendidik & profesional muda berkarakter jujur, dinamis, serta transparan. Keamanan amanah dana infaq yang Anda salurkan berada di bawah pengawasan manajerial yang sangat tertib dan akuntabel."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-gray-50">
+            <div class="w-11 h-11 rounded-full bg-navy-primary/5 text-navy-primary flex items-center justify-center font-display font-bold text-sm border border-navy-primary/10">KB</div>
+            <div>
+              <strong class="block text-navy-primary text-sm font-bold">Kyai Bustomi</strong>
+              <span class="block text-[10px] text-gray-400 font-medium uppercase tracking-wider mt-0.5">Tokoh Ulama & Sesepuh Kp. Rumpin</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================ -->
+  <!-- [13] FOOTER SECTION                          -->
+  <!-- ============================================ -->
+<footer id="footer" style="background:#F5F3EE !important; padding:48px 0 24px;">
+  <div class="max-w-[1240px] mx-auto px-6 md:px-12 relative z-10">
+    
+    <!-- Row atas: 3 kolom -->
+    <div class="footer-3col" style="display:grid; grid-template-columns:2fr 1fr 1fr; gap:40px; padding-bottom:32px; border-bottom:1px solid rgba(13,27,75,0.1); flex-wrap:wrap;">
+      
+      <!-- Kolom 1: Brand -->
+      <div>
+        <img src="images/Logo_Atas.png" alt="Masjid Ar-Rustendi" style="height:56px;width:auto;object-fit:contain;
+          display:block;margin-bottom:14px;
+          filter:brightness(0) saturate(100%) invert(15%) 
+            sepia(60%) saturate(700%) hue-rotate(200deg) 
+            brightness(85%);">
+        <p style="font-size:13px; color:#6B7280; line-height:1.7; max-width:280px;">
+          Pusat dakwah, ukhuwah islamiyah, dan kegiatan sosial warga Kp. Tegal Rumpin Indah, Kabupaten Bogor, Jawa Barat.
+        </p>
+        <a href="https://instagram.com/masjid_arrustendi" target="_blank" style="display:inline-flex; align-items:center; gap:6px; color:#6B7280; font-size:13px; text-decoration:none; margin-top:12px;">
+          @masjid_arrustendi
+        </a>
+      </div>
+      
+      <!-- Kolom 2: Navigasi -->
+      <div>
+        <p style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#C9A84C; margin-bottom:14px;">
+          Navigasi
+        </p>
+        <!-- Nav links -->
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <a href="#tentang" style="font-size:13px; color:#6B7280; text-decoration:none;">Tentang Masjid</a>
+          <a href="#progress" style="font-size:13px; color:#6B7280; text-decoration:none;">Progress Dana</a>
+          <a href="#tahapan" style="font-size:13px; color:#6B7280; text-decoration:none;">Tahapan</a>
+          <a href="#rab" style="font-size:13px; color:#6B7280; text-decoration:none;">RAB</a>
+          <a href="#donatur" style="font-size:13px; color:#6B7280; text-decoration:none;">Donatur</a>
+          <a href="#dkm" style="font-size:13px; color:#6B7280; text-decoration:none;">Susunan DKM</a>
+          <a href="#donasi" style="font-size:13px; color:#6B7280; text-decoration:none;">Donasi</a>
+        </div>
+      </div>
+      
+      <!-- Kolom 3: Kontak -->
+      <div>
+        <p style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#C9A84C; margin-bottom:14px;">
+          Kontak Panitia
+        </p>
+        <div style="font-size:13px; color:#6B7280; line-height:1.8;">
+          <p>Hari Din Nugraha (Ketua) — <strong style="color:#1B2B6B;">085780694377</strong></p>
+          <p>Hasbi Alloh (Pembina) — <strong style="color:#1B2B6B;">085777182743</strong></p>
+          <p>Aenul Yaqin (Bendahara) — <strong style="color:#1B2B6B;">081382058641</strong></p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Logo Bisa Baik -->
+    <div style="display:flex;align-items:center;gap:12px;
+      padding:16px 0;
+      border-top:1px solid rgba(13,27,75,0.1);
+      border-bottom:1px solid rgba(13,27,75,0.1);
+      margin:16px 0;">
+      <span style="font-size:13px;color:#9CA3AF;
+        font-weight:500;white-space:nowrap;">Difasilitasi oleh:</span>
+      <img src="images/logo_bawah.png" alt="Yayasan Bisa Baik Bersama" style="height:40px;width:auto;object-fit:contain;
+        display:block;">
+    </div>
+    
+    <!-- Copyright row -->
+    <div style="padding-top:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+      <p style="font-size:12px; color:#9CA3AF;">
+        © 2026 Masjid Jami Ar-Rustendi. All Rights Reserved.
+      </p>
+      <p style="font-size:12px; color:#9CA3AF;">
+        Developed by <a href="https://impactory.id" target="_blank" style="color:#C9A84C; text-decoration:none;">Maulana Arif Pratama</a>
+      </p>
+    </div>
+    
+  </div>
+  
+  <!-- Back to top floating button -->
+  <a href="#" style="position:absolute; right:32px; bottom:32px; padding:12px; rounded-radius:50%; background:rgba(13,27,75,0.05); color:#1B2B6B; border:1px solid rgba(13,27,75,0.1); border-radius:99px; transition:all 0.3s; display:inline-flex; align-items:center; justify-content:center; text-decoration:none;" aria-label="Scroll to top">
+    <i data-lucide="chevron-up" style="width:16px; height:16px;"></i>
+  </a>
+</footer>
+
+
+  <!-- ============================================ -->
+  <!-- MOBILE STICKY DONATION BAR                   -->
+  <!-- ============================================ -->
+  <div id="mobile-donate-bar" class="mobile-donate-bar">
+    <div class="text-white">
+      <span class="block text-[10px] uppercase tracking-wider text-white/50">Terkumpul 49.9%</span>
+      <span class="block font-display text-sm font-bold text-gold mt-0.5">Rp 312.000.000</span>
+    </div>
+    <a href="#donasi" class="btn-gold rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-wider">
+      Donasi Sekarang
+    </a>
+  </div>
+
+
+  <!-- ============================================ -->
+  <!-- TOAST NOTIFICATION CONTAINER                 -->
+  <!-- ============================================ -->
+  <div id="toast" class="toast">✓ Berhasil disalin!</div>
+
+
+  <!-- ============================================ -->
+  <!-- JAVASCRIPT: LOGIC & ANIMATIONS               -->
+  <!-- ============================================ -->
+  <script>
+    // ==========================================
+    // 1. CONFIGURATION OBJECT (MUTABLE & DYNAMIC)
+    // ==========================================
+    const CONFIG = {
+      totalRAB: 625050247,
+      terkumpul: 312000000,
+      sisa: 313050247,
+      persentase: 49.9,
+      updateTerakhir: '20 Juni 2026'
+    };
+
+    // Helper: Format Rupiah
+    function formatRupiah(angka) {
+      return 'Rp ' + Math.round(angka).toLocaleString('id-ID');
+    }
+
+    // Helper: Copy to Clipboard Utility with visual toast feedback
+    async function copyToClipboard(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (err) {
+        const el = document.createElement('textarea');
+        el.value = text;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+      }
+      showToast('✓ Nomor rekening berhasil disalin!');
+    }
+
+    // Helper: Show custom toast alert
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      if (t) {
+        t.textContent = msg;
+        t.classList.add('show');
+        setTimeout(() => {
+          t.classList.remove('show');
+        }, 2800);
+      }
+    }
+
+    // ==========================================
+    // 2. INTERACTIVE ANIMATIONS ON SCROLL
+    // ==========================================
+    
+    // Smooth Number Counting Animation (0 -> target)
+    function animateCounter(el, target, duration = 2000) {
+      const start = performance.now();
+      const easeOutCube = t => 1 - Math.pow(1 - t, 3);
+      
+      function step(now) {
+        const p = Math.min((now - start) / duration, 1);
+        el.textContent = formatRupiah(Math.round(target * easeOutCube(p)));
+        if (p < 1) {
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = formatRupiah(target);
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    // SVG Semicircle Gauge Progressive Loading Animation
+    function animateGauge(persen) {
+      const circle = document.getElementById('gauge-fill');
+      const text = document.getElementById('gauge-percent-text');
+      if (!circle) return;
+      
+      const r = 90;
+      const circ = Math.PI * r; // semicircle circumference is ~282.74
+      const offset = circ - (circ * persen / 100);
+      
+      circle.style.strokeDasharray = circ;
+      circle.style.strokeDashoffset = circ; // init at 100% gap (0% fill)
+      
+      // Animate stroke dashoffset
+      setTimeout(() => {
+        circle.style.strokeDashoffset = offset;
+      }, 100);
+
+      // Animate percentage label text
+      const start = performance.now();
+      const duration = 2000;
+      const easeOutCube = t => 1 - Math.pow(1 - t, 3);
+      
+      function step(now) {
+        const p = Math.min((now - start) / duration, 1);
+        if (text) {
+          text.textContent = (persen * easeOutCube(p)).toFixed(1) + '%';
+        }
+        if (p < 1) {
+          requestAnimationFrame(step);
+        } else if (text) {
+          text.textContent = persen + '%';
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    // IntersectionObserver to trigger animations when section is visible
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize Lucide icons
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+
+      // 1. Trigger hero progress bar immediately
+      setTimeout(() => {
+        const bar = document.getElementById('hero-progress-bar');
+        if (bar) bar.style.width = '49.9%';
+      }, 500);
+
+      // 2. Observer for Scroll Reveal elements
+      const reveals = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
+      
+      reveals.forEach(el => revealObserver.observe(el));
+
+      // 3. Observer for triggering Progress Counter and SVG Gauge
+      const progressSection = document.getElementById('progress');
+      let progressAnimated = false;
+      
+      if (progressSection) {
+        const progressObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !progressAnimated) {
+              progressAnimated = true;
+              
+              // Run Smooth Counter (0 -> 312M)
+              const counterEl = document.getElementById('counter-terkumpul');
+              if (counterEl) {
+                animateCounter(counterEl, CONFIG.terkumpul, 2500);
+              }
+              
+              // Run Semicircle Gauge (0% -> 49.9%)
+              animateGauge(CONFIG.persentase);
+            }
+          });
+        }, { threshold: 0.1 });
+        
+        progressObserver.observe(progressSection);
+      }
+
+      // 4. Header Scroll styling & Mobile Sticky Donation bar Observer
+      const headerLogo = document.getElementById('header-logo');
+      const header = document.getElementById('main-header');
+      const mobileDonateBar = document.getElementById('mobile-donate-bar');
+      
+      window.addEventListener('scroll', () => {
+        const scrollPos = window.scrollY;
+        
+        const hLogo = document.getElementById('header-logo');
+        const hNama = document.getElementById('header-nama');
+        const hSub  = document.getElementById('header-sub');
+        const hNavLinks = document.querySelectorAll('.nav-link');
+
+        if (scrollPos > 60) {
+          header.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);box-shadow:0 1px 0 rgba(13,27,75,0.08);';
+          
+          // ── HEADER PUTIH ──────────────────────────────
+          // Logo: filter ke navy gelap agar kelihatan di bg putih
+          if (hLogo) hLogo.style.filter = 
+            'brightness(0) saturate(100%) invert(15%) sepia(60%) ' +
+            'saturate(700%) hue-rotate(200deg) brightness(85%)';
+          
+          // Teks nama masjid: navy
+          if (hNama) hNama.style.color = '#1B2B6B';
+          // Sub "Rumpin · Kab. Bogor": abu sedang
+          if (hSub)  hSub.style.color  = '#6B7280';
+          // Nav links: abu gelap
+          hNavLinks.forEach(l => l.style.color = '#374151');
+        } else {
+          header.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:100;background:transparent;';
+          
+          // ── HEADER TRANSPARAN DI ATAS HERO NAVY ──────
+          // Logo: putih solid
+          if (hLogo) hLogo.style.filter = 'brightness(0) invert(1)';
+          // Teks nama masjid: putih
+          if (hNama) hNama.style.color = '#ffffff';
+          // Sub: putih transparan
+          if (hSub)  hSub.style.color  = 'rgba(255,255,255,0.55)';
+          // Nav links: putih
+          hNavLinks.forEach(l => l.style.color = 'rgba(255,255,255,0.85)');
+        }
+
+        // Mobile sticky donate bar visibility toggle (Only after scrolling past hero)
+        if (mobileDonateBar) {
+          if (scrollPos > 400) {
+            mobileDonateBar.classList.add('visible');
+          } else {
+            mobileDonateBar.classList.remove('visible');
+          }
+        }
+      }, {passive:true});
+      // Trigger sekali saat load
+      window.dispatchEvent(new Event('scroll'));
+    });
+  </script>
+</body>
+</html>
