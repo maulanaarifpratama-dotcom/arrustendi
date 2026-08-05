@@ -542,6 +542,46 @@
         grid-template-columns: 1fr !important;
       }
     }
+
+    /* DKM contrast and branding consistency */
+    #dkm {
+      background: linear-gradient(180deg, #ffffff 0%, #f8f7f3 100%);
+    }
+    #dkm .dkm-card-soft {
+      background: #ffffff;
+      border: 1px solid rgba(13, 27, 75, 0.08);
+      box-shadow: 0 10px 28px rgba(13, 27, 75, 0.04);
+    }
+    #dkm .dkm-division-card {
+      background: #f5f3ee;
+      border: 1px solid rgba(13, 27, 75, 0.06);
+    }
+    #dkm-featured-card {
+      background: linear-gradient(140deg, #1b2b6b 0%, #122254 100%) !important;
+      border: 1px solid rgba(184, 150, 62, 0.48) !important;
+      box-shadow: 0 22px 46px rgba(13, 27, 75, 0.22);
+    }
+    #dkm-featured-card .dkm-featured-role {
+      background: rgba(184, 150, 62, 0.18);
+      color: #e8d08a;
+      border: 1px solid rgba(184, 150, 62, 0.35);
+    }
+    #dkm-featured-card .dkm-featured-name {
+      color: #ffffff !important;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    }
+    #dkm-featured-card .dkm-featured-subtitle {
+      color: rgba(255, 255, 255, 0.78) !important;
+    }
+    #dkm-featured-card .dkm-featured-cta {
+      color: #e8d08a !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 12px;
+      margin-top: 14px;
+    }
+    #dkm-featured-card .dkm-featured-cta:hover {
+      color: #ffffff !important;
+    }
   </style>
 </head>
 <body class="bg-white">
@@ -1563,28 +1603,28 @@
       <!-- LEVEL 1: Penasehat & Pembina -->
       <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-6">
         
-        <div class="reveal bg-offwhite rounded-2xl p-5 text-center w-56 border border-gray-100 shadow-2xs">
+        <div class="reveal dkm-card-soft rounded-2xl p-5 text-center w-56">
           <span class="inline-flex px-2.5 py-0.5 rounded-full bg-gold/10 text-gold text-[9px] font-bold uppercase tracking-wider mb-2">Dewan Penasehat</span>
-          <h4 class="font-display text-sm font-bold text-navy-primary">Kyai Bustomi</h4>
-          <span class="block text-[11px] text-gray-500 mt-1 leading-relaxed">Tokoh Sesepuh Desa</span>
+          <h4 class="font-display text-base font-bold text-navy-primary">Kyai Bustomi</h4>
+          <span class="block text-xs text-gray-600 mt-1 leading-relaxed">Tokoh Sesepuh Desa</span>
         </div>
 
-        <div class="reveal reveal-delay-1 bg-offwhite rounded-2xl p-5 text-center w-56 border border-gray-100 shadow-2xs">
+        <div class="reveal reveal-delay-1 dkm-card-soft rounded-2xl p-5 text-center w-56">
           <span class="inline-flex px-2.5 py-0.5 rounded-full bg-gold/10 text-gold text-[9px] font-bold uppercase tracking-wider mb-2">Dewan Pembina</span>
-          <h4 class="font-display text-sm font-bold text-navy-primary">Kyai Hasbi Alloh</h4>
-          <span class="block text-[11px] text-gray-500 mt-1 leading-relaxed">Pimpinan Pondok Pesantren</span>
+          <h4 class="font-display text-base font-bold text-navy-primary">Kyai Hasbi Alloh</h4>
+          <span class="block text-xs text-gray-600 mt-1 leading-relaxed">Pimpinan Pondok Pesantren</span>
         </div>
 
       </div>
 
       <!-- LEVEL 2: Ketua DKM (Featured) -->
       <div class="reveal reveal-delay-2 max-w-[280px] mx-auto text-center mb-6 relative z-10">
-        <div class="bg-navy-primary rounded-2xl p-6 border border-gold/30 shadow-lg group hover:border-gold transition-all duration-300">
-          <span class="inline-flex px-3 py-0.5 rounded-full bg-gold/15 text-gold text-[10px] font-bold uppercase tracking-wider mb-3 border border-gold/10">Ketua DKM</span>
-          <h4 class="font-display text-base md:text-lg font-bold text-white leading-snug">Hari Din Nugraha, M.Pd</h4>
-          <span class="block text-xs text-white/55 mt-1 leading-normal">Dosen Universitas Negeri Jakarta</span>
+        <div id="dkm-featured-card" class="rounded-2xl p-6 group hover:border-gold transition-all duration-300">
+          <span class="dkm-featured-role inline-flex px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider mb-3">Ketua DKM</span>
+          <h4 class="dkm-featured-name font-display text-base md:text-lg font-bold leading-snug">Hari Din Nugraha, M.Pd</h4>
+          <span class="dkm-featured-subtitle block text-xs mt-1 leading-normal">Dosen Universitas Negeri Jakarta</span>
           
-          <a href="https://wa.me/6285780694377" target="_blank" class="inline-flex items-center gap-1.5 text-gold hover:text-white text-xs font-semibold mt-4 transition-colors">
+          <a href="https://wa.me/6285780694377" target="_blank" class="dkm-featured-cta inline-flex items-center gap-1.5 text-xs font-semibold transition-colors">
             <i data-lucide="message-circle" class="w-4 h-4"></i>
             <span>Hubungi Ketua</span>
           </a>
@@ -1594,16 +1634,16 @@
       <!-- LEVEL 3: Sekretaris & Bendahara -->
       <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-6">
         
-        <div class="reveal bg-white border border-gray-100 rounded-2xl p-5 text-center w-56 hover:border-gold/30 transition-all duration-300">
+        <div class="reveal dkm-card-soft rounded-2xl p-5 text-center w-56 hover:border-gold/30 transition-all duration-300">
           <span class="inline-flex px-2.5 py-0.5 rounded-full bg-gold/10 text-gold text-[9px] font-bold uppercase tracking-wider mb-2">Sekretaris</span>
-          <h4 class="font-display text-sm font-bold text-navy-primary leading-snug">Maulana Arif Pratama, S.E</h4>
-          <span class="block text-[11px] text-gray-500 mt-1 leading-relaxed">Koordinator IT & IT Consultant</span>
+          <h4 class="font-display text-base font-bold text-navy-primary leading-snug">Maulana Arif Pratama, S.E</h4>
+          <span class="block text-xs text-gray-600 mt-1 leading-relaxed">Koordinator IT & IT Consultant</span>
         </div>
 
-        <div class="reveal reveal-delay-1 bg-white border border-gray-100 rounded-2xl p-5 text-center w-56 hover:border-gold/30 transition-all duration-300">
+        <div class="reveal reveal-delay-1 dkm-card-soft rounded-2xl p-5 text-center w-56 hover:border-gold/30 transition-all duration-300">
           <span class="inline-flex px-2.5 py-0.5 rounded-full bg-gold/10 text-gold text-[9px] font-bold uppercase tracking-wider mb-2">Bendahara</span>
-          <h4 class="font-display text-sm font-bold text-navy-primary leading-snug">Aenul Yaqin, S.Pd</h4>
-          <span class="block text-[11px] text-gray-500 mt-1 leading-relaxed">Akuntan & Staff Keuangan</span>
+          <h4 class="font-display text-base font-bold text-navy-primary leading-snug">Aenul Yaqin, S.Pd</h4>
+          <span class="block text-xs text-gray-600 mt-1 leading-relaxed">Akuntan & Staff Keuangan</span>
         </div>
 
       </div>
@@ -1611,7 +1651,7 @@
       <!-- LEVEL 4: Divisi-Divisi Pembantu -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4 max-w-4xl mx-auto">
         
-        <div class="reveal bg-offwhite p-4 rounded-xl text-center border border-transparent hover:border-gold/20 transition-all duration-300">
+        <div class="reveal dkm-division-card p-4 rounded-xl text-center hover:border-gold/20 transition-all duration-300">
           <div class="w-9 h-9 rounded-lg bg-navy-primary/5 text-navy-primary flex items-center justify-center mx-auto mb-3">
             <i data-lucide="megaphone" class="w-4 h-4"></i>
           </div>
@@ -1619,7 +1659,7 @@
           <span class="block text-xs font-semibold text-navy-primary">Jayin Nantapi, S.Pd</span>
         </div>
 
-        <div class="reveal reveal-delay-1 bg-offwhite p-4 rounded-xl text-center border border-transparent hover:border-gold/20 transition-all duration-300">
+        <div class="reveal reveal-delay-1 dkm-division-card p-4 rounded-xl text-center hover:border-gold/20 transition-all duration-300">
           <div class="w-9 h-9 rounded-lg bg-navy-primary/5 text-navy-primary flex items-center justify-center mx-auto mb-3">
             <i data-lucide="heart-handshake" class="w-4 h-4"></i>
           </div>
@@ -1627,7 +1667,7 @@
           <span class="block text-xs font-semibold text-navy-primary">Ofiq Sodiqin</span>
         </div>
 
-        <div class="reveal reveal-delay-2 bg-offwhite p-4 rounded-xl text-center border border-transparent hover:border-gold/20 transition-all duration-300">
+        <div class="reveal reveal-delay-2 dkm-division-card p-4 rounded-xl text-center hover:border-gold/20 transition-all duration-300">
           <div class="w-9 h-9 rounded-lg bg-navy-primary/5 text-navy-primary flex items-center justify-center mx-auto mb-3">
             <i data-lucide="graduation-cap" class="w-4 h-4"></i>
           </div>
@@ -1635,7 +1675,7 @@
           <span class="block text-xs font-semibold text-navy-primary">Abdul Wahid, S.Pd</span>
         </div>
 
-        <div class="reveal reveal-delay-3 bg-offwhite p-4 rounded-xl text-center border border-transparent hover:border-gold/20 transition-all duration-300">
+        <div class="reveal reveal-delay-3 dkm-division-card p-4 rounded-xl text-center hover:border-gold/20 transition-all duration-300">
           <div class="w-9 h-9 rounded-lg bg-navy-primary/5 text-navy-primary flex items-center justify-center mx-auto mb-3">
             <i data-lucide="camera" class="w-4 h-4"></i>
           </div>
