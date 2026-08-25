@@ -35,8 +35,11 @@
   <!-- 4. Alpine.js 3.15.12 -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
 
-  <style>
-    /* Tailwind v4 custom theme setup */
+  <!-- Token tema HARUS berada di blok bertipe text/tailwindcss. Di <style>
+       biasa, @theme adalah at-rule tak dikenal dan dibuang browser sebelum
+       Tailwind sempat melihatnya, sehingga seluruh utility warna merek
+       (text-gold, bg-navy-primary, dst.) diam-diam tidak pernah dibuat. -->
+  <style type="text/tailwindcss">
     @theme {
       --color-navy-deepest: #0D1B4B;
       --color-navy-primary: #1B2B6B;
@@ -50,6 +53,9 @@
       --font-display: 'Lora', serif;
       --font-body: 'Plus Jakarta Sans', sans-serif;
     }
+  </style>
+
+  <style>
 
     /* Base reset & Custom Scrollbars */
     html { scroll-behavior: smooth; }
@@ -290,6 +296,78 @@
       color: #0D1B4B;
     }
     input, textarea { caret-color: #B8963E; }
+
+    /* ==========================================================
+       HERO — bobot CTA dan kartu progres
+       ========================================================== */
+
+    /* Label 14px di bawah h1 68px membuat CTA terbaca ringan padahal
+       dialah elemen terpenting di layar pertama. Naikkan ukuran, bobot,
+       dan tinggi minimumnya. */
+    .btn-hero {
+      min-height: 58px;
+      padding: 1rem 2.125rem;
+      font-size: 15.5px;
+      font-weight: 700;
+      letter-spacing: -0.005em;
+      line-height: 1.2;
+    }
+    @media (max-width: 480px) {
+      .btn-hero { width: 100%; padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
+
+    /* Ghost: border 1,33px pada 35% putih terbaca tipis dan belum jadi.
+       Tebalkan dan naikkan opasitasnya supaya sepadan dengan tombol emas. */
+    .btn-ghost.btn-hero {
+      border-width: 2px;
+      border-color: rgba(255,255,255,0.55);
+      background-color: rgba(255,255,255,0.04);
+      font-weight: 600;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .btn-ghost.btn-hero:hover {
+        border-color: #ffffff;
+        background-color: rgba(255,255,255,0.12);
+      }
+    }
+
+    /* Panel statistik hero: grid-cols-3 diisi 5 anak (3 angka + 2 garis
+       pemisah), jadi barisnya membungkus dan "2026" turun sendirian.
+       Pakai kolom eksplisit: angka | garis | angka | garis | angka. */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .hero-stats > div:not(.w-px) { text-align: center; min-width: 0; }
+
+    /* Kartu progres: sebelumnya rounded-full, jadi blok 576x67 berbentuk
+       lozenge. Radius kartu + padding yang cukup. */
+    .hero-progress-card {
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px;
+      padding: 1.125rem 1.375rem 1.25rem;
+    }
+    .hero-progress-num {
+      font-family: 'Lora', serif;
+      font-size: 1.375rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .hero-progress-pct { font-size: 0.9375rem; font-weight: 700; }
+    .hero-progress-sep { opacity: 0.45; margin: 0 0.15rem; }
+    .hero-progress-amt {
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    /* Gold #B8963E cuma 2,6:1 di atas putih. Untuk teks kecil di latar
+       terang pakai gold pekat; gold asli tetap dipakai di latar gelap
+       (di sana #B8963E sudah 4,7:1 ke atas). */
+    .gold-ink { color: #7E6221 !important; }
 
     /* Angka uang selalu sejajar antar baris */
     .tnum {
@@ -1103,25 +1181,25 @@
           </p>
 
           <!-- Progress bar Mini -->
-          <div class="reveal reveal-delay-4 w-full max-w-xl bg-white/10 rounded-full p-4 mb-8 border border-white/5">
-            <div class="flex items-center justify-between mb-2">
-              <span id="hero-progress-label" class="text-xs uppercase font-bold tracking-wider" style="color:rgba(255,255,255,0.6) !important;">Dana Progres (Modal + Donasi)</span>
-              <span id="hero-progress-val" class="text-sm font-bold text-white" style="color:#ffffff !important; font-weight:600;"><span id="hero-progress-text">53,8</span>% · <span id="hero-progress-amount">Rp 335.972.000</span></span>
+          <div class="reveal reveal-delay-4 w-full max-w-xl hero-progress-card mb-9">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 mb-3">
+              <span id="hero-progress-label" class="text-[11px] uppercase font-bold tracking-[0.1em]" style="color:rgba(255,255,255,0.62) !important;">Dana Progres (Modal + Donasi)</span>
+              <span id="hero-progress-val" class="tnum" style="color:#ffffff !important;"><span id="hero-progress-text" class="hero-progress-num">53,8</span><span class="hero-progress-pct">%</span> <span class="hero-progress-sep">·</span> <span id="hero-progress-amount" class="hero-progress-amt">Rp 335.972.000</span></span>
             </div>
-            <div id="hero-progress-bg" style="background:rgba(255,255,255,0.15); height:6px; border-radius:99px;" class="w-full overflow-hidden">
+            <div id="hero-progress-bg" style="background:rgba(255,255,255,0.16); height:10px; border-radius:99px;" class="w-full overflow-hidden">
               <div id="hero-progress-bar" style="background:#B8963E; width:100%; height:100%; border-radius:99px; clip-path:inset(0 100% 0 0); transition:clip-path 1.5s cubic-bezier(0.23,1,0.32,1) 0.4s;"></div>
             </div>
           </div>
 
           <!-- Buttons -->
-          <div class="reveal reveal-delay-5 flex flex-wrap gap-4">
-            <a href="https://kitabisa.com/campaign/wakafmumesempurnakanmasjidimpiansantrirumpinbogor" target="_blank" class="btn-gold rounded-full px-8 py-4 text-sm inline-flex items-center gap-2">
+          <div class="reveal reveal-delay-5 flex flex-wrap gap-3.5">
+            <a href="https://kitabisa.com/campaign/wakafmumesempurnakanmasjidimpiansantrirumpinbogor" target="_blank" class="btn-gold btn-hero rounded-full inline-flex items-center justify-center gap-2.5">
               <span>Donasi via Kitabisa</span>
-              <i data-lucide="external-link" class="w-4 h-4"></i>
+              <i data-lucide="external-link" class="w-[18px] h-[18px]"></i>
             </a>
-            <a href="#donasi" class="btn-ghost rounded-full px-8 py-4 text-sm inline-flex items-center gap-2">
+            <a href="#donasi" class="btn-ghost btn-hero rounded-full inline-flex items-center justify-center gap-2.5">
               <span>Transfer Bank</span>
-              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              <i data-lucide="arrow-right" class="w-[18px] h-[18px]"></i>
             </a>
           </div>
         </div>
@@ -1142,7 +1220,7 @@
             </div>
 
             <!-- Stats Grid -->
-            <div class="grid grid-cols-3 gap-4 pt-4 border-t border-white/10">
+            <div class="hero-stats pt-4 border-t border-white/10">
               <div class="text-center">
                 <span class="block font-display text-base md:text-lg font-bold text-gold">168 m²</span>
                 <span class="block text-[10px] text-white/50 uppercase font-semibold mt-1">Luas Tanah</span>
@@ -1426,7 +1504,7 @@
 
           <div class="bg-gold/5 rounded-xl p-4 border border-gold/10 mb-6">
             <p class="text-sm text-gray-700 leading-relaxed">
-              Donasi senilai <strong class="text-navy-primary" x-text="'Rp ' + Math.round(nominal).toLocaleString('id-ID')"></strong> setara dengan <strong class="text-gold" x-text="persen + '%'"></strong> dari sisa total kebutuhan dana.
+              Donasi senilai <strong class="text-navy-primary" x-text="'Rp ' + Math.round(nominal).toLocaleString('id-ID')"></strong> setara dengan <strong class="gold-ink" x-text="persen + '%'"></strong> dari sisa total kebutuhan dana.
             </p>
             <p class="text-[11px] text-gray-500 mt-2 leading-relaxed">
               Jika <strong class="text-navy-primary" x-text="orang.toLocaleString('id')"></strong> orang sholeh berdonasi dengan nominal yang sama seperti Anda, maka target pembangunan masjid segera tercapai!
@@ -1738,7 +1816,7 @@
               </div>
               <div class="mt-3">
                 <h4 class="font-display font-bold text-navy-primary text-sm transition-colors group-hover:text-gold">Rendering Tampak Depan</h4>
-                <p class="text-[11px] text-gray-500 mt-1">Minimalis, pilar vertikal megah</p>
+                <p class="text-[11px] text-gray-600 mt-1">Minimalis, pilar vertikal megah</p>
               </div>
             </div>
 
@@ -1753,7 +1831,7 @@
               </div>
               <div class="mt-3">
                 <h4 class="font-display font-bold text-navy-primary text-sm transition-colors group-hover:text-gold">Visual Sudut Perspektif Malam</h4>
-                <p class="text-[11px] text-gray-500 mt-1">Pencahayaan temaram hangat dramatis</p>
+                <p class="text-[11px] text-gray-600 mt-1">Pencahayaan temaram hangat dramatis</p>
               </div>
             </div>
 
@@ -1768,7 +1846,7 @@
               </div>
               <div class="mt-3">
                 <h4 class="font-display font-bold text-navy-primary text-sm transition-colors group-hover:text-gold">Detail Ornamen Gerbang Masuk</h4>
-                <p class="text-[11px] text-gray-500 mt-1">Aksen ukiran arabesque emas islami</p>
+                <p class="text-[11px] text-gray-600 mt-1">Aksen ukiran arabesque emas islami</p>
               </div>
             </div>
 
@@ -1783,7 +1861,7 @@
               </div>
               <div class="mt-3">
                 <h4 class="font-display font-bold text-navy-primary text-sm transition-colors group-hover:text-gold">Tampak Samping & Menara</h4>
-                <p class="text-[11px] text-gray-500 mt-1">Susunan simetris arsitektur minimalis</p>
+                <p class="text-[11px] text-gray-600 mt-1">Susunan simetris arsitektur minimalis</p>
               </div>
             </div>
 
@@ -1851,7 +1929,7 @@
               </div>
               <div class="mt-3">
                 <h4 class="font-display font-bold text-navy-primary text-sm transition-colors group-hover:text-gold">Pengukuran Arah Kiblat & Lahan</h4>
-                <p class="text-[11px] text-gray-500 mt-1">Bekerjasama dengan tim BPN Bogor</p>
+                <p class="text-[11px] text-gray-600 mt-1">Bekerjasama dengan tim BPN Bogor</p>
               </div>
             </div>
 
@@ -1866,7 +1944,7 @@
               </div>
               <div class="mt-3">
                 <h4 class="font-display font-bold text-navy-primary text-sm transition-colors group-hover:text-gold">Penggalian Tanah Pondasi Cakar Ayam</h4>
-                <p class="text-[11px] text-gray-500 mt-1">Urukan kedalaman struktur kokoh</p>
+                <p class="text-[11px] text-gray-600 mt-1">Urukan kedalaman struktur kokoh</p>
               </div>
             </div>
 
@@ -1881,7 +1959,7 @@
               </div>
               <div class="mt-3">
                 <h4 class="font-display font-bold text-navy-primary text-sm transition-colors group-hover:text-gold">Pemasangan Tulangan Besi Sloof</h4>
-                <p class="text-[11px] text-gray-500 mt-1">Sertifikasi material besi tebal standar SNI</p>
+                <p class="text-[11px] text-gray-600 mt-1">Sertifikasi material besi tebal standar SNI</p>
               </div>
             </div>
 
@@ -1896,7 +1974,7 @@
               </div>
               <div class="mt-3">
                 <h4 class="font-display font-bold text-navy-primary text-sm transition-colors group-hover:text-gold">Pengecoran Tapak Kolom Pertama</h4>
-                <p class="text-[11px] text-gray-500 mt-1">Disaksikan oleh Ketua DKM & tokoh desa</p>
+                <p class="text-[11px] text-gray-600 mt-1">Disaksikan oleh Ketua DKM & tokoh desa</p>
               </div>
             </div>
 
@@ -1912,7 +1990,7 @@
               </div>
               <div class="mt-3">
                 <h4 class="font-display font-bold text-navy-primary text-sm transition-colors group-hover:text-gold">Update Progress Juli 2026</h4>
-                <p class="text-[11px] text-gray-500 mt-1">Dokumentasi terkini pembangunan</p>
+                <p class="text-[11px] text-gray-600 mt-1">Dokumentasi terkini pembangunan</p>
               </div>
             </div>
 
@@ -1927,7 +2005,7 @@
               </div>
               <div class="mt-3">
                 <h4 class="font-display font-bold text-navy-primary text-sm transition-colors group-hover:text-gold">Detail Konstruksi</h4>
-                <p class="text-[11px] text-gray-500 mt-1">Pekerjaan struktur berjalan lancar</p>
+                <p class="text-[11px] text-gray-600 mt-1">Pekerjaan struktur berjalan lancar</p>
               </div>
             </div>
 
@@ -1942,7 +2020,7 @@
               </div>
               <div class="mt-3">
                 <h4 class="font-display font-bold text-navy-primary text-sm transition-colors group-hover:text-gold">Kondisi Lokasi Juli 2026</h4>
-                <p class="text-[11px] text-gray-500 mt-1">Sesuai roadmap tahapan pembangunan</p>
+                <p class="text-[11px] text-gray-600 mt-1">Sesuai roadmap tahapan pembangunan</p>
               </div>
             </div>
 
@@ -2015,13 +2093,13 @@
       <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-6">
         
         <div class="reveal dkm-card-soft rounded-2xl p-5 text-center w-56">
-          <span class="inline-flex px-2.5 py-0.5 rounded-full bg-gold/10 text-gold text-[9px] font-bold uppercase tracking-wider mb-2">Dewan Penasehat</span>
+          <span class="inline-flex px-2.5 py-0.5 rounded-full bg-gold/10 gold-ink text-[9px] font-bold uppercase tracking-wider mb-2">Dewan Penasehat</span>
           <h4 class="font-display text-base font-bold text-navy-primary">Kyai Bustomi</h4>
           <span class="block text-xs text-gray-600 mt-1 leading-relaxed">Tokoh Sesepuh Desa</span>
         </div>
 
         <div class="reveal reveal-delay-1 dkm-card-soft rounded-2xl p-5 text-center w-56">
-          <span class="inline-flex px-2.5 py-0.5 rounded-full bg-gold/10 text-gold text-[9px] font-bold uppercase tracking-wider mb-2">Dewan Pembina</span>
+          <span class="inline-flex px-2.5 py-0.5 rounded-full bg-gold/10 gold-ink text-[9px] font-bold uppercase tracking-wider mb-2">Dewan Pembina</span>
           <h4 class="font-display text-base font-bold text-navy-primary">Kyai Hasbi Alloh</h4>
           <span class="block text-xs text-gray-600 mt-1 leading-relaxed">Pimpinan Pondok Pesantren</span>
         </div>
@@ -2046,13 +2124,13 @@
       <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-6">
         
         <div class="reveal dkm-card-soft rounded-2xl p-5 text-center w-56 hover:border-gold/30 transition-all duration-300">
-          <span class="inline-flex px-2.5 py-0.5 rounded-full bg-gold/10 text-gold text-[9px] font-bold uppercase tracking-wider mb-2">Sekretaris</span>
+          <span class="inline-flex px-2.5 py-0.5 rounded-full bg-gold/10 gold-ink text-[9px] font-bold uppercase tracking-wider mb-2">Sekretaris</span>
           <h4 class="font-display text-base font-bold text-navy-primary leading-snug">Maulana Arif Pratama, S.E</h4>
           <span class="block text-xs text-gray-600 mt-1 leading-relaxed">Koordinator IT & IT Consultant</span>
         </div>
 
         <div class="reveal reveal-delay-1 dkm-card-soft rounded-2xl p-5 text-center w-56 hover:border-gold/30 transition-all duration-300">
-          <span class="inline-flex px-2.5 py-0.5 rounded-full bg-gold/10 text-gold text-[9px] font-bold uppercase tracking-wider mb-2">Bendahara</span>
+          <span class="inline-flex px-2.5 py-0.5 rounded-full bg-gold/10 gold-ink text-[9px] font-bold uppercase tracking-wider mb-2">Bendahara</span>
           <h4 class="font-display text-base font-bold text-navy-primary leading-snug">Aenul Yaqin, S.Pd</h4>
           <span class="block text-xs text-gray-600 mt-1 leading-relaxed">Akuntan & Staff Keuangan</span>
         </div>
@@ -2066,7 +2144,7 @@
           <div class="w-9 h-9 rounded-lg bg-navy-primary/5 text-navy-primary flex items-center justify-center mx-auto mb-3">
             <i data-lucide="megaphone" class="w-4 h-4"></i>
           </div>
-          <span class="block text-[10px] text-gold uppercase font-bold tracking-wider mb-1">Div. Dakwah</span>
+          <span class="block text-[10px] gold-ink uppercase font-bold tracking-wider mb-1">Div. Dakwah</span>
           <span class="block text-xs font-semibold text-navy-primary">Jayin Nantapi, S.Pd</span>
         </div>
 
@@ -2074,7 +2152,7 @@
           <div class="w-9 h-9 rounded-lg bg-navy-primary/5 text-navy-primary flex items-center justify-center mx-auto mb-3">
             <i data-lucide="heart-handshake" class="w-4 h-4"></i>
           </div>
-          <span class="block text-[10px] text-gold uppercase font-bold tracking-wider mb-1">Div. Sosial</span>
+          <span class="block text-[10px] gold-ink uppercase font-bold tracking-wider mb-1">Div. Sosial</span>
           <span class="block text-xs font-semibold text-navy-primary">Ofiq Sodiqin</span>
         </div>
 
@@ -2082,7 +2160,7 @@
           <div class="w-9 h-9 rounded-lg bg-navy-primary/5 text-navy-primary flex items-center justify-center mx-auto mb-3">
             <i data-lucide="graduation-cap" class="w-4 h-4"></i>
           </div>
-          <span class="block text-[10px] text-gold uppercase font-bold tracking-wider mb-1">Div. Pendidikan</span>
+          <span class="block text-[10px] gold-ink uppercase font-bold tracking-wider mb-1">Div. Pendidikan</span>
           <span class="block text-xs font-semibold text-navy-primary">Abdul Wahid, S.Pd</span>
         </div>
 
@@ -2090,7 +2168,7 @@
           <div class="w-9 h-9 rounded-lg bg-navy-primary/5 text-navy-primary flex items-center justify-center mx-auto mb-3">
             <i data-lucide="camera" class="w-4 h-4"></i>
           </div>
-          <span class="block text-[10px] text-gold uppercase font-bold tracking-wider mb-1">Div. Media</span>
+          <span class="block text-[10px] gold-ink uppercase font-bold tracking-wider mb-1">Div. Media</span>
           <span class="block text-xs font-semibold text-navy-primary">Khoiruttamami, S.Pd</span>
         </div>
 
