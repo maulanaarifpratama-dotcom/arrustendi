@@ -6,11 +6,11 @@
   
   <!-- SEO Meta -->
   <title>Masjid Jami Ar-Rustendi — Bantu Kami Membangun Rumah Allah</title>
-  <meta name="description" content="Dukung pembangunan Masjid Jami Ar-Rustendi di Kp. Rumpin, Kabupaten Bogor. Dana progres Rp 331.262.000 dari Rp 625.050.247 (53,0%). Setiap donasi adalah amal jariyah.">
+  <meta name="description" content="Dukung pembangunan Masjid Jami Ar-Rustendi di Kp. Rumpin, Kabupaten Bogor. Dana progres Rp 335.972.000 dari Rp 625.050.247 (53,8%). Setiap donasi adalah amal jariyah.">
   
   <!-- Open Graph -->
   <meta property="og:title" content="Masjid Jami Ar-Rustendi — Bantu Kami Membangun Rumah Allah">
-  <meta property="og:description" content="Dukung pembangunan masjid di Rumpin Bogor. Sudah 53,0% progres dana tercapai (modal awal + donasi). Donasi via transfer bank.">
+  <meta property="og:description" content="Dukung pembangunan masjid di Rumpin Bogor. Sudah 53,8% progres dana tercapai (modal awal + donasi). Donasi via transfer bank.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='630' viewBox='0 0 1200 630'><rect width='1200' height='630' fill='%230D1B4B'/><text x='100' y='300' font-family='serif' font-size='64' fill='%23C9A84C' font-weight='bold'>Masjid Jami Ar-Rustendi</text><text x='100' y='400' font-family='sans-serif' font-size='32' fill='white'>Fundraising Pembangunan Masjid · Rumpin, Bogor</text></svg>">
   
@@ -43,6 +43,9 @@
       --color-navy-hover: #2A3F8F;
       --color-gold: #B8963E;
       --color-gold-light: #E8D08A;
+      /* Gold pekat untuk teks kecil di atas latar terang.
+         #B8963E hanya 2.81:1 di atas putih dan gagal WCAG AA. */
+      --color-gold-ink: #7E6221;
       --color-offwhite: #F5F3EE;
       --font-display: 'Lora', serif;
       --font-body: 'Plus Jakarta Sans', sans-serif;
@@ -73,7 +76,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #B8963E;
+      color: #7E6221;
     }
 
     /* Gold Divider */
@@ -233,7 +236,15 @@
       transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       border-top: 1px solid rgba(201, 168, 76, 0.2);
     }
-    @media (max-width: 768px) { .mobile-donate-bar { display: flex; align-items: center; justify-content: space-between; } }
+    @media (max-width: 768px) {
+      .mobile-donate-bar { display: flex; align-items: center; justify-content: space-between; }
+      /* Bar melayang di atas konten; beri ruang supaya bagian akhir
+         halaman tidak pernah tertutup. */
+      body { padding-bottom: 84px; }
+    }
+    .mobile-donate-bar {
+      padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    }
     .mobile-donate-bar.visible { transform: translateY(0); }
 
     /* Pastikan semua gambar tidak overflow container */
@@ -267,6 +278,260 @@
       background-position: center;
       opacity: 0.08;   /* sangat subtle — jangan lebih dari 0.1 */
       mix-blend-mode: luminosity;
+    }
+
+
+    /* ==========================================================
+       BROWSER SURFACES — bagian yang tidak kita gambar tapi tetap
+       membawa desain: seleksi teks, caret, angka tabular.
+       ========================================================== */
+    ::selection {
+      background: rgba(184, 150, 62, 0.28);
+      color: #0D1B4B;
+    }
+    input, textarea { caret-color: #B8963E; }
+
+    /* Angka uang selalu sejajar antar baris */
+    .tnum {
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum" 1;
+    }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0;
+      margin: -1px; overflow: hidden; clip: rect(0 0 0 0);
+      white-space: nowrap; border-width: 0;
+    }
+
+    /* Umpan balik tekan — tombol harus terasa merespons */
+    .btn-gold:active, .btn-navy:active, .btn-ghost:active {
+      transform: translateY(0) scale(0.98);
+      transition-duration: 100ms;
+    }
+
+    /* Hover hanya untuk pointer presisi; di layar sentuh tap
+       memicu hover dan menyebabkan state palsu. */
+    @media (hover: none) {
+      .btn-gold:hover, .btn-navy:hover, .btn-ghost:hover { transform: none; box-shadow: none; }
+      .metric-card:hover { transform: none; box-shadow: none; border-color: rgba(13, 27, 75, 0.08); }
+      .img-card:hover img { transform: none; }
+      .btn-gold:hover::after { left: -75%; }
+    }
+
+    /* ==========================================================
+       LEDGER PEMASUKAN WAQAF
+       ========================================================== */
+    .ledger-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.875rem 0;
+      border-bottom: 1px solid rgba(13, 27, 75, 0.07);
+    }
+    .ledger-row:last-child { border-bottom: 0; }
+
+    .ledger-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.8125rem;
+      color: #4B5563;
+      line-height: 1.4;
+    }
+    .ledger-value {
+      font-family: 'Lora', serif;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: #374151;
+      white-space: nowrap;
+    }
+
+    /* Baris hasil penjumlahan — garis ganda seperti pembukuan */
+    .ledger-row-sum {
+      border-top: 2px solid rgba(13, 27, 75, 0.14);
+      border-bottom: 1px solid rgba(13, 27, 75, 0.07);
+      margin-top: 0.25rem;
+    }
+    .ledger-label-sum {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: #1B2B6B;
+    }
+    .ledger-value-sum {
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1B2B6B;
+      white-space: nowrap;
+    }
+
+    .ledger-row-total {
+      border-top: 2px solid rgba(13, 27, 75, 0.14);
+      border-bottom: 0;
+      background: linear-gradient(90deg, rgba(184, 150, 62, 0.07), rgba(184, 150, 62, 0));
+      margin: 0.25rem -1.5rem 0;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .ledger-row-total { margin-left: -2rem; margin-right: -2rem; padding-left: 2rem; padding-right: 2rem; }
+    }
+    .ledger-label-total {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #1B2B6B;
+    }
+    .ledger-value-total {
+      font-family: 'Lora', serif;
+      font-size: 1.375rem;
+      font-weight: 700;
+      color: #1B2B6B;
+      white-space: nowrap;
+      line-height: 1.2;
+    }
+
+    .ledger-info {
+      position: relative;
+      display: inline-grid;
+      place-items: center;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 999px;
+      color: #4B5563;
+      transition: color 180ms cubic-bezier(0.23, 1, 0.32, 1),
+                  background-color 180ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .ledger-info:hover { color: #7E6221; background-color: rgba(184, 150, 62, 0.14); }
+    .ledger-info:active { transform: scale(0.92); }
+    /* Target sentuh 44x44 tanpa mengubah ukuran visual ikon. */
+    .ledger-info::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 44px;
+      height: 44px;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Progress bar dianimasikan dengan clip-path, bukan width.
+       width memicu layout tiap frame; clip-path jalan di compositor
+       dan gradiennya tidak ikut melar. */
+    .ledger-bar {
+      width: 100%;
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, #B8963E, #d6b460);
+      transition: clip-path 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    /* Pull-quote: rule 1px, bukan pita warna tebal di sisi kiri. */
+    .pull-quote {
+      padding: 0.25rem 0 0.25rem 1.5rem;
+      border-left: 1px solid #B8963E;
+    }
+    .pull-quote p { text-wrap: pretty; }
+
+    /* ==========================================================
+       DONOR ROLL
+       ========================================================== */
+    .donor-search {
+      width: 100%;
+      padding: 0.5625rem 2.25rem 0.5625rem 2.4rem;
+      font-size: 0.8125rem;
+      color: #1B2B6B;
+      background: #ffffff;
+      border: 1px solid rgba(13, 27, 75, 0.14);
+      border-radius: 999px;
+      transition: border-color 180ms cubic-bezier(0.23, 1, 0.32, 1),
+                  box-shadow 180ms cubic-bezier(0.23, 1, 0.32, 1);
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .donor-search::placeholder { color: #9CA3AF; }
+    .donor-search::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+    .donor-search:hover { border-color: rgba(13, 27, 75, 0.24); }
+    .donor-search:focus {
+      outline: none;
+      border-color: #B8963E;
+      box-shadow: 0 0 0 3px rgba(184, 150, 62, 0.18);
+    }
+
+    .donor-search-clear {
+      position: absolute;
+      right: 0.375rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: grid;
+      place-items: center;
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 999px;
+      color: #9CA3AF;
+      transition: color 180ms cubic-bezier(0.23, 1, 0.32, 1),
+                  background-color 180ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .donor-search-clear:hover { color: #1B2B6B; background-color: rgba(13, 27, 75, 0.06); }
+    .donor-search-clear:active { transform: translateY(-50%) scale(0.9); }
+
+    .donor-row {
+      display: grid;
+      grid-template-columns: 1.75rem 1fr auto;
+      align-items: baseline;
+      gap: 0.5rem;
+      padding: 0.6875rem 0.5rem 0.6875rem 0;
+      border-bottom: 1px solid rgba(13, 27, 75, 0.06);
+      transition: background-color 160ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .donor-row:hover { background-color: rgba(184, 150, 62, 0.05); }
+    }
+    .donor-no {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: #7E6221;
+      text-align: right;
+    }
+    .donor-name {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: #374151;
+      line-height: 1.45;
+      overflow-wrap: break-word;
+      min-width: 0;
+    }
+    .donor-amount {
+      font-family: 'Lora', serif;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: #1B2B6B;
+      white-space: nowrap;
+    }
+
+    .donor-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.625rem 0;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #7E6221;
+      transition: color 180ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .donor-toggle:hover { color: #1B2B6B; }
+    .donor-toggle:active { transform: scale(0.985); }
+    .donor-toggle-icon {
+      transition: transform 220ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .donor-toggle-icon.is-open { transform: rotate(180deg); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ledger-bar, .donor-toggle-icon { transition: none; }
     }
 
     /* ==========================================================
@@ -736,10 +1001,10 @@
           <div class="reveal reveal-delay-4 w-full max-w-xl bg-white/10 rounded-full p-4 mb-8 border border-white/5">
             <div class="flex items-center justify-between mb-2">
               <span id="hero-progress-label" class="text-xs uppercase font-bold tracking-wider" style="color:rgba(255,255,255,0.6) !important;">Dana Progres (Modal + Donasi)</span>
-              <span id="hero-progress-val" class="text-sm font-bold text-white" style="color:#ffffff !important; font-weight:600;"><span id="hero-progress-text">53.0</span>% · Rp 331.262.000</span>
+              <span id="hero-progress-val" class="text-sm font-bold text-white" style="color:#ffffff !important; font-weight:600;"><span id="hero-progress-text">53,8</span>% · <span id="hero-progress-amount">Rp 335.972.000</span></span>
             </div>
             <div id="hero-progress-bg" style="background:rgba(255,255,255,0.15); height:6px; border-radius:99px;" class="w-full overflow-hidden">
-              <div id="hero-progress-bar" style="background:#B8963E; width:53.0%; height:100%; border-radius:99px; transition:width 1.5s ease 0.5s;"></div>
+              <div id="hero-progress-bar" style="background:#B8963E; width:100%; height:100%; border-radius:99px; clip-path:inset(0 100% 0 0); transition:clip-path 1.5s cubic-bezier(0.23,1,0.32,1) 0.4s;"></div>
             </div>
           </div>
 
@@ -757,7 +1022,7 @@
         </div>
 
         <!-- Kolom Kanan - Rendering Glass Panel -->
-        <div class="lg:col-span-5 relative">
+        <div class="lg:col-span-5 relative overflow-hidden">
           <div id="hero-glass-card" class="reveal reveal-delay-3 glass rounded-2xl p-6 md:p-8">
             <span class="block text-[11px] font-bold text-gold uppercase tracking-wider mb-4">Visualisasi Arsitektur</span>
             
@@ -796,11 +1061,6 @@
       </div>
     </div>
 
-    <!-- Scroll Down anim indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 animate-bounce text-white/40 pointer-events-none">
-      <span class="text-[10px] uppercase font-bold tracking-widest">Scroll</span>
-      <i data-lucide="chevron-down" class="w-4 h-4"></i>
-    </div>
   </section>
 
 
@@ -828,11 +1088,11 @@
             Masjid yang ada pun sudah tidak lagi mampu menampung kapasitas jamaah yang terus bertambah pesat. Pada shalat Jumat, Shalat Tarawih Ramadhan, maupun Shalat Id, jamaah seringkali meluber hingga ke halaman luar dan badan jalan sekitar. Kehadiran Masjid Ar-Rustendi adalah solusi mulia bagi kebutuhan spiritual komunitas di sini.
           </p>
 
-          <div class="border-l-4 border-gold bg-gold/5 rounded-r-2xl p-5 mb-8">
-            <p class="font-display italic text-navy-primary text-base leading-relaxed">
-              "Setiap sujud, setiap shalat berjamaah, dan setiap hafalan ayat suci yang dilisankan di masjid ini adalah aliran pahala abadi yang akan terus mengalir untuk setiap donatur."
+          <blockquote class="pull-quote mb-8">
+            <p class="font-display italic text-navy-primary text-lg md:text-xl leading-relaxed">
+              &ldquo;Setiap sujud, setiap shalat berjamaah, dan setiap hafalan ayat suci yang dilisankan di masjid ini adalah aliran pahala abadi yang akan terus mengalir untuk setiap donatur.&rdquo;
             </p>
-          </div>
+          </blockquote>
         </div>
 
         <!-- Kolom Kanan: 4 Tujuan Mulia & Dokumentasi -->
@@ -1000,14 +1260,14 @@
               </div>
             </div>
             <div class="text-left">
-              <span id="counter-terkumpul" class="block" style="font-family:'Lora',serif;
+              <span id="counter-terkumpul" class="block tnum" style="font-family:'Lora',serif;
                 font-weight:700;
                 font-size:clamp(1rem,2vw,1.5rem);
                 color:#1B2B6B;
                 line-height:1.2;
                 word-break:break-word;
                 overflow-wrap:break-word;">Rp 0</span>
-              <span class="block text-[11px] text-gray-400 mt-1">53.0% dari Anggaran RAB</span>
+              <span class="block text-[11px] text-gray-400 mt-1"><span id="metric-persen" class="tnum">53,8</span>% dari Anggaran RAB</span>
             </div>
           </div>
 
@@ -1035,7 +1295,7 @@
                 color:#1B2B6B;
                 line-height:1.2;
                 word-break:break-word;
-                overflow-wrap:break-word;">Rp 293.788.247</span>
+                overflow-wrap:break-word;">Rp 289.078.247</span>
               <span class="block text-[11px] text-red-500 font-semibold mt-1 uppercase tracking-wide">Kekurangan 47.0%</span>
             </div>
           </div>
@@ -1366,7 +1626,7 @@
               <div class="img-card" style="border-radius:14px; overflow:hidden; aspect-ratio:4/3; position:relative;">
                 <img 
                   src="images/render-tampak-depan-malam.jpg"
-                  alt="Rendering Tampak Depan — Minimalis, pilar vertikal megah"
+                  alt="Rendering Tampak Depan, minimalis, pilar vertikal megah"
                   style="width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;"
                   loading="lazy"
                 >
@@ -1381,7 +1641,7 @@
               <div class="img-card" style="border-radius:14px; overflow:hidden; aspect-ratio:4/3; position:relative;">
                 <img 
                   src="images/render-perspektif-malam.jpg"
-                  alt="Visual Sudut Perspektif Malam — Pencahayaan temaram hangat dramatis"
+                  alt="Visual Sudut Perspektif Malam, pencahayaan temaram hangat dramatis"
                   style="width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;"
                   loading="lazy"
                 >
@@ -1396,7 +1656,7 @@
               <div class="img-card" style="border-radius:14px; overflow:hidden; aspect-ratio:4/3; position:relative;">
                 <img 
                   src="images/render-tampak-depan-2.jpg"
-                  alt="Detail Ornamen Gerbang Masuk — Aksen ukiran arabesque emas islami"
+                  alt="Detail Ornamen Gerbang Masuk, aksen ukiran arabesque emas islami"
                   style="width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;"
                   loading="lazy"
                 >
@@ -1411,7 +1671,7 @@
               <div class="img-card" style="border-radius:14px; overflow:hidden; aspect-ratio:4/3; position:relative;">
                 <img 
                   src="images/render-samping.jpg"
-                  alt="Tampak Samping & Menara — Susunan simetris arsitektur minimalis"
+                  alt="Tampak Samping & Menara, susunan simetris arsitektur minimalis"
                   style="width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;"
                   loading="lazy"
                 >
@@ -1433,7 +1693,7 @@
               <div class="img-card" style="border-radius:14px; overflow:hidden; aspect-ratio:4/3; position:relative;">
                 <img 
                   src="images/progress-pengukuran.jpg"
-                  alt="Pengukuran arah kiblat menggunakan kompas — tahap awal pembangunan"
+                  alt="Pengukuran arah kiblat menggunakan kompas, tahap awal pembangunan"
                   style="width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease;"
                   loading="lazy"
                 >
@@ -1944,7 +2204,7 @@
               </div>
               <div>
                 <h3 class="font-display text-base md:text-lg font-bold text-navy-primary">Transfer Bank Langsung</h3>
-                <p class="text-xs text-gray-500 mt-1">BSI, BRI, atau BNI — salin nomor rekening</p>
+                <p class="text-xs text-gray-500 mt-1">BSI, BRI, atau BNI. Salin nomor rekening</p>
               </div>
             </div>
           </a>
@@ -2059,323 +2319,157 @@
   <!-- ============================================ -->
   <section id="donatur" class="py-24 md:py-32 bg-white">
     <div class="max-w-[1240px] mx-auto px-6 md:px-12">
-      
+
       <div class="text-center max-w-2xl mx-auto mb-16">
         <span class="section-label">Transparansi Donasi</span>
         <div class="divider-gold mx-auto mt-3 mb-4"></div>
         <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-navy-primary">Daftar Donatur Waqaf</h2>
         <p class="text-gray-500 text-sm md:text-base mt-4">
-          Laporan pemasukan dana waqaf dari para donatur yang telah menyalurkan amal jariyahnya untuk pembangunan Masjid Jami Ar-Rustendi.
+          Setiap rupiah yang masuk dicatat dan dibuka. Di bawah ini rincian pemasukan waqaf beserta nama para donatur yang telah menyalurkan amal jariyahnya.
         </p>
       </div>
 
-      <!-- Summary Card -->
-      <div class="reveal max-w-3xl mx-auto mb-10 bg-gradient-to-br from-offwhite to-white border border-gray-100 rounded-2xl p-6 md:p-8 shadow-sm">
-        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-          <div class="text-center md:text-left">
-            <span class="block text-[11px] uppercase font-bold tracking-wider text-gray-400 mb-1">Total Pemasukan Waqaf</span>
-            <span class="block font-display text-3xl md:text-4xl font-bold text-navy-primary">Rp 31.262.000</span>
-            <span class="block text-xs text-gray-500 mt-1">Modal awal pembangunan: Rp 300.000.000</span>
-            <span class="block text-sm font-semibold text-navy-primary mt-1">Total progres dana: Rp 331.262.000</span>
-            <div class="mt-3 inline-flex items-center gap-2 px-3 py-1.5 bg-navy-primary/5 rounded-full border border-navy-primary/10">
-              <i data-lucide="calendar-check-2" class="w-4 h-4 text-navy-primary"></i>
-              <span class="text-[11px] font-semibold text-navy-primary uppercase tracking-wider">Update 5 Agustus 2026</span>
+      <!-- ============================================================
+           LEDGER — rincian pemasukan yang benar-benar berjumlah
+           ============================================================ -->
+      <div x-data="waqafLedger()" class="reveal max-w-3xl mx-auto mb-12">
+
+        <div class="rounded-2xl border border-navy-primary/10 bg-offwhite/60 overflow-hidden">
+
+          <div class="flex flex-wrap items-center justify-between gap-3 px-6 md:px-8 py-4 border-b border-navy-primary/10 bg-white">
+            <h3 class="font-display text-base md:text-lg font-bold text-navy-primary">Rincian Pemasukan Waqaf</h3>
+            <span class="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-navy-primary/70">
+              <i data-lucide="calendar-check-2" class="w-3.5 h-3.5 text-gold" aria-hidden="true"></i>
+              Per 25 Agustus 2026
+            </span>
+          </div>
+
+          <dl class="px-6 md:px-8 py-2">
+            <div class="ledger-row">
+              <dt class="ledger-label"><span class="tnum" x-text="donors.length">56</span>donatur tercatat</dt>
+              <dd class="ledger-value tnum" x-text="rp(rollTotal)">Rp 34.522.000</dd>
             </div>
-          </div>
-          <div class="flex items-center justify-center gap-3 px-5 py-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
-            <i data-lucide="users" class="w-5 h-5 text-emerald-600"></i>
-            <div>
-              <span class="block text-sm font-bold text-emerald-700">48 Donatur</span>
-              <span class="block text-[10px] text-emerald-600/70 uppercase tracking-wider">Tercatat</span>
+            <div class="ledger-row">
+              <dt class="ledger-label">
+                Pemasukan belum dirinci
+                <button type="button"
+                        @click="showNote = !showNote"
+                        :aria-expanded="showNote"
+                        aria-controls="ledger-note"
+                        class="ledger-info"
+                        aria-label="Penjelasan pemasukan belum dirinci">
+                  <i data-lucide="help-circle" class="w-3.5 h-3.5" aria-hidden="true"></i>
+                </button>
+              </dt>
+              <dd class="ledger-value tnum" x-text="rp(unlisted)">Rp 1.450.000</dd>
             </div>
-          </div>
-        </div>
-        <div class="mt-6">
-          <div class="flex items-center justify-between text-[11px] font-semibold uppercase tracking-wider text-gray-500 mb-2">
-            <span>Progres terhadap total RAB</span>
-            <span class="text-navy-primary">53.0%</span>
-          </div>
-          <div class="h-2.5 rounded-full bg-navy-primary/10 overflow-hidden">
-            <div class="h-full rounded-full bg-gradient-to-r from-gold to-[#d6b460]" style="width:53.0%"></div>
+
+            <div id="ledger-note" x-show="showNote" x-transition.opacity x-cloak
+                 class="mb-3 -mt-1 text-xs leading-relaxed text-gray-600 bg-white rounded-xl border border-navy-primary/10 p-4">
+              Pemasukan yang sudah diterima dan diverifikasi panitia, namun rinciannya belum dipublikasikan atas permintaan donatur. Bukti penerimaannya tetap tersimpan dan dapat diperiksa.
+            </div>
+
+            <div class="ledger-row ledger-row-sum">
+              <dt class="ledger-label-sum">Total pemasukan waqaf</dt>
+              <dd class="ledger-value-sum tnum" x-text="rp(totalWaqaf)">Rp 35.972.000</dd>
+            </div>
+            <div class="ledger-row">
+              <dt class="ledger-label">Modal awal pembangunan</dt>
+              <dd class="ledger-value tnum" x-text="rp(modalAwal)">Rp 300.000.000</dd>
+            </div>
+            <div class="ledger-row ledger-row-total">
+              <dt class="ledger-label-total">Dana progres terkumpul</dt>
+              <dd class="ledger-value-total tnum" x-text="rp(danaProgres)">Rp 335.972.000</dd>
+            </div>
+          </dl>
+
+          <div class="px-6 md:px-8 pb-6 pt-2">
+            <div class="flex items-baseline justify-between mb-2 gap-3">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-gray-500">Progres terhadap RAB</span>
+              <span class="text-sm font-bold text-navy-primary tnum text-right">
+                <span x-text="persenLabel">53,8</span>% <span class="font-normal text-gray-400">dari <span class="tnum" x-text="rp(totalRAB)">Rp 625.050.247</span></span>
+              </span>
+            </div>
+            <div class="h-2.5 rounded-full bg-navy-primary/10 overflow-hidden"
+                 role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                 :aria-valuenow="Math.round(persen)"
+                 :aria-label="'Progres dana ' + persenLabel + ' persen dari total RAB'">
+              <div class="ledger-bar" :style="'clip-path: inset(0 ' + (100 - persen).toFixed(1) + '% 0 0)'" style="clip-path:inset(0 46.2% 0 0)"></div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Donor List Table -->
-      <div x-data="{ showAll: false }" class="reveal reveal-delay-1 max-w-3xl mx-auto overflow-hidden rounded-2xl border border-gray-100 shadow-sm">
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse">
-            <thead>
-              <tr class="bg-navy-primary text-white">
-                <th class="py-3.5 px-5 text-xs uppercase font-bold tracking-wider w-12 text-center">No</th>
-                <th class="py-3.5 px-5 text-xs uppercase font-bold tracking-wider">Nama Donatur</th>
-                <th class="py-3.5 px-5 text-xs uppercase font-bold tracking-wider text-right w-36">Nominal</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-50 text-sm">
-              <tr class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">1</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Ary Widiyoseno</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 500.000</td>
-              </tr>
-              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">2</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Hamba Allah</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.000.000</td>
-              </tr>
-              <tr class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">3</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Bpk. Adhitya Prakoso bin Suyoso</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.000.000</td>
-              </tr>
-              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">4</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Meilia Putri</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.100.000</td>
-              </tr>
-              <tr class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">5</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Shela Angraini</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 200.000</td>
-              </tr>
-              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">6</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Shodaqoh Jama'ah Kajian Khatmil Qur'an</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 2.062.000</td>
-              </tr>
-              <tr class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">7</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Dafa Al Ghifari</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 50.000</td>
-              </tr>
-              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">8</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Wajihudin</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 250.000</td>
-              </tr>
-              <tr class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">9</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Parlin Tambunan</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 100.000</td>
-              </tr>
-              <tr class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">10</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Nuryadi Lio</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 400.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">11</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Dhita Fitria Muti</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 100.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">12</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Nana</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 200.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">13</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Ibu Kasianti</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 500.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">14</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Hamba Allah</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 100.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">15</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Utiko Rochman</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.000.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">16</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Novriandi Saputra</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 100.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">17</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Eka Yuliani</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 200.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">18</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Nurdin</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 350.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">19</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Keluarga Alm. H. Marwiyah</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 2.000.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">20</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Villa Kahayang</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 2.000.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">21</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Mang Jarkasih</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.000.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">22</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Ceu Arum</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 50.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">23</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Raden Bentara Putra Utama</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.000.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">24</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Kak Puspita</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.000.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">25</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Ibu Hj. Nurmala</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.500.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">26</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Ibu Hj. Pariah / Bpk. Warisman</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 500.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">27</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Jama'ah Mushola At-Taqwa</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.700.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">28</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Bos Ozi</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.000.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">29</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Bpk. Mawar Bin Alm. Bpk. Syafri</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 500.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">30</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Teh Nuraeni</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 100.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">31</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Sadam</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 100.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">32</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Ibu Gina</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 100.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">33</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Ibu Dwi Lestari</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 100.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">34</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Bu Eni</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 100.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">35</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Bu Vero</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 100.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">36</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Teh Emu dan Dilah</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 150.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">37</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Wali Murid Elyaqien</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.050.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">38</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Teh Ica</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 100.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">39</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Bunda El</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 500.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">40</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Ibu Hj. Dian dan Bpk. H. Ali</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.500.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">41</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">M. Syanan Bin Naim</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 200.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">42</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Bpk. E. Aripin Bin Omo Sukarma</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 2.000.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">43</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Hamba Allah</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 100.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">44</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Ibu Kustiani</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 1.000.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">45</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Bang Usman</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 500.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">46</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Bos Ohim</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 200.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">47</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Teh Diyah Rabak</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 150.000</td>
-              </tr>
-              <tr x-show="showAll" class="hover:bg-gold/5 transition-colors bg-offwhite/50">
-                <td class="py-3 px-5 text-center text-gray-400 font-bold text-xs">48</td>
-                <td class="py-3 px-5 text-gray-700 font-medium">Sari Nur Aini</td>
-                <td class="py-3 px-5 text-right font-display font-semibold text-navy-primary">Rp 300.000</td>
-              </tr>
-              <!-- Total Row -->
-              <tr class="bg-navy-deepest text-white font-bold">
-                <td class="py-4 px-5 text-center text-gold" colspan="2">TOTAL PEMASUKAN WAQAF</td>
-                <td class="py-4 px-5 text-right font-display text-base text-gold">Rp 31.262.000</td>
-              </tr>
-            </tbody>
-          </table>
+      <!-- ============================================================
+           DONOR ROLL — satu sumber data, bisa dicari
+           ============================================================ -->
+      <div x-data="donorRoll()" class="reveal reveal-delay-1 max-w-3xl mx-auto">
+
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
+          <h3 class="font-display text-base md:text-lg font-bold text-navy-primary">
+            Nama Donatur <span class="text-gray-400 font-body font-medium text-sm tnum">(<span x-text="donors.length">56</span>)</span>
+          </h3>
+
+          <div class="relative sm:w-64">
+            <label for="donor-search" class="sr-only">Cari nama donatur</label>
+            <i data-lucide="search" class="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" aria-hidden="true"></i>
+            <input id="donor-search" type="search" x-model="query" autocomplete="off"
+                   placeholder="Cari nama donatur"
+                   class="donor-search">
+            <button type="button" x-show="query.length > 0" x-cloak @click="clearQuery()"
+                    class="donor-search-clear"
+                    aria-label="Hapus pencarian">
+              <i data-lucide="x" class="w-3.5 h-3.5" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
-        <!-- Show More / Show Less Toggle -->
-        <div class="px-5 py-3 border-t border-gray-100 text-center">
-          <button @click="showAll = !showAll" class="text-xs font-bold text-gold hover:text-navy-primary transition-colors uppercase tracking-wider">
-            <span x-text="showAll ? 'Tampilkan Lebih Sedikit' : 'Tampilkan Semua (48 Donatur)'"></span>
-          </button>
+
+        <ol id="donor-roll-list" class="grid sm:grid-cols-2 gap-x-8 border-t border-navy-primary/10">
+          <template x-for="(d, i) in donors" :key="i">
+            <li x-show="isVisible(d, i)" x-cloak class="donor-row">
+              <span class="donor-no tnum" x-text="i + 1"></span>
+              <span class="donor-name" x-text="d.n"></span>
+              <span class="donor-amount tnum" x-text="rp(d.v)"></span>
+            </li>
+          </template>
+        </ol>
+
+        <!-- Empty state -->
+        <div x-show="matchCount === 0" x-cloak class="py-12 text-center">
+          <div class="mx-auto mb-3 w-11 h-11 rounded-full bg-navy-primary/5 grid place-items-center">
+            <i data-lucide="search-x" class="w-5 h-5 text-gray-400" aria-hidden="true"></i>
+          </div>
+          <p class="text-sm text-gray-600">Tidak ada nama yang cocok dengan &ldquo;<span class="font-semibold text-navy-primary" x-text="query"></span>&rdquo;.</p>
+          <p class="text-xs text-gray-400 mt-1.5">Donasi Anda belum tercatat? Hubungi panitia lewat konfirmasi transfer.</p>
+        </div>
+
+        <!-- Footer: subtotal + disclosure -->
+        <div class="border-t-2 border-navy-primary/15">
+          <div class="flex items-baseline justify-between gap-3 py-4">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-gray-500">
+              <span x-show="!query">Subtotal <span class="tnum" x-text="donors.length">56</span>&nbsp;donatur</span>
+              <span x-show="query" x-cloak><span class="tnum" x-text="matchCount"></span>&nbsp;nama cocok</span>
+            </span>
+            <span class="font-display font-bold text-navy-primary tnum" x-text="rp(visibleTotal)">Rp 34.522.000</span>
+          </div>
+
+          <div x-show="!query && donors.length > previewCount" x-cloak class="pb-1">
+            <button type="button" @click="expanded = !expanded" :aria-expanded="expanded" aria-controls="donor-roll-list"
+                    class="donor-toggle">
+              <span x-text="expanded ? 'Tampilkan lebih sedikit' : 'Tampilkan semua ' + donors.length + ' donatur'">Tampilkan semua 56 donatur</span>
+              <i data-lucide="chevron-down" class="w-4 h-4 donor-toggle-icon" :class="expanded ? 'is-open' : ''" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
       </div>
 
       <!-- Callout Note -->
-      <div class="reveal reveal-delay-2 mt-8 max-w-3xl mx-auto flex items-start gap-4 p-5 bg-gold/5 rounded-2xl border border-gold/15">
+      <div class="reveal reveal-delay-2 mt-10 max-w-3xl mx-auto flex items-start gap-4 p-5 bg-gold/5 rounded-2xl border border-gold/15">
         <div class="p-2 rounded-xl bg-gold/10 text-gold flex-shrink-0 mt-0.5">
-          <i data-lucide="heart" class="w-5 h-5"></i>
+          <i data-lucide="heart" class="w-5 h-5" aria-hidden="true"></i>
         </div>
         <div class="text-xs md:text-sm text-gray-600 leading-relaxed">
-          Daftar di atas merupakan data pemasukan waqaf yang telah terverifikasi dan layak dipublikasikan. Seluruh donasi akan digunakan sepenuhnya untuk pembangunan Masjid Jami Ar-Rustendi. Semoga menjadi amal jariyah bagi seluruh donatur. Aamiin.
+          Seluruh donasi digunakan sepenuhnya untuk pembangunan Masjid Jami Ar-Rustendi. Invoice, bukti pembayaran material, dan laporan penggunaan dana terbuka untuk diperiksa. Semoga menjadi amal jariyah bagi seluruh donatur. Aamiin.
         </div>
       </div>
 
@@ -2441,7 +2535,6 @@
   <!-- [14] FINAL CTA BANNER                        -->
   <!-- ============================================ -->
   <section class="relative py-20 md:py-28 bg-navy-primary text-white text-center overflow-hidden">
-    <div class="absolute inset-0 bg-cover bg-center opacity-[0.03]" style="background-image:url('images/masjid.png');"></div>
     <div class="absolute inset-0 bg-gradient-to-br from-navy-primary via-[#0a1a4a] to-[#071238]"></div>
     
     <div class="relative z-10 max-w-3xl mx-auto px-6 md:px-12">
@@ -2517,9 +2610,9 @@
           Kontak Panitia
         </p>
         <div style="font-size:13px; color:#6B7280; line-height:1.8;">
-          <p>Hari Din Nugraha (Ketua) — <strong style="color:#1B2B6B;">085780694377</strong></p>
-          <p>Hasbi Alloh (Pembina) — <strong style="color:#1B2B6B;">085777182743</strong></p>
-          <p>Aenul Yaqin (Bendahara) — <strong style="color:#1B2B6B;">081382058641</strong></p>
+          <p>Hari Din Nugraha (Ketua): <strong style="color:#1B2B6B;">085780694377</strong></p>
+          <p>Hasbi Alloh (Pembina): <strong style="color:#1B2B6B;">085777182743</strong></p>
+          <p>Aenul Yaqin (Bendahara): <strong style="color:#1B2B6B;">081382058641</strong></p>
         </div>
       </div>
     </div>
@@ -2560,8 +2653,8 @@
   <!-- ============================================ -->
   <div id="mobile-donate-bar" class="mobile-donate-bar">
     <div class="text-white">
-      <span class="block text-[10px] uppercase tracking-wider text-white/50">Terkumpul 53.0%</span>
-      <span class="block font-display text-sm font-bold text-gold mt-0.5">Rp 331.262.000</span>
+      <span class="block text-[10px] uppercase tracking-wider text-white/50">Terkumpul <span id="bar-persen" class="tnum">53,8</span>%</span>
+      <span id="bar-amount" class="block font-display text-sm font-bold text-gold mt-0.5 tnum">Rp 335.972.000</span>
     </div>
     <a href="https://kitabisa.com/campaign/wakafmumesempurnakanmasjidimpiansantrirumpinbogor" target="_blank" class="btn-gold rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-wider">
       Donasi Sekarang
@@ -2582,18 +2675,158 @@
     // ==========================================
     // 1. CONFIGURATION OBJECT (MUTABLE & DYNAMIC)
     // ==========================================
-    const CONFIG = {
-      totalRAB: 625050247,
-      terkumpul: 331262000,
-      sisa: 293788247,
-      persentase: 53.0,
-      updateTerakhir: '5 Agustus 2026'
+    // ==========================================
+    // 1a. SUMBER DATA TUNGGAL — PEMASUKAN WAQAF
+    //
+    // Update donasi berikutnya: cukup tambah baris ke DONORS
+    // (dan sesuaikan WAQAF.unlisted bila perlu). Semua angka di
+    // ledger, subtotal, gauge, dan progress bar dihitung dari sini.
+    // ==========================================
+    const DONORS = [
+      { n: 'Ary Widiyoseno',                         v: 500000   },
+      { n: 'Hamba Allah',                            v: 1000000  },
+      { n: 'Bpk. Adhitya Prakoso bin Suyoso',        v: 1000000  },
+      { n: 'Meilia Putri',                           v: 1100000  },
+      { n: 'Shela Angraini',                         v: 200000   },
+      { n: "Shodaqoh Jama'ah Kajian Khatmil Qur'an", v: 2062000  },
+      { n: 'Dafa Al Ghifari',                        v: 50000    },
+      { n: 'Wajihudin',                              v: 250000   },
+      { n: 'Parlin Tambunan',                        v: 100000   },
+      { n: 'Nuryadi Lio',                            v: 400000   },
+      { n: 'Dhita Fitria Muti',                      v: 100000   },
+      { n: 'Nana',                                   v: 200000   },
+      { n: 'Ibu Kasianti',                           v: 500000   },
+      { n: 'Hamba Allah',                            v: 100000   },
+      { n: 'Utiko Rochman',                          v: 1000000  },
+      { n: 'Novriandi Saputra',                      v: 100000   },
+      { n: 'Eka Yuliani',                            v: 200000   },
+      { n: 'Nurdin',                                 v: 350000   },
+      { n: 'Keluarga Alm. H. Marwiyah',              v: 2000000  },
+      { n: 'Villa Kahayang',                         v: 2000000  },
+      { n: 'Mang Jarkasih',                          v: 2000000  },
+      { n: 'Ceu Arum',                               v: 50000    },
+      { n: 'Raden Bentara Putra Utama',              v: 1000000  },
+      { n: 'Kak Puspita',                            v: 1000000  },
+      { n: 'Ibu Hj. Nurmala',                        v: 1500000  },
+      { n: 'Ibu Hj. Pariah / Bpk. Warisman',         v: 500000   },
+      { n: "Jama'ah Mushola At-Taqwa",               v: 1700000  },
+      { n: 'Bos Ozi',                                v: 1000000  },
+      { n: 'Bpk. Mawar Bin Alm. Bpk. Syafri',        v: 500000   },
+      { n: 'Teh Nuraeni',                            v: 100000   },
+      { n: 'Sadam',                                  v: 100000   },
+      { n: 'Ibu Gina',                               v: 100000   },
+      { n: 'Ibu Dwi Lestari',                        v: 100000   },
+      { n: 'Bu Eni',                                 v: 100000   },
+      { n: 'Bu Vero',                                v: 100000   },
+      { n: 'Teh Emu dan Dilah',                      v: 150000   },
+      { n: 'Wali Murid Elyaqien',                    v: 1050000  },
+      { n: 'Teh Ica',                                v: 100000   },
+      { n: 'Bunda El',                               v: 500000   },
+      { n: 'Ibu Hj. Dian dan Bpk. H. Ali',           v: 1500000  },
+      { n: 'M. Syanan Bin Naim',                     v: 200000   },
+      { n: 'Bpk. E. Aripin Bin Omo Sukarma',         v: 2000000  },
+      { n: 'Hamba Allah',                            v: 100000   },
+      { n: 'Ibu Kustiani',                           v: 1000000  },
+      { n: 'Bang Usman',                             v: 500000   },
+      { n: 'Bos Ohim',                               v: 200000   },
+      { n: 'Teh Diyah Rabak',                        v: 150000   },
+      { n: 'Sari Nur Aini',                          v: 300000   },
+      { n: 'Deden Maulana',                          v: 1000000  },
+      { n: 'Warga RT. 07',                           v: 360000   },
+      { n: 'Ningrum',                                v: 50000    },
+      { n: 'Iyus',                                   v: 50000    },
+      { n: 'Wali Murid Elyaqien',                    v: 500000   },
+      { n: 'Bpk. H. Rouk',                           v: 1000000  },
+      { n: 'Muhamad Dadin',                          v: 500000   },
+      { n: 'Anggun Nabil',                           v: 250000   }
+    ];
+
+    const WAQAF = {
+      totalRAB:   625050247,
+      modalAwal:  300000000,
+      // Pemasukan terverifikasi yang rinciannya belum dipublikasikan.
+      unlisted:   1450000,
+      updated:    '25 Agustus 2026'
     };
 
-    // Helper: Format Rupiah
-    function formatRupiah(angka) {
+    WAQAF.rollTotal   = DONORS.reduce((sum, d) => sum + d.v, 0);
+    WAQAF.totalWaqaf  = WAQAF.rollTotal + WAQAF.unlisted;
+    WAQAF.danaProgres = WAQAF.totalWaqaf + WAQAF.modalAwal;
+    WAQAF.persen      = (WAQAF.danaProgres / WAQAF.totalRAB) * 100;
+    WAQAF.sisa        = WAQAF.totalRAB - WAQAF.danaProgres;
+
+    // Helper: Format Rupiah tanpa desimal
+    function rupiah(angka) {
       return 'Rp ' + Math.round(angka).toLocaleString('id-ID');
     }
+
+    // Helper: persen gaya Indonesia (koma sebagai desimal)
+    function persenID(angka) {
+      return angka.toFixed(1).replace('.', ',');
+    }
+
+    // ==========================================
+    // 1b. KOMPONEN ALPINE — LEDGER & DAFTAR DONATUR
+    // ==========================================
+    function waqafLedger() {
+      return {
+        ...WAQAF,
+        donors: DONORS,
+        showNote: false,
+        get persenLabel() { return persenID(this.persen); },
+        rp: rupiah
+      };
+    }
+
+    function donorRoll() {
+      return {
+        donors: DONORS,
+        query: '',
+        expanded: false,
+        previewCount: 12,
+        rp: rupiah,
+
+        normalize(text) {
+          return String(text).toLowerCase().replace(/['’.]/g, '').replace(/\s+/g, ' ').trim();
+        },
+        matches(donor) {
+          if (!this.query.trim()) return true;
+          return this.normalize(donor.n).includes(this.normalize(this.query));
+        },
+        isVisible(donor, index) {
+          if (this.query.trim()) return this.matches(donor);
+          return this.expanded || index < this.previewCount;
+        },
+        get matchCount() {
+          if (!this.query.trim()) return this.donors.length;
+          return this.donors.filter((d) => this.matches(d)).length;
+        },
+        get visibleTotal() {
+          if (!this.query.trim()) return WAQAF.rollTotal;
+          return this.donors.filter((d) => this.matches(d)).reduce((s, d) => s + d.v, 0);
+        },
+        clearQuery() {
+          this.query = '';
+          this.$nextTick(() => {
+            const input = document.getElementById('donor-search');
+            if (input) input.focus();
+          });
+        }
+      };
+    }
+
+    // CONFIG diturunkan dari WAQAF supaya counter, gauge, dan
+    // progress bar tidak pernah lepas dari sumber datanya.
+    const CONFIG = {
+      totalRAB:       WAQAF.totalRAB,
+      terkumpul:      WAQAF.danaProgres,
+      sisa:           WAQAF.sisa,
+      persentase:     WAQAF.persen,
+      updateTerakhir: WAQAF.updated
+    };
+
+    // Helper: Format Rupiah (alias lama, dipakai animateCounter)
+    const formatRupiah = rupiah;
 
     // Helper: Copy to Clipboard Utility with visual toast feedback
     async function copyToClipboard(text) {
@@ -2687,10 +2920,23 @@
         window.lucide.createIcons();
       }
 
-      // 1. Trigger hero progress bar immediately
+      // 1. Sinkronkan semua angka statis dengan sumber data, lalu
+      //    jalankan progress bar hero.
+      const syncFigures = {
+        'hero-progress-text': persenID(CONFIG.persentase),
+        'hero-progress-amount': rupiah(CONFIG.terkumpul),
+        'metric-persen': persenID(CONFIG.persentase),
+        'bar-persen': persenID(CONFIG.persentase),
+        'bar-amount': rupiah(CONFIG.terkumpul)
+      };
+      Object.entries(syncFigures).forEach(([id, value]) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = value;
+      });
+
       setTimeout(() => {
         const bar = document.getElementById('hero-progress-bar');
-        if (bar) bar.style.width = '53.0%';
+        if (bar) bar.style.clipPath = 'inset(0 ' + (100 - CONFIG.persentase).toFixed(1) + '% 0 0)';
       }, 500);
 
       // 2. Observer for Scroll Reveal elements
@@ -2735,54 +2981,73 @@
       const header = document.getElementById('main-header');
       const mobileDonateBar = document.getElementById('mobile-donate-bar');
       
-      window.addEventListener('scroll', () => {
-        const scrollPos = window.scrollY;
-        
-        const hLogo = document.getElementById('header-logo');
-        const hNama = document.getElementById('header-nama');
-        const hSub  = document.getElementById('header-sub');
-        const hNavLinks = document.querySelectorAll('.nav-link');
+      // Referensi di-cache sekali; sebelumnya querySelectorAll dipanggil
+      // ulang tiap frame scroll dan itu sumber jank di perangkat lemah.
+      const hLogo     = document.getElementById('header-logo');
+      const hNama     = document.getElementById('header-nama');
+      const hSub      = document.getElementById('header-sub');
+      const hNavLinks = Array.from(document.querySelectorAll('.nav-link'));
 
-        if (scrollPos > 60) {
-          header.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);box-shadow:0 1px 0 rgba(13,27,75,0.08);';
-          
-          // ── HEADER PUTIH ──────────────────────────────
-          // Logo: filter ke navy gelap agar kelihatan di bg putih
-          if (hLogo) hLogo.style.filter = 
-            'brightness(0) saturate(100%) invert(15%) sepia(60%) ' +
-            'saturate(700%) hue-rotate(200deg) brightness(85%)';
-          
-          // Teks nama masjid: navy
-          if (hNama) hNama.style.color = '#1B2B6B';
-          // Sub "Rumpin · Kab. Bogor": abu sedang
-          if (hSub)  hSub.style.color  = '#6B7280';
-          // Nav links: abu gelap
-          hNavLinks.forEach(l => l.style.color = '#374151');
-        } else {
-          header.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:100;background:transparent;';
-          
-          // ── HEADER TRANSPARAN DI ATAS HERO NAVY ──────
-          // Logo: putih solid
-          if (hLogo) hLogo.style.filter = 'brightness(0) invert(1)';
-          // Teks nama masjid: putih
-          if (hNama) hNama.style.color = '#ffffff';
-          // Sub: putih transparan
-          if (hSub)  hSub.style.color  = 'rgba(255,255,255,0.55)';
-          // Nav links: putih
-          hNavLinks.forEach(l => l.style.color = 'rgba(255,255,255,0.85)');
+      const HEADER_SOLID = 'position:fixed;top:0;left:0;right:0;z-index:100;'
+        + 'background:rgba(255,255,255,0.98);backdrop-filter:blur(24px) saturate(160%);'
+        + '-webkit-backdrop-filter:blur(24px) saturate(160%);'
+        + 'box-shadow:0 1px 0 rgba(13,27,75,0.08);';
+      const HEADER_CLEAR = 'position:fixed;top:0;left:0;right:0;z-index:100;background:transparent;';
+
+      // Filter logo navy untuk header putih
+      const LOGO_NAVY = 'brightness(0) saturate(100%) invert(15%) sepia(60%) '
+        + 'saturate(700%) hue-rotate(200deg) brightness(85%)';
+
+      function paintHeader(solid) {
+        header.style.cssText = solid ? HEADER_SOLID : HEADER_CLEAR;
+        if (hLogo) hLogo.style.filter = solid ? LOGO_NAVY : 'brightness(0) invert(1)';
+        if (hNama) hNama.style.color  = solid ? '#1B2B6B' : '#ffffff';
+        if (hSub)  hSub.style.color   = solid ? '#6B7280' : 'rgba(255,255,255,0.55)';
+        const linkColor = solid ? '#374151' : 'rgba(255,255,255,0.85)';
+        hNavLinks.forEach(l => { l.style.color = linkColor; });
+      }
+
+      // rAF-throttled: satu penulisan DOM per frame, dan hanya saat
+      // state benar-benar berubah.
+      let ticking = false;
+      let isSolid = null;
+      let barShown = null;
+
+      function onScrollFrame() {
+        ticking = false;
+        const scrollPos = window.scrollY;
+
+        const solid = scrollPos > 60;
+        if (solid !== isSolid) {
+          isSolid = solid;
+          paintHeader(solid);
         }
 
-        // Mobile sticky donate bar visibility toggle (Only after scrolling past hero)
         if (mobileDonateBar) {
-          if (scrollPos > 400) {
-            mobileDonateBar.classList.add('visible');
-          } else {
-            mobileDonateBar.classList.remove('visible');
+          const show = scrollPos > 400;
+          if (show !== barShown) {
+            barShown = show;
+            mobileDonateBar.classList.toggle('visible', show);
           }
         }
-      }, {passive:true});
-      // Trigger sekali saat load
-      window.dispatchEvent(new Event('scroll'));
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(onScrollFrame);
+        }
+      }, { passive: true });
+
+      // Cat sekali saat load secara sinkron. Jangan lewat rAF: di tab
+      // yang belum terlihat rAF ditunda, dan header akan terlanjur
+      // salah warna saat halaman dibuka lewat deep-link (#donatur).
+      onScrollFrame();
+
+      // Saat tab kembali terlihat, rAF yang tertunda bisa basi.
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) onScrollFrame();
+      });
     });
   </script>
 </body>
