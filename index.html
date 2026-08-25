@@ -534,6 +534,111 @@
       .ledger-bar, .donor-toggle-icon { transition: none; }
     }
 
+
+    /* ==========================================================
+       UPDATE TERKINI — satu blok unggulan di atas grid lapangan
+       ========================================================== */
+    .latest-update {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      background: #ffffff;
+      border: 1px solid rgba(13, 27, 75, 0.10);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    @media (min-width: 768px) {
+      .latest-update { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+    }
+
+    .latest-update-media {
+      position: relative;
+      /* Foto lapangan dari HP itu potret 3:4. Bingkai lanskap akan
+         memotong bangunannya, jadi di mobile rasionya diikutkan. */
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      background: #F5F3EE;
+    }
+    @media (min-width: 480px) {
+      .latest-update-media { aspect-ratio: 4 / 3; }
+    }
+    @media (min-width: 768px) {
+      .latest-update-media { aspect-ratio: auto; height: 100%; min-height: 320px; }
+    }
+    .latest-update-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 62%;
+    }
+
+    .latest-update-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(13, 27, 75, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #E8D08A;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .latest-update-body {
+      padding: 1.75rem 1.5rem 1.875rem;
+    }
+    @media (min-width: 768px) {
+      .latest-update-body { padding: 2.25rem 2.25rem 2.25rem 2rem; }
+    }
+
+    .latest-update-body h3 {
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      color: #1B2B6B;
+      font-size: 1.375rem;
+      line-height: 1.25;
+      margin-bottom: 0.625rem;
+    }
+    @media (min-width: 768px) {
+      .latest-update-body h3 { font-size: 1.625rem; }
+    }
+    .latest-update-body > p {
+      font-size: 0.875rem;
+      line-height: 1.65;
+      color: #4B5563;
+      max-width: 56ch;
+    }
+
+    /* Daftar status: rule 1px sebagai pemisah, bukan kartu bersarang */
+    .latest-update-list {
+      margin-top: 1.375rem;
+      border-top: 1px solid rgba(13, 27, 75, 0.08);
+    }
+    .latest-update-list li {
+      display: grid;
+      grid-template-columns: 1.125rem 1fr;
+      align-items: start;
+      gap: 0.625rem;
+      padding: 0.6875rem 0;
+      border-bottom: 1px solid rgba(13, 27, 75, 0.08);
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      color: #374151;
+    }
+    .latest-update-list li:last-child { border-bottom: 0; }
+    .latest-update-list .ico { margin-top: 1px; }
+    .latest-update-list .ico-done { color: #059669; }
+    .latest-update-list .ico-wip  { color: #7E6221; }
+    .latest-update-list strong { color: #1B2B6B; font-weight: 600; }
+
     /* ==========================================================
        SURGICAL OVERRIDES & FIXES FOR THE 8 SPECIFIC TASKS
        ========================================================== */
@@ -1236,7 +1341,7 @@
                 color:#1B2B6B;
                 line-height:1.2;
                 word-break:break-word;
-                overflow-wrap:break-word;">Rp 625.050.247</span>
+                overflow-wrap:break-word;" id="metric-rab" class="tnum">Rp 625.050.247</span>
               <span class="block text-[11px] text-gray-400 mt-1 uppercase tracking-wide">RAB Keseluruhan</span>
             </div>
           </div>
@@ -1295,8 +1400,8 @@
                 color:#1B2B6B;
                 line-height:1.2;
                 word-break:break-word;
-                overflow-wrap:break-word;">Rp 289.078.247</span>
-              <span class="block text-[11px] text-red-500 font-semibold mt-1 uppercase tracking-wide">Kekurangan 47.0%</span>
+                overflow-wrap:break-word;" id="metric-sisa" class="tnum">Rp 289.078.247</span>
+              <span class="block text-[11px] text-red-500 font-semibold mt-1 uppercase tracking-wide">Kekurangan <span id="metric-kekurangan" class="tnum">46,2</span>%</span>
             </div>
           </div>
 
@@ -1312,7 +1417,7 @@
           <h3 class="font-display text-lg font-bold text-navy-primary">Simulasi Kontribusi Donasi Anda</h3>
         </div>
 
-        <div x-data="{ nominal: 1000000, get persen() { return ((this.nominal / 293788247) * 100).toFixed(4) }, get orang() { return Math.ceil(293788247 / (this.nominal || 1)) } }">
+        <div x-data="{ nominal: 1000000, get sisa() { return WAQAF.sisa }, get persen() { return ((this.nominal / this.sisa) * 100).toFixed(4).replace('.', ',') }, get orang() { return Math.ceil(this.sisa / (this.nominal || 1)) } }">
           <label for="donation-calc" class="block text-xs uppercase font-bold text-gray-400 tracking-wider mb-2">Rencana Nominal Donasi Anda</label>
           <div class="relative rounded-xl overflow-hidden mb-4">
             <span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-navy-primary text-base">Rp</span>
@@ -1687,6 +1792,52 @@
 
         <!-- TAB CONTENT 2: PROGRESS LAPANGAN -->
         <div x-show="currentTab === 'lapangan'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-cloak>
+
+          <!-- Update terkini: satu blok unggulan, foto 25 Agustus 2026 -->
+          <article class="reveal latest-update">
+            <div class="latest-update-media">
+              <img
+                src="images/progress-update-agustus-1.jpg"
+                alt="Bangunan Masjid Jami Ar-Rustendi per 25 Agustus 2026: dinding bata sudah berdiri, kolom beton dan ring balok atas sudah dicor, perancah bambu masih terpasang"
+                width="960" height="1280"
+                loading="lazy" decoding="async"
+              >
+              <span class="latest-update-badge">
+                <i data-lucide="camera" class="w-3 h-3" aria-hidden="true"></i>
+                25 Agustus 2026
+              </span>
+            </div>
+
+            <div class="latest-update-body">
+              <h3>Dinding Naik, Ring Balok Sudah Dicor</h3>
+              <p>
+                Foto terbaru dari lokasi. Struktur bangunan sudah terbaca utuh: dinding bata
+                berdiri mengelilingi bangunan, kolom beton berdiri di tiap bentang, dan ring
+                balok di atas dinding sudah selesai dicor. Bukaan pintu serta jendela lengkung
+                sudah terbentuk sesuai desain.
+              </p>
+
+              <ul class="latest-update-list">
+                <li>
+                  <i data-lucide="check-circle-2" class="w-[18px] h-[18px] ico ico-done" aria-hidden="true"></i>
+                  <span><strong>Dinding bata</strong> terpasang di seluruh keliling bangunan</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle-2" class="w-[18px] h-[18px] ico ico-done" aria-hidden="true"></i>
+                  <span><strong>Kolom beton dan ring balok</strong> atas sudah dicor</span>
+                </li>
+                <li>
+                  <i data-lucide="check-circle-2" class="w-[18px] h-[18px] ico ico-done" aria-hidden="true"></i>
+                  <span><strong>Bukaan pintu dan jendela lengkung</strong> sudah terbentuk</span>
+                </li>
+                <li>
+                  <i data-lucide="loader" class="w-[18px] h-[18px] ico ico-wip" aria-hidden="true"></i>
+                  <span><strong>Perancah bambu</strong> masih terpasang, pekerjaan rangka atap dan plester menyusul</span>
+                </li>
+              </ul>
+            </div>
+          </article>
+
           <div id="gallery-grid-lapangan" class="galeri-grid-wrap" style="display:grid; grid-template-columns:repeat(2,1fr); gap:16px;">
             
             <div class="relative group flex flex-col">
@@ -1790,7 +1941,7 @@
                 >
               </div>
               <div class="mt-3">
-                <h4 class="font-display font-bold text-navy-primary text-sm transition-colors group-hover:text-gold">Kondisi Terkini</h4>
+                <h4 class="font-display font-bold text-navy-primary text-sm transition-colors group-hover:text-gold">Kondisi Lokasi Juli 2026</h4>
                 <p class="text-[11px] text-gray-500 mt-1">Sesuai roadmap tahapan pembangunan</p>
               </div>
             </div>
@@ -2902,12 +3053,15 @@
       function step(now) {
         const p = Math.min((now - start) / duration, 1);
         if (text) {
-          text.textContent = (persen * easeOutCube(p)).toFixed(1) + '%';
+          text.textContent = persenID(persen * easeOutCube(p)) + '%';
         }
         if (p < 1) {
           requestAnimationFrame(step);
         } else if (text) {
-          text.textContent = persen + '%';
+          // Selalu lewat persenID. Sebelumnya baris ini menulis `persen`
+          // mentah, dan begitu CONFIG.persentase jadi float turunan
+          // (53.75119866163336) angka panjang itu muncul di layar.
+          text.textContent = persenID(persen) + '%';
         }
       }
       requestAnimationFrame(step);
@@ -2926,6 +3080,9 @@
         'hero-progress-text': persenID(CONFIG.persentase),
         'hero-progress-amount': rupiah(CONFIG.terkumpul),
         'metric-persen': persenID(CONFIG.persentase),
+        'metric-rab': rupiah(CONFIG.totalRAB),
+        'metric-sisa': rupiah(CONFIG.sisa),
+        'metric-kekurangan': persenID(100 - CONFIG.persentase),
         'bar-persen': persenID(CONFIG.persentase),
         'bar-amount': rupiah(CONFIG.terkumpul)
       };
