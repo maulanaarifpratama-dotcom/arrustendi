@@ -25,3 +25,18 @@
 .ig-card img { width: 100%; height: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
 .card-img { width: 100%; height: 100%; object-fit: cover; }
 .post-hero { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; }
+
+/* Detail permukaan browser: anchor tidak tertutup header tetap, judul seimbang, gerak mengikuti preferensi pengguna. */
+html { scroll-padding-top: 88px; }
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Target sentuh minimal 44px di layar kecil tanpa mengubah tata letak desktop. */
+@media (max-width: 1023px) {
+  footer a { display: inline-flex; align-items: center; min-height: 44px; }
+  .dkm-featured-cta { min-height: 44px; }
+  .ledger-info { position: relative; }
+  .ledger-info::after { content: ''; position: absolute; inset: -12px; }
+  a[href="/berita"].text-xs, a[href="/artikel"].text-xs { display: inline-flex; align-items: center; min-height: 44px; }
+}
