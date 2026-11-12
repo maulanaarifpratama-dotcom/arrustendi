@@ -14,7 +14,7 @@ import { PARTNERS } from '../data/waqaf';
     <div class="flex flex-wrap items-center gap-x-8 gap-y-4">
       <span class="text-[11px] font-bold uppercase tracking-[0.12em] text-gray-500">Didukung oleh</span>
       {PARTNERS.map((p) => (
-        <img src={p.logo} alt={'Logo ' + p.name} width="96" height="40" class="logo-img" loading="lazy" />
+        <img src={p.logo} alt={'Logo ' + p.name} width="96" height="40" class={p.logo.endsWith('.png') ? 'logo-img-wide' : 'logo-img'} loading="lazy" />
       ))}
     </div>
   </div>

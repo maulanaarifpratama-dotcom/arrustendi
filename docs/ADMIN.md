@@ -27,9 +27,8 @@ Login memakai GitHub, jadi perlu OAuth App. Saya sengaja tidak mengisi kredensia
    - Callback URL: `https://<domain>/api/callback`.
 2. Simpan Client ID dan Client Secret **hanya** sebagai Environment Variables di Vercel
    (`OAUTH_GITHUB_CLIENT_ID`, `OAUTH_GITHUB_CLIENT_SECRET`). Jangan commit.
-3. Tambahkan endpoint OAuth `api/auth` dan `api/callback` (Vercel Functions) yang menukar
-   code GitHub dengan token untuk Decap. Setelah itu sesuaikan `base_url` di
-   `public/admin/config.yml` dengan domain produksi.
+3. Endpoint `api/auth.js` dan `api/callback.js` (Vercel Functions) sudah ada di repo. Setelah env var
+   terisi, redeploy, lalu sesuaikan `base_url` di `public/admin/config.yml` dengan domain produksi.
 4. Hanya akun GitHub yang punya akses tulis ke repo yang bisa menyimpan perubahan.
 
-Sebelum langkah 3 selesai, `/admin` tampil tetapi belum bisa login.
+Sebelum langkah 1-2 dikerjakan, `/admin` tampil tetapi belum bisa login.

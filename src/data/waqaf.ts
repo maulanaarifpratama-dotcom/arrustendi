@@ -22,6 +22,12 @@ export const PARTNERS = [
     donorName: 'Bank DKI'
   },
   {
+    name: 'UPZ Bank DKI',
+    logo: '/images/mitra/upz-bank-dki.png',
+    note: 'Unit Pelayanan Zakat, yayasan di bawah Bank DKI',
+    donorName: 'Bank DKI'
+  },
+  {
     name: 'BAZNAS',
     logo: '/images/mitra/baznas.svg',
     note: 'Penyaluran zakat Rp 10.000.000',
