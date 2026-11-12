@@ -23,8 +23,8 @@ Tanpa panel, cara yang sama: sunting JSON/Markdown di atas, `npm run build`, com
 Login memakai GitHub, jadi perlu OAuth App. Saya sengaja tidak mengisi kredensial apa pun.
 
 1. GitHub → Settings → Developer settings → OAuth Apps → New OAuth App.
-   - Homepage URL: domain produksi situs.
-   - Callback URL: `https://<domain>/api/callback`.
+   - Homepage URL: https://www.arrustendi.org
+   - Callback URL: `https://www.arrustendi.org/api/callback` (tambahkan juga arrustendi.vercel.app/api/callback sebagai redirect URI kedua).
 2. Simpan Client ID dan Client Secret **hanya** sebagai Environment Variables di Vercel
    (`OAUTH_GITHUB_CLIENT_ID`, `OAUTH_GITHUB_CLIENT_SECRET`). Jangan commit.
 3. Endpoint `api/auth.js` dan `api/callback.js` (Vercel Functions) sudah ada di repo. Setelah env var

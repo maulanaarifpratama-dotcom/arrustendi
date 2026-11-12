@@ -826,84 +826,8 @@
       }
     }
 
-    /* FIX 6 — REKENING UTAMA BSI CARD */
-    #bsi-rekening-card {
-      background: #1B2B6B !important;
-      border: 1px solid rgba(201,168,76,0.35) !important;
-      border-radius: 20px !important;
-      padding: 32px !important;
-      max-width: 480px !important;
-      margin: 0 auto !important;
-    }
-    #bsi-card-bank-label {
-      color: rgba(255,255,255,0.6) !important;
-      font-size: 12px !important; 
-      letter-spacing: 0.1em !important;
-      background: transparent !important;
-      padding: 0 !important;
-    }
-    #bsi-card-main-label {
-      color: #B8963E !important;
-      font-size: 12px !important;
-    }
-    #bsi-card-norek-label {
-      color: rgba(255,255,255,0.6) !important;
-      font-size: 12px !important;
-    }
-    #bsi-card-number {
-      color: #ffffff !important;
-      font-size: 2rem !important;
-      font-weight: 700 !important; 
-      letter-spacing: 0.06em !important;
-      font-family: 'Lora', serif !important;
-    }
-    #bsi-card-copy-btn {
-      border: 1px solid rgba(201,168,76,0.4) !important;
-      color: #B8963E !important;
-      background: transparent !important;
-      border-radius: 10px !important;
-      padding: 10px 16px !important;
-      display: inline-flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-    }
-    #bsi-card-an {
-      color: rgba(255,255,255,0.8) !important;
-    }
-    .btn-wa-confirm {
-      background: #B8963E !important;
-      color: #0D1B4B !important;
-      font-weight: 700 !important;
-      border-radius: 10px !important;
-      padding: 14px 24px !important;
-      width: 100% !important;
-      display: inline-flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      transition: transform 0.2s, box-shadow 0.2s !important;
-    }
-    .btn-wa-confirm:hover {
-      transform: translateY(-2px) !important;
-      box-shadow: 0 10px 25px rgba(201,168,76,0.3) !important;
-    }
+    /* Section Donasi: gayanya ada di Donasi.astro */
 
-    /* FIX 7 — DONASI SECTION BACKGROUND */
-    #donasi {
-      background: #0D1B4B !important;
-    }
-    #donasi .section-label {
-      color: #B8963E !important;
-    }
-    #donasi h2 {
-      color: #ffffff !important;
-    }
-    #donasi h2 + p {
-      color: rgba(255,255,255,0.7) !important;
-    }
-    #alternative-account-label {
-      color: rgba(255,255,255,0.4) !important;
-    }
-    
     /* Additional Custom Responsive Grids */
     @media(max-width:600px){
       .galeri-grid-wrap { grid-template-columns: 1fr !important; }

@@ -5,7 +5,7 @@ backend:
   name: github
   repo: maulanaarifpratama-dotcom/arrustendi
   branch: main
-  base_url: https://arrustendi.vercel.app
+  base_url: https://www.arrustendi.org
   auth_endpoint: api/auth
 
 locale: id

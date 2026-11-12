@@ -1,176 +1,146 @@
-  <section id="donasi" style="background:#0D1B4B !important; position:relative; overflow:hidden;">
-    <div style="position:absolute;inset:0;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M20 0L40 20L20 40L0 20Z' fill='none' stroke='%23C9A84C' stroke-width='0.5' opacity='0.08'/%3E%3Ccircle cx='20' cy='20' r='3' fill='none' stroke='%23C9A84C' stroke-width='0.5' opacity='0.08'/%3E%3Cpath d='M20 0L20 8M20 32L20 40M0 20L8 20M32 20L40 20' stroke='%23C9A84C' stroke-width='0.3' opacity='0.06'/%3E%3C/svg%3E&quot;);pointer-events:none;z-index:0;opacity:0.15;"></div>
+---
+const KITABISA = 'https://kitabisa.com/campaign/wakafmumesempurnakanmasjidimpiansantrirumpinbogor';
+const WA = "https://wa.me/6285780694377?text=Assalamu'alaikum%20Pak%20Hari,%20saya%20sudah%20transfer%20donasi%20ke%20rekening%20Masjid%20Ar-Rustendi.";
 
-    <div style="position:relative;z-index:1;" class="max-w-[1240px] mx-auto px-6 md:px-12 w-full">
-      
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="section-label" style="color:#B8963E;">Pintu Amal Jariyah</span>
-        <div class="divider-gold mx-auto mt-3 mb-4"></div>
-        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold" style="color:#ffffff !important;">Salurkan Infaq & Sedekah Anda</h2>
-        <p class="text-sm md:text-base mt-4" style="color:rgba(255,255,255,0.65) !important;">
-          Pilihlah metode transfer perbankan resmi di bawah ini. Satu klik untuk menyalin nomor rekening secara praktis.
+// Rekening resmi panitia. Urutan = urutan tampil.
+const UTAMA = { bank: 'Bank Syariah Indonesia (BSI)', no: '7363122013', an: 'Masjid Jami Ar-Rustendi' };
+const ALTERNATIF = [
+  { bank: 'Bank BRI', no: '7178571006', an: 'Hari Din Nugraha' },
+  { bank: 'Bank BNI', no: '4949498281', an: 'Rumah Pembangunan Berkelanjutan' }
+];
+const LANGKAH = [
+  { judul: 'Transfer', isi: 'Kirim nominal seikhlasnya ke salah satu rekening.' },
+  { judul: 'Simpan bukti', isi: 'Tangkapan layar atau resi transfer.' },
+  { judul: 'Konfirmasi', isi: 'Kirim fotonya ke Ketua DKM agar donasi Anda tercatat di daftar donatur.' }
+];
+---
+<section id="donasi" class="donasi">
+  <div class="donasi-pattern" aria-hidden="true"></div>
+
+  <div class="relative z-10 max-w-[1240px] mx-auto px-6 md:px-12 py-24 md:py-32">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20 items-start">
+
+      <!-- Kiri: rekening -->
+      <div class="lg:col-span-7 reveal">
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1] text-balance">
+          Salurkan infak dan sedekah Anda
+        </h2>
+        <p class="mt-5 text-base md:text-lg text-white/75 max-w-[52ch] leading-relaxed">
+          Transfer ke rekening resmi panitia, lalu kirim bukti agar nama Anda tercatat terbuka di daftar donatur.
         </p>
+
+        <div id="bsi-rekening-card" class="rek-panel mt-10">
+          <div class="flex items-baseline justify-between gap-4">
+            <span class="rek-label">{UTAMA.bank}</span>
+            <span class="text-[11px] font-semibold text-gold-light">Rekening utama</span>
+          </div>
+          <span id="bsi-card-number" class="rek-number">{UTAMA.no}</span>
+          <div class="flex flex-wrap items-center justify-between gap-4 mt-4">
+            <span class="text-sm text-white/70">a.n. <strong id="bsi-card-an" class="text-white font-semibold">{UTAMA.an}</strong></span>
+            <button id="bsi-card-copy-btn" type="button" onclick={`copyToClipboard('${UTAMA.no}')`} class="btn-gold rounded-full px-6 py-3 text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2">
+              <i data-lucide="copy" class="w-4 h-4" aria-hidden="true"></i>
+              Salin nomor
+            </button>
+          </div>
+
+          <ul class="rek-list" aria-label="Rekening alternatif">
+            {ALTERNATIF.map((r) => (
+              <li class="rek-row">
+                <div class="min-w-0">
+                  <span class="rek-label">{r.bank}</span>
+                  <span class="rek-number-sm">{r.no}</span>
+                  <span class="block text-xs text-white/60 mt-0.5">a.n. {r.an}</span>
+                </div>
+                <button type="button" onclick={`copyToClipboard('${r.no}')`} class="rek-copy" aria-label={`Salin nomor rekening ${r.bank}`}>
+                  <i data-lucide="copy" class="w-4 h-4" aria-hidden="true"></i>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
-      <!-- Cards Grid Rekening -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        
-        <!-- Sektor Kiri: Kartu Rekening (BSI Utama - BRI - BNI) -->
-        <div class="lg:col-span-7 flex flex-col gap-6">
-          
-          <!-- Kitabisa CTA -->
-          <a href="https://kitabisa.com/campaign/wakafmumesempurnakanmasjidimpiansantrirumpinbogor" target="_blank" class="reveal block relative overflow-hidden group hover:border-gold transition-all duration-300" style="background:linear-gradient(135deg, #00B4D8 0%, #0077B6 100%) !important; border:1px solid rgba(0,180,216,0.35) !important; border-radius:20px; padding:24px 28px; text-decoration:none;">
-            <div class="absolute -right-8 -bottom-8 w-44 h-44 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
-            <div style="display:flex; align-items:center; gap:16px;">
-              <div style="background:rgba(255,255,255,0.2); border-radius:14px; padding:14px; flex-shrink:0;">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div>
-                <span style="display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:rgba(255,255,255,0.7); margin-bottom:4px;">Donasi Online</span>
-                <span style="display:block; font-size:18px; font-weight:700; color:#ffffff; font-family:'Lora',serif;">Kitabisa.com</span>
-                <span style="display:block; font-size:12px; color:rgba(255,255,255,0.7); margin-top:2px;">Klik untuk berdonasi secara online</span>
-              </div>
-            </div>
+      <!-- Kanan: cara lain + langkah -->
+      <div class="lg:col-span-5 reveal reveal-delay-2 lg:pt-3">
+        <div class="kitabisa">
+          <p class="font-display text-xl font-bold text-white">Lebih praktis lewat Kitabisa</p>
+          <p class="text-sm text-white/70 mt-1.5">Donasi online dengan QRIS, e-wallet, atau kartu.</p>
+          <a href={KITABISA} target="_blank" rel="noopener" class="btn-gold rounded-full mt-5 w-full px-6 py-3.5 text-xs font-bold uppercase tracking-wider inline-flex items-center justify-center gap-2">
+            Donasi di Kitabisa
+            <i data-lucide="arrow-up-right" class="w-4 h-4" aria-hidden="true"></i>
           </a>
-
-          <!-- Rekening Utama (BSI) -->
-          <div id="bsi-rekening-card" class="reveal relative overflow-hidden group hover:border-gold transition-all duration-300" style="background:#1B2B6B !important; border:1px solid rgba(201,168,76,0.35) !important; border-radius:20px; padding:28px 32px; max-width:480px; margin:0 auto 20px;">
-            <div class="absolute -right-8 -bottom-8 w-44 h-44 bg-gold/5 rounded-full blur-xl pointer-events-none"></div>
-            
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-              <span style="color:rgba(255,255,255,0.5); font-size:11px; font-weight:700; text-transform:uppercase; tracking-widest;">BANK BSI</span>
-              <span style="color:#B8963E; font-size:11px; font-weight:700; text-transform:uppercase; tracking-widest;">REKENING UTAMA</span>
-            </div>
-
-            <div style="margin-bottom:16px; text-align:center;">
-              <span style="color:rgba(255,255,255,0.5); font-size:11px; text-transform:uppercase; font-weight:600; tracking-wider; display:block; margin-bottom:8px;">Nomor Rekening BSI</span>
-              <span id="bsi-card-number" style="color:#ffffff !important; font-size:2rem; font-weight:700; letter-spacing:0.06em; font-family:'Lora',serif; display:block; margin-bottom:12px;">7363122013</span>
-              <button id="bsi-card-copy-btn" onclick="copyToClipboard('7363122013')" style="border:1.5px solid rgba(201,168,76,0.4); color:#B8963E; background:transparent; border-radius:10px; padding:10px 20px; width:100%; cursor:pointer; font-weight:600; display:inline-flex; align-items:center; justify-content:center; gap:8px;">
-                <i data-lucide="copy" style="width:16px; height:16px;"></i>
-                <span>Salin Nomor Rekening</span>
-              </button>
-            </div>
-
-            <div style="height:1px; background:rgba(255,255,255,0.1); margin:16px 0;"></div>
-
-            <div style="display:flex; justify-content:space-between; align-items:center; text-align:left; margin-bottom:16px;">
-              <div>
-                <span style="color:rgba(255,255,255,0.4); font-size:10px; text-transform:uppercase;">Atas Nama</span>
-                <strong id="bsi-card-an" style="color:rgba(255,255,255,0.75); font-size:14px; display:block; margin-top:2px;">Masjid Jami Ar-Rustendi</strong>
-              </div>
-              <span style="color:#B8963E; font-weight:600; text-transform:uppercase; tracking-wide; font-size:10px;">DKM AR-RUSTENDI</span>
-            </div>
-
-            <div>
-              <a href="https://wa.me/6285780694377?text=Assalamu'alaikum%20Pak%20Hari,%20saya%20sudah%20transfer%20donasi%20ke%20rekening%20BSI%20Masjid%20Ar-Rustendi." target="_blank" style="background:#B8963E; color:#0D1B4B; border:none; border-radius:10px; padding:14px 20px; width:100%; font-weight:700; font-size:15px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; gap:8px; text-decoration:none;">
-                <i data-lucide="message-circle" style="width:18px; height:18px;"></i>
-                <span>Konfirmasi via WhatsApp</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Rekening Alternatif (BRI & BNI) -->
-          <div class="text-xs font-semibold uppercase tracking-wider mb-2" id="alternative-account-label" style="color:rgba(255,255,255,0.4);">ATAU TRANSFER VIA REKENING ALTERNATIF</div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            
-            <!-- BRI Card -->
-            <div class="reveal reveal-delay-1 bg-white border border-gray-100 rounded-2xl p-5 shadow-sm relative">
-              <div class="flex items-center justify-between mb-4">
-                <span class="px-2.5 py-0.5 rounded bg-blue-600/10 text-blue-600 text-[10px] font-bold uppercase tracking-wider">Bank BRI</span>
-                <button onclick="copyToClipboard('7178571006')" class="p-1.5 rounded-lg text-gray-400 hover:text-gold transition-colors focus:outline-none" aria-label="Copy">
-                  <i data-lucide="copy" class="w-4 h-4"></i>
-                </button>
-              </div>
-              <span class="block text-[9px] text-gray-400 uppercase tracking-wide">Nomor Rekening BRI</span>
-              <span class="block font-display text-lg font-bold text-navy-primary mt-1">7178571006</span>
-              <span class="block text-[11px] text-gray-500 mt-2 leading-tight">a.n. Hari Din Nugraha</span>
-            </div>
-
-            <!-- BNI Card -->
-            <div class="reveal reveal-delay-2 bg-white border border-gray-100 rounded-2xl p-5 shadow-sm relative">
-              <div class="flex items-center justify-between mb-4">
-                <span class="px-2.5 py-0.5 rounded bg-[#FF6B00]/10 text-[#FF6B00] text-[10px] font-bold uppercase tracking-wider">Bank BNI</span>
-                <button onclick="copyToClipboard('4949498281')" class="p-1.5 rounded-lg text-gray-400 hover:text-gold transition-colors focus:outline-none" aria-label="Copy">
-                  <i data-lucide="copy" class="w-4 h-4"></i>
-                </button>
-              </div>
-              <span class="block text-[9px] text-gray-400 uppercase tracking-wide">Nomor Rekening BNI</span>
-              <span class="block font-display text-lg font-bold text-navy-primary mt-1">4949498281</span>
-              <span class="block text-[11px] text-gray-500 mt-2 leading-tight">a.n. Rumah Pembangunan Berkelanjutan</span>
-            </div>
-
-          </div>
-
-          <!-- 3-Step Guide Panel -->
-          <div class="reveal reveal-delay-3 bg-white/5 border border-white/10 rounded-2xl p-6">
-            <span class="block text-[11px] font-bold text-gold uppercase tracking-wider mb-4">Panduan Penyaluran Dana</span>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-white/70">
-              <div>
-                <strong class="text-gold block mb-1">1. Transfer Dana</strong>
-                Transfer nominal shadaqah seikhlasnya ke salah satu rekening di atas.
-              </div>
-              <div class="border-t sm:border-t-0 sm:border-l border-white/10 pt-3 sm:pt-0 sm:pl-4">
-                <strong class="text-gold block mb-1">2. Ambil Bukti</strong>
-                Simpan tangkapan layar / kertas resi bukti transaksi transfer perbankan Anda.
-              </div>
-              <div class="border-t sm:border-t-0 sm:border-l border-white/10 pt-3 sm:pt-0 sm:pl-4">
-                <strong class="text-gold block mb-1">3. Konfirmasi</strong>
-                Kirim pesan konfirmasi foto resi melalui WhatsApp ke Ketua DKM.
-              </div>
-            </div>
-          </div>
-
         </div>
 
-        <!-- Sektor Kanan: 3 CTA Utama -->
-        <div class="reveal reveal-delay-2 lg:col-span-5 flex flex-col gap-4">
-          
-          <!-- CTA 1: Kitabisa -->
-          <a href="https://kitabisa.com/campaign/wakafmumesempurnakanmasjidimpiansantrirumpinbogor" target="_blank" class="block bg-white border border-gray-100 rounded-2xl p-6 md:p-8 shadow-sm hover:border-gold hover:shadow-md transition-all duration-300 group">
-            <div class="flex items-center gap-4">
-              <div class="p-3 rounded-xl bg-[#00B4D8]/10 text-[#00B4D8] flex-shrink-0 group-hover:scale-110 transition-transform">
-                <i data-lucide="globe" class="w-6 h-6"></i>
-              </div>
+        <ol class="langkah mt-10">
+          {LANGKAH.map((l, i) => (
+            <li>
+              <span class="langkah-no" aria-hidden="true">{i + 1}</span>
               <div>
-                <h3 class="font-display text-base md:text-lg font-bold text-navy-primary">Donasi Online via Kitabisa</h3>
-                <p class="text-xs text-gray-500 mt-1">Klik untuk berdonasi secara mudah dan aman</p>
+                <strong class="block text-white text-[15px]">{l.judul}</strong>
+                <span class="block text-sm text-white/70 mt-0.5 leading-relaxed">{l.isi}</span>
+                {i === LANGKAH.length - 1 && (
+                  <a href={WA} target="_blank" rel="noopener" class="wa-btn mt-3 inline-flex items-center gap-2">
+                    <i data-lucide="message-circle" class="w-4 h-4" aria-hidden="true"></i>
+                    Kirim bukti via WhatsApp
+                  </a>
+                )}
               </div>
-            </div>
-          </a>
-
-          <!-- CTA 2: Transfer Bank -->
-          <a href="#rekening" onclick="document.getElementById('bsi-rekening-card').scrollIntoView({behavior:'smooth'})" class="block bg-white border border-gray-100 rounded-2xl p-6 md:p-8 shadow-sm hover:border-gold hover:shadow-md transition-all duration-300 group">
-            <div class="flex items-center gap-4">
-              <div class="p-3 rounded-xl bg-navy-primary/5 text-navy-primary flex-shrink-0 group-hover:scale-110 transition-transform">
-                <i data-lucide="building-2" class="w-6 h-6"></i>
-              </div>
-              <div>
-                <h3 class="font-display text-base md:text-lg font-bold text-navy-primary">Transfer Bank Langsung</h3>
-                <p class="text-xs text-gray-500 mt-1">BSI, BRI, atau BNI. Salin nomor rekening</p>
-              </div>
-            </div>
-          </a>
-
-          <!-- CTA 3: WhatsApp -->
-          <a href="https://wa.me/6285780694377?text=Assalamu'alaikum%20Pak%20Hari,%20saya%20ingin%20berdonasi%20untuk%20Masjid%20Ar-Rustendi.%20Mohon%20panduannya." target="_blank" class="block bg-[#25D366]/10 border border-[#25D366]/20 rounded-2xl p-6 md:p-8 shadow-sm hover:bg-[#25D366]/15 hover:shadow-md transition-all duration-300 group">
-            <div class="flex items-center gap-4">
-              <div class="p-3 rounded-xl bg-[#25D366]/10 text-[#25D366] flex-shrink-0 group-hover:scale-110 transition-transform">
-                <i data-lucide="message-circle" class="w-6 h-6"></i>
-              </div>
-              <div>
-                <h3 class="font-display text-base md:text-lg font-bold text-navy-primary">Konfirmasi via WhatsApp</h3>
-                <p class="text-xs text-gray-500 mt-1">Kirim bukti transfer langsung ke Ketua DKM</p>
-              </div>
-            </div>
-          </a>
-
-        </div>
-
+            </li>
+          ))}
+        </ol>
       </div>
 
     </div>
-  </section>
+  </div>
+</section>
+
+<style is:global>
+  .donasi { position: relative; overflow: hidden; background: #0D1B4B !important; }
+  .donasi-pattern {
+    position: absolute; inset: 0; pointer-events: none; opacity: 0.15;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M20 0L40 20L20 40L0 20Z' fill='none' stroke='%23C9A84C' stroke-width='0.5' opacity='0.5'/%3E%3C/svg%3E");
+  }
+  /* satu permukaan, bukan kartu bersarang */
+  .rek-panel {
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: 28px 32px 8px;
+  }
+  .rek-label { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: rgba(255, 255, 255, 0.7); }
+  .rek-number {
+    display: block; margin-top: 10px; color: #fff;
+    font-family: 'Lora', serif; font-weight: 700; font-size: clamp(2rem, 5vw, 2.75rem);
+    letter-spacing: 0.04em; font-variant-numeric: tabular-nums lining-nums; line-height: 1.1;
+  }
+  .rek-list { list-style: none; margin: 28px 0 0; padding: 0; border-top: 1px solid rgba(255, 255, 255, 0.12); }
+  .rek-row {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 18px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .rek-row:last-child { border-bottom: 0; }
+  .rek-number-sm {
+    display: block; margin-top: 2px; color: #fff; font-family: 'Lora', serif; font-weight: 700;
+    font-size: 1.25rem; letter-spacing: 0.04em; font-variant-numeric: tabular-nums lining-nums;
+  }
+  .rek-copy {
+    flex-shrink: 0; width: 44px; height: 44px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center;
+    color: #E8D08A; border: 1px solid rgba(232, 208, 138, 0.35); background: transparent;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .rek-copy:hover { background: #B8963E; color: #0D1B4B; border-color: #B8963E; }
+  .rek-copy:focus-visible, .wa-btn:focus-visible { outline: 2px solid #E8D08A; outline-offset: 3px; }
+  .kitabisa { padding-bottom: 32px; border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
+  .langkah { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
+  .langkah li { display: grid; grid-template-columns: 30px 1fr; gap: 14px; align-items: start; }
+  .langkah-no {
+    width: 30px; height: 30px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; color: #0D1B4B; background: #E8D08A;
+  }
+  .wa-btn {
+    border: 1px solid rgba(255, 255, 255, 0.45); color: #fff; border-radius: 999px; padding: 10px 18px;
+    font-size: 13px; font-weight: 600; text-decoration: none; transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .wa-btn:hover { background: #fff; color: #0D1B4B; border-color: #fff; }
+  @media (max-width: 640px) { .rek-panel { padding: 22px 20px 4px; } }
+</style>

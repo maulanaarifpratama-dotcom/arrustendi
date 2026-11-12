@@ -1,5 +1,5 @@
   <header x-data="{ mobileMenu: false }" id="main-header" class="fixed top-0 left-0 right-0 z-50 border-b border-transparent transition-all duration-400 ease-out" style="position:fixed;top:0;left:0;right:0;z-index:100;background:transparent;">
-    <div class="max-w-[1240px] mx-auto px-6 md:px-12 h-[72px] md:h-[80px] flex items-center justify-between">
+    <div class="max-w-[1360px] mx-auto px-6 md:px-12 h-[72px] md:h-[80px] flex items-center justify-between">
       
    <a href="/" id="logo-link"
      style="display:flex;align-items:center;gap:10px;
@@ -38,17 +38,14 @@
    </a>
 
       <!-- Desktop Center Menu links -->
-      <nav class="hidden lg:flex items-center gap-8">
-        <a href="/#tentang" class="nav-link text-white/85 text-[14px] header-nav-link">Tentang</a>
-        <a href="/#progress" class="nav-link text-white/85 text-[14px] header-nav-link">Progress</a>
-        <a href="/#tahapan" class="nav-link text-white/85 text-[14px] header-nav-link">Tahapan</a>
-        <a href="/#rab" class="nav-link text-white/85 text-[14px] header-nav-link">RAB</a>
-        <a href="/#donatur" class="nav-link text-white/85 text-[14px] header-nav-link">Donatur</a>
-        <a href="/#dkm" class="nav-link text-white/85 text-[14px] header-nav-link">DKM</a>
-        <a href="/berita" class="nav-link text-white/85 text-[14px] header-nav-link">Berita</a>
-        <a href="/artikel" class="nav-link text-white/85 text-[14px] header-nav-link">Artikel</a>
-        <a href="/#lokasi" class="nav-link text-white/85 text-[14px] header-nav-link">Lokasi</a>
-        <a href="https://kitabisa.com/campaign/wakafmumesempurnakanmasjidimpiansantrirumpinbogor" target="_blank" class="nav-link text-white/85 text-[14px] header-nav-link">Donasi</a>
+      <nav class="hidden xl:flex items-center gap-6">
+        <a href="/#tentang" class="nav-link text-white/85 text-[14px] whitespace-nowrap header-nav-link">Tentang</a>
+        <a href="/#progress" class="nav-link text-white/85 text-[14px] whitespace-nowrap header-nav-link">Progress</a>
+        <a href="/#rab" class="nav-link text-white/85 text-[14px] whitespace-nowrap header-nav-link">RAB</a>
+        <a href="/#donatur" class="nav-link text-white/85 text-[14px] whitespace-nowrap header-nav-link">Donatur</a>
+        <a href="/berita" class="nav-link text-white/85 text-[14px] whitespace-nowrap header-nav-link">Berita</a>
+        <a href="/artikel" class="nav-link text-white/85 text-[14px] whitespace-nowrap header-nav-link">Artikel</a>
+        <a href="/#lokasi" class="nav-link text-white/85 text-[14px] whitespace-nowrap header-nav-link">Lokasi</a>
       </nav>
 
       <!-- CTA Button (Desktop) / Hamburger Trigger (Mobile) -->
@@ -56,7 +53,7 @@
         <a href="https://kitabisa.com/campaign/wakafmumesempurnakanmasjidimpiansantrirumpinbogor" target="_blank" class="hidden sm:inline-flex btn-gold rounded-full px-5 py-2.5 text-xs tracking-wider uppercase font-semibold">
           Donasi Sekarang
         </a>
-        <button @click="mobileMenu = !mobileMenu" aria-label="Toggle Menu" class="lg:hidden p-2 text-white header-icon-color focus:outline-none">
+        <button @click="mobileMenu = !mobileMenu" aria-label="Toggle Menu" class="xl:hidden p-2 text-white header-icon-color focus:outline-none">
           <i x-show="!mobileMenu" data-lucide="menu" class="w-6 h-6"></i>
           <i x-show="mobileMenu" data-lucide="x" class="w-6 h-6" x-cloak></i>
         </button>
@@ -71,7 +68,7 @@
          x-transition:leave="transition ease-in duration-200"
          x-transition:leave-start="opacity-100 translate-y-0"
          x-transition:leave-end="opacity-0 -translate-y-4"
-         class="lg:hidden bg-white border-t border-gray-100 py-6 px-6 shadow-xl" x-cloak>
+         class="xl:hidden bg-white border-t border-gray-100 py-6 px-6 shadow-xl" x-cloak>
       <nav class="flex flex-col gap-4">
         <a href="/#tentang" @click="mobileMenu = false" class="text-navy-primary font-semibold text-base py-2 border-b border-gray-50 flex items-center justify-between">
           <span>Tentang Masjid</span> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
