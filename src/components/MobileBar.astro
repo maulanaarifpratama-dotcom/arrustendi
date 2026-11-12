@@ -1,0 +1,18 @@
+---
+import { waqafState as w, rupiah, persenID } from '../data/waqaf';
+---
+  <div id="mobile-donate-bar" class="mobile-donate-bar">
+    <div class="text-white">
+      <span class="block text-[10px] uppercase tracking-wider text-white/50">Terkumpul <span id="bar-persen" class="tnum">{persenID(w.persen)}</span>%</span>
+      <span id="bar-amount" class="block font-display text-sm font-bold text-gold mt-0.5 tnum">{rupiah(w.danaProgres)}</span>
+    </div>
+    <a href="https://kitabisa.com/campaign/wakafmumesempurnakanmasjidimpiansantrirumpinbogor" target="_blank" class="btn-gold rounded-full px-5 py-2.5 text-xs font-bold uppercase tracking-wider">
+      Donasi Sekarang
+    </a>
+  </div>
+
+
+  <!-- ============================================ -->
+  <!-- TOAST NOTIFICATION CONTAINER                 -->
+  <!-- ============================================ -->
+  <div id="toast" class="toast">✓ Berhasil disalin!</div>

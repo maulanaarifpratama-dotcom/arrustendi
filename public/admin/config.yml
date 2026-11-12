@@ -1,0 +1,66 @@
+# Panel admin Decap CMS. Perubahan disimpan sebagai commit ke GitHub,
+# lalu Vercel membangun ulang situs otomatis. Tidak ada database.
+# Login: butuh GitHub OAuth App + endpoint OAuth, lihat docs/ADMIN.md.
+backend:
+  name: github
+  repo: maulanaarifpratama-dotcom/arrustendi
+  branch: main
+  base_url: https://arrustendi.vercel.app
+  auth_endpoint: api/auth
+
+locale: id
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: donatur
+    label: Donatur & Total Dana
+    files:
+      - name: daftar
+        label: Daftar Donatur
+        file: src/data/donors.json
+        fields:
+          - label: Donatur
+            name: donors
+            widget: list
+            summary: "{{fields.n}} - Rp {{fields.v}}"
+            fields:
+              - { label: Nama, name: n, widget: string }
+              - { label: Nominal (Rp, angka saja), name: v, widget: number, value_type: int, min: 1 }
+      - name: pengaturan
+        label: Angka Dana & Tanggal Update
+        file: src/data/settings.json
+        fields:
+          - { label: Total RAB (Rp), name: totalRAB, widget: number, value_type: int }
+          - { label: Modal awal (Rp), name: modalAwal, widget: number, value_type: int }
+          - { label: Pemasukan belum dirinci (Rp), name: unlisted, widget: number, value_type: int }
+          - { label: Tanggal update (teks), name: updated, widget: string }
+  - name: berita
+    label: Berita Pembangunan
+    folder: src/content/berita
+    create: true
+    extension: md
+    slug: "{{slug}}"
+    fields:
+      - { label: Judul, name: title, widget: string }
+      - { label: Ringkasan, name: description, widget: text }
+      - { label: Tanggal, name: date, widget: datetime, format: YYYY-MM-DD, date_format: YYYY-MM-DD, time_format: false }
+      - { label: Foto, name: image, widget: image, required: false }
+      - { label: Teks alternatif foto, name: imageAlt, widget: string, required: false }
+      - { label: Draft, name: draft, widget: boolean, default: false }
+      - { label: Isi, name: body, widget: markdown }
+  - name: artikel
+    label: Artikel Sedekah & Wakaf
+    folder: src/content/artikel
+    create: true
+    extension: md
+    slug: "{{slug}}"
+    fields:
+      - { label: Judul, name: title, widget: string }
+      - { label: Ringkasan, name: description, widget: text }
+      - { label: Tanggal, name: date, widget: datetime, format: YYYY-MM-DD, date_format: YYYY-MM-DD, time_format: false }
+      - { label: Kategori, name: category, widget: string, default: "Sedekah & Wakaf" }
+      - { label: Foto, name: image, widget: image, required: false }
+      - { label: Teks alternatif foto, name: imageAlt, widget: string, required: false }
+      - { label: Draft, name: draft, widget: boolean, default: false }
+      - { label: Isi, name: body, widget: markdown }

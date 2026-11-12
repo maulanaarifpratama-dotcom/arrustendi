@@ -1,0 +1,21 @@
+---
+import { PARTNERS } from '../data/waqaf';
+---
+<section aria-label="Legalitas dan dukungan lembaga" class="bg-offwhite border-y border-navy-primary/10">
+  <div class="max-w-[1240px] mx-auto px-6 md:px-12 py-8 flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-12">
+    <div class="flex items-center gap-4">
+      <img src="/images/mitra/kemenag.svg" alt="Logo Kementerian Agama RI" width="56" height="56" class="logo-seal" loading="lazy" />
+      <div>
+        <strong class="block text-navy-primary font-display text-base">Terdaftar di SIMAS Kemenag</strong>
+        <span class="block text-xs text-gray-500 mt-0.5">Sistem Informasi Masjid, Kementerian Agama Republik Indonesia</span>
+      </div>
+    </div>
+    <div class="hidden lg:block h-10 w-px bg-navy-primary/15" aria-hidden="true"></div>
+    <div class="flex flex-wrap items-center gap-x-8 gap-y-4">
+      <span class="text-[11px] font-bold uppercase tracking-[0.12em] text-gray-500">Didukung oleh</span>
+      {PARTNERS.map((p) => (
+        <img src={p.logo} alt={'Logo ' + p.name} width="96" height="40" class="logo-img" loading="lazy" />
+      ))}
+    </div>
+  </div>
+</section>

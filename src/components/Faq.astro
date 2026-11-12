@@ -1,0 +1,79 @@
+  <section class="py-24 md:py-32 bg-white">
+    <div class="max-w-[1240px] mx-auto px-6 md:px-12">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="section-label">Pertanyaan Umum</span>
+        <div class="divider-gold mx-auto mt-3 mb-4"></div>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-navy-primary">Frequently Asked Questions</h2>
+        <p class="text-gray-500 text-sm md:text-base mt-4">
+          Jawaban komprehensif atas beberapa pertanyaan mendasar seputar tata kelola pembangunan Masjid Ar-Rustendi.
+        </p>
+      </div>
+
+      <!-- Accordion Grid -->
+      <div class="max-w-3xl mx-auto flex flex-col border border-gray-100 rounded-2xl shadow-2xs divide-y divide-gray-100 overflow-hidden">
+        
+        <!-- Accordion Item 1 -->
+        <div x-data="{ open: false }" class="bg-white p-5 md:p-6">
+          <button @click="open = !open" class="w-full flex items-center justify-between text-left font-display font-semibold text-navy-primary text-sm md:text-base focus:outline-none">
+            <span>Bagaimana status kepemilikan tanah Masjid Ar-Rustendi?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform duration-300" :class="open ? 'rotate-180' : ''"></i>
+          </button>
+          <div x-show="open" 
+               x-transition:enter="transition ease-out duration-300"
+               x-transition:enter-start="opacity-0 -translate-y-2"
+               x-transition:enter-end="opacity-100 translate-y-0"
+               class="mt-4 text-xs md:text-sm text-gray-500 leading-relaxed" x-cloak>
+            Tanah lokasi pembangunan Masjid Jami Ar-Rustendi merupakan murni tanah **Wakaf** yang dihibahkan secara resmi oleh ahli waris keluarga besar Ar-Rustendi. Berkas administrasi KTA & ikrar wakaf sedang diproses legalitasnya di hadapan Pejabat Pembuat Akta Ikrar Wakaf (PPAIW) Kantor Urusan Agama (KUA) Kecamatan Rumpin.
+          </div>
+        </div>
+
+        <!-- Accordion Item 2 -->
+        <div x-data="{ open: false }" class="bg-white p-5 md:p-6">
+          <button @click="open = !open" class="w-full flex items-center justify-between text-left font-display font-semibold text-navy-primary text-sm md:text-base focus:outline-none">
+            <span>Bagaimana cara donatur mengkonfirmasi transaksi transfer?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform duration-300" :class="open ? 'rotate-180' : ''"></i>
+          </button>
+          <div x-show="open" 
+               x-transition:enter="transition ease-out duration-300"
+               x-transition:enter-start="opacity-0 -translate-y-2"
+               x-transition:enter-end="opacity-100 translate-y-0"
+               class="mt-4 text-xs md:text-sm text-gray-500 leading-relaxed" x-cloak>
+            Anda dapat langsung mengirim tangkapan layar bukti transfer melalui WhatsApp Bendahara / Ketua DKM Ar-Rustendi di kontak yang tertera.
+          </div>
+        </div>
+
+        <!-- Accordion Item 3 -->
+        <div x-data="{ open: false }" class="bg-white p-5 md:p-6">
+          <button @click="open = !open" class="w-full flex items-center justify-between text-left font-display font-semibold text-navy-primary text-sm md:text-base focus:outline-none">
+            <span>Apakah laporan penggunaan dana disajikan secara terbuka?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform duration-300" :class="open ? 'rotate-180' : ''"></i>
+          </button>
+          <div x-show="open" 
+               x-transition:enter="transition ease-out duration-300"
+               x-transition:enter-start="opacity-0 -translate-y-2"
+               x-transition:enter-end="opacity-100 translate-y-0"
+               class="mt-4 text-xs md:text-sm text-gray-500 leading-relaxed" x-cloak>
+            Sangat Terbuka. Setiap pengeluaran kas material dicatat terperinci dalam buku besar DKM. Laporan rekap bulanan diunggah berkala di kanal sosial media resmi Instagram kami atau dapat diaudit langsung dengan mendatangi Sekretariat Panitia.
+          </div>
+        </div>
+
+        <!-- Accordion Item 4 -->
+        <div x-data="{ open: false }" class="bg-white p-5 md:p-6">
+          <button @click="open = !open" class="w-full flex items-center justify-between text-left font-display font-semibold text-navy-primary text-sm md:text-base focus:outline-none">
+            <span>Bisakah berdonasi dalam wujud material fisik semen / besi?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform duration-300" :class="open ? 'rotate-180' : ''"></i>
+          </button>
+          <div x-show="open" 
+               x-transition:enter="transition ease-out duration-300"
+               x-transition:enter-start="opacity-0 -translate-y-2"
+               x-transition:enter-end="opacity-100 translate-y-0"
+               class="mt-4 text-xs md:text-sm text-gray-500 leading-relaxed" x-cloak>
+            Tentu bisa. Kami menerima sumbangan dalam wujud hebel, semen, pasir cor, besi tulangan uluk, atau ornamen fisik penunjang lainnya. Silakan berkonsultasi terlebih dahulu dengan Ketua DKM melalui fitur WhatsApp guna sinkronisasi spek fisik bangunan yang dibutuhkan panitia di lokasi.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>

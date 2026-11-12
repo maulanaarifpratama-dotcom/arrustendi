@@ -1,0 +1,63 @@
+---
+import Base from '../layouts/Base.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  image?: string;
+  imageAlt?: string;
+  label: string;
+  backHref: string;
+  backLabel: string;
+}
+const { title, description, date, image, imageAlt = '', label, backHref, backLabel } = Astro.props;
+const tanggal = date.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  datePublished: date.toISOString(),
+  image: image ? new URL(image, Astro.site).toString() : undefined,
+  publisher: { '@type': 'Organization', name: 'Masjid Jami Ar-Rustendi' }
+};
+---
+<Base title={`${title} | Masjid Jami Ar-Rustendi`} description={description} image={image} type="article" publishedAt={date} solidHeader>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <main class="pt-32 pb-24 bg-white">
+    <article class="max-w-3xl mx-auto px-6">
+      <a href={backHref} class="text-xs font-bold uppercase tracking-wider text-navy-primary hover:text-gold-ink">← {backLabel}</a>
+      <div class="mt-6 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gold-ink">
+        <span>{label}</span><span aria-hidden="true">·</span>
+        <time datetime={date.toISOString()} class="text-gray-500 normal-case tracking-normal font-medium">{tanggal}</time>
+      </div>
+      <h1 class="font-display text-3xl md:text-4xl font-bold text-navy-primary leading-tight mt-3">{title}</h1>
+      <p class="text-gray-500 mt-4 text-lg leading-relaxed">{description}</p>
+      {image && <img src={image} alt={imageAlt} width="960" height="600" class="post-hero rounded-2xl mt-8" />}
+      <div class="prose-ar mt-10">
+        <slot />
+      </div>
+      <aside class="mt-14 p-6 rounded-2xl bg-navy-primary text-white">
+        <p class="font-display text-xl font-bold">Ikut membangun rumah Allah</p>
+        <p class="text-white/75 text-sm mt-2">Setiap donasi dicatat terbuka dan menjadi amal jariyah.</p>
+        <a href="/#donasi" class="btn-gold inline-block rounded-xl py-3 px-8 text-xs font-bold uppercase tracking-widest mt-5">Donasi Sekarang</a>
+      </aside>
+    </article>
+  </main>
+</Base>
+
+<style is:global>
+  .prose-ar { color: #374151; line-height: 1.85; font-size: 1.0625rem; }
+  .prose-ar h2 { font-family: 'Lora', serif; font-weight: 700; color: #1B2B6B; font-size: 1.5rem; margin: 2.2rem 0 0.8rem; }
+  .prose-ar p { margin: 1rem 0; }
+  .prose-ar ul, .prose-ar ol { margin: 1rem 0; padding-left: 1.4rem; }
+  .prose-ar ul { list-style: disc; }
+  .prose-ar ol { list-style: decimal; }
+  .prose-ar li { margin: 0.4rem 0; }
+  .prose-ar a { color: #1B2B6B; text-decoration: underline; text-underline-offset: 3px; }
+  .prose-ar blockquote { border-left: 3px solid #B8963E; background: #F5F3EE; padding: 0.9rem 1.2rem; border-radius: 0 12px 12px 0; margin: 1.5rem 0; }
+  .prose-ar table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; }
+  .prose-ar th, .prose-ar td { padding: 0.65rem 0.8rem; border-bottom: 1px solid rgba(13, 27, 75, 0.12); text-align: left; }
+  .prose-ar td:last-child, .prose-ar th:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+</style>

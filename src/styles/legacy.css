@@ -1,0 +1,973 @@
+    /* Base reset & Custom Scrollbars */
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #374151;
+      background: #ffffff;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Alpine.js x-cloak */
+    [x-cloak] { display: none !important; }
+
+    /* Focus visible */
+    *:focus-visible {
+      outline: 2px solid #B8963E;
+      outline-offset: 2px;
+    }
+
+    /* Section Label */
+    .section-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #7E6221;
+    }
+
+    /* Gold Divider */
+    .divider-gold {
+      width: 48px;
+      height: 3px;
+      background: #B8963E;
+      border-radius: 99px;
+    }
+
+    /* Font Display */
+    .font-display {
+      font-family: 'Lora', serif;
+    }
+
+    /* Scrollbar Style */
+    body::-webkit-scrollbar {
+      width: 10px;
+    }
+    body::-webkit-scrollbar-track {
+      background: #F5F3EE;
+    }
+    body::-webkit-scrollbar-thumb {
+      background-color: #1B2B6B;
+      border-radius: 20px;
+      border: 3px solid #F5F3EE;
+    }
+
+    /* Reveal animations on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* Arabesque Geometrical SVG Background Pattern */
+    .pattern-arabesque {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M20 0L40 20L20 40L0 20Z' fill='none' stroke='%23C9A84C' stroke-width='0.5' opacity='0.08'/%3E%3Ccircle cx='20' cy='20' r='3' fill='none' stroke='%23C9A84C' stroke-width='0.5' opacity='0.08'/%3E%3Cpath d='M20 0L20 8M20 32L20 40M0 20L8 20M32 20L40 20' stroke='%23C9A84C' stroke-width='0.3' opacity='0.06'/%3E%3C/svg%3E");
+    }
+    .pattern-arabesque-light {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M20 0L40 20L20 40L0 20Z' fill='none' stroke='%231B2B6B' stroke-width='0.5' opacity='0.06'/%3E%3Ccircle cx='20' cy='20' r='3' fill='none' stroke='%231B2B6B' stroke-width='0.5' opacity='0.06'/%3E%3Cpath d='M20 0L20 8M20 32L20 40M0 20L8 20M32 20L40 20' stroke='%231B2B6B' stroke-width='0.3' opacity='0.04'/%3E%3C/svg%3E");
+    }
+
+    /* Premium Button Shimmer & Transitions */
+    .btn-gold {
+      position: relative; overflow: hidden;
+      background: #B8963E; color: #0D1B4B; font-weight: 600;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+    }
+    .btn-gold::after {
+      content: ''; position: absolute; top: -50%; left: -75%;
+      width: 50%; height: 200%; background: rgba(255,255,255,0.25);
+      transform: skewX(-20deg); transition: left 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201,168,76,0.35); }
+    .btn-gold:hover::after { left: 125%; }
+
+    .btn-navy {
+      background: #1B2B6B; color: #ffffff; font-weight: 600;
+      transition: background-color 0.2s, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+    }
+    .btn-navy:hover { background-color: #2A3F8F; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(27,43,107,0.25); }
+
+    .btn-ghost {
+      border: 1.5px solid rgba(255,255,255,0.35); color: #ffffff; font-weight: 500;
+      transition: border-color 0.2s, background-color 0.2s, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.8); background-color: rgba(255,255,255,0.08); transform: translateY(-2px); }
+
+    /* Glassmorphism panel styling */
+    .glass {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    /* Metric cards hover */
+    .metric-card {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+      border: 1px solid rgba(13, 27, 75, 0.08);
+    }
+    .metric-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(13, 27, 75, 0.08);
+      border-color: #B8963E;
+    }
+
+    /* SVG Semicircle Gauge */
+    .gauge-track { fill: none; stroke: rgba(13, 27, 75, 0.08); stroke-width: 14; stroke-linecap: round; }
+    .gauge-track-dark { fill: none; stroke: rgba(255, 255, 255, 0.1); stroke-width: 14; stroke-linecap: round; }
+    .gauge-fill { fill: none; stroke: #B8963E; stroke-width: 14; stroke-linecap: round; transition: stroke-dashoffset 2s cubic-bezier(0.16, 1, 0.3, 1); }
+
+    /* Header scroll style */
+    header.scrolled {
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 30px rgba(13, 27, 75, 0.06);
+      border-bottom-color: rgba(13, 27, 75, 0.06);
+    }
+
+    /* Navigation links hover */
+    .nav-link {
+      position: relative;
+      transition: color 0.2s ease;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 100%;
+      height: 2px; background-color: #B8963E;
+      transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-link:hover::after { right: 0; }
+
+    /* Custom Toast Notification */
+    .toast {
+      position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(100px);
+      background: #1B2B6B; color: white; padding: 14px 28px; border-radius: 100px;
+      font-size: 14px; font-weight: 500; z-index: 9999; box-shadow: 0 10px 40px rgba(13, 27, 75, 0.25);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+      opacity: 0; pointer-events: none;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+    /* Interactive visual image placeholders */
+    .img-placeholder {
+      background: linear-gradient(135deg, rgba(27, 43, 107, 0.05) 0%, rgba(201, 168, 76, 0.05) 100%);
+      border: 1.5px dashed rgba(201, 168, 76, 0.3);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: #6B7280; font-size: 13px; text-align: center; gap: 8px;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+    .img-placeholder:hover {
+      border-color: #B8963E;
+      background: linear-gradient(135deg, rgba(27, 43, 107, 0.08) 0%, rgba(201, 168, 76, 0.08) 100%);
+    }
+
+    /* Mobile bottom navigation sticky bar */
+    .mobile-donate-bar {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 40;
+      background: #1B2B6B; padding: 14px 20px;
+      box-shadow: 0 -8px 40px rgba(13, 27, 75, 0.2);
+      transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      border-top: 1px solid rgba(201, 168, 76, 0.2);
+    }
+    @media (max-width: 768px) {
+      .mobile-donate-bar { display: flex; align-items: center; justify-content: space-between; }
+      /* Bar melayang di atas konten; beri ruang supaya bagian akhir
+         halaman tidak pernah tertutup. */
+      body { padding-bottom: 84px; }
+    }
+    .mobile-donate-bar {
+      padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    }
+    .mobile-donate-bar.visible { transform: translateY(0); }
+
+    /* Pastikan semua gambar tidak overflow container */
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Object-fit untuk gambar dalam card */
+    .img-card {
+      overflow: hidden;
+      border-radius: var(--radius, 12px);
+    }
+    .img-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .img-card:hover img {
+      transform: scale(1.04);
+    }
+
+    /* Subtle Cinematic Background Overlay for Hero */
+    .hero-bg-image {
+      position: absolute;
+      inset: 0;
+      background-image: url('/images/render-tampak-depan-malam.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.08;   /* sangat subtle — jangan lebih dari 0.1 */
+      mix-blend-mode: luminosity;
+    }
+
+
+    /* ==========================================================
+       BROWSER SURFACES — bagian yang tidak kita gambar tapi tetap
+       membawa desain: seleksi teks, caret, angka tabular.
+       ========================================================== */
+    ::selection {
+      background: rgba(184, 150, 62, 0.28);
+      color: #0D1B4B;
+    }
+    input, textarea { caret-color: #B8963E; }
+
+    /* ==========================================================
+       HERO — bobot CTA dan kartu progres
+       ========================================================== */
+
+    /* Label 14px di bawah h1 68px membuat CTA terbaca ringan padahal
+       dialah elemen terpenting di layar pertama. Naikkan ukuran, bobot,
+       dan tinggi minimumnya. */
+    .btn-hero {
+      min-height: 58px;
+      padding: 1rem 2.125rem;
+      font-size: 15.5px;
+      font-weight: 700;
+      letter-spacing: -0.005em;
+      line-height: 1.2;
+    }
+    @media (max-width: 480px) {
+      .btn-hero { width: 100%; padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
+
+    /* Ghost: border 1,33px pada 35% putih terbaca tipis dan belum jadi.
+       Tebalkan dan naikkan opasitasnya supaya sepadan dengan tombol emas. */
+    .btn-ghost.btn-hero {
+      border-width: 2px;
+      border-color: rgba(255,255,255,0.55);
+      background-color: rgba(255,255,255,0.04);
+      font-weight: 600;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .btn-ghost.btn-hero:hover {
+        border-color: #ffffff;
+        background-color: rgba(255,255,255,0.12);
+      }
+    }
+
+    /* Panel statistik hero: grid-cols-3 diisi 5 anak (3 angka + 2 garis
+       pemisah), jadi barisnya membungkus dan "2026" turun sendirian.
+       Pakai kolom eksplisit: angka | garis | angka | garis | angka. */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .hero-stats > div:not(.w-px) { text-align: center; min-width: 0; }
+
+    /* Kartu progres: sebelumnya rounded-full, jadi blok 576x67 berbentuk
+       lozenge. Radius kartu + padding yang cukup. */
+    .hero-progress-card {
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px;
+      padding: 1.125rem 1.375rem 1.25rem;
+    }
+    .hero-progress-num {
+      font-family: 'Lora', serif;
+      font-size: 1.375rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .hero-progress-pct { font-size: 0.9375rem; font-weight: 700; }
+    .hero-progress-sep { opacity: 0.45; margin: 0 0.15rem; }
+    .hero-progress-amt {
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    /* Gold #B8963E cuma 2,6:1 di atas putih. Untuk teks kecil di latar
+       terang pakai gold pekat; gold asli tetap dipakai di latar gelap
+       (di sana #B8963E sudah 4,7:1 ke atas). */
+    .gold-ink { color: #7E6221 !important; }
+
+    /* Angka uang selalu sejajar antar baris */
+    .tnum {
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum" 1;
+    }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0;
+      margin: -1px; overflow: hidden; clip: rect(0 0 0 0);
+      white-space: nowrap; border-width: 0;
+    }
+
+    /* Umpan balik tekan — tombol harus terasa merespons */
+    .btn-gold:active, .btn-navy:active, .btn-ghost:active {
+      transform: translateY(0) scale(0.98);
+      transition-duration: 100ms;
+    }
+
+    /* Hover hanya untuk pointer presisi; di layar sentuh tap
+       memicu hover dan menyebabkan state palsu. */
+    @media (hover: none) {
+      .btn-gold:hover, .btn-navy:hover, .btn-ghost:hover { transform: none; box-shadow: none; }
+      .metric-card:hover { transform: none; box-shadow: none; border-color: rgba(13, 27, 75, 0.08); }
+      .img-card:hover img { transform: none; }
+      .btn-gold:hover::after { left: -75%; }
+    }
+
+    /* ==========================================================
+       LEDGER PEMASUKAN WAQAF
+       ========================================================== */
+    .ledger-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.875rem 0;
+      border-bottom: 1px solid rgba(13, 27, 75, 0.07);
+    }
+    .ledger-row:last-child { border-bottom: 0; }
+
+    .ledger-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.8125rem;
+      color: #4B5563;
+      line-height: 1.4;
+    }
+    .ledger-value {
+      font-family: 'Lora', serif;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: #374151;
+      white-space: nowrap;
+    }
+
+    /* Baris hasil penjumlahan — garis ganda seperti pembukuan */
+    .ledger-row-sum {
+      border-top: 2px solid rgba(13, 27, 75, 0.14);
+      border-bottom: 1px solid rgba(13, 27, 75, 0.07);
+      margin-top: 0.25rem;
+    }
+    .ledger-label-sum {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: #1B2B6B;
+    }
+    .ledger-value-sum {
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1B2B6B;
+      white-space: nowrap;
+    }
+
+    .ledger-row-total {
+      border-top: 2px solid rgba(13, 27, 75, 0.14);
+      border-bottom: 0;
+      background: linear-gradient(90deg, rgba(184, 150, 62, 0.07), rgba(184, 150, 62, 0));
+      margin: 0.25rem -1.5rem 0;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .ledger-row-total { margin-left: -2rem; margin-right: -2rem; padding-left: 2rem; padding-right: 2rem; }
+    }
+    .ledger-label-total {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #1B2B6B;
+    }
+    .ledger-value-total {
+      font-family: 'Lora', serif;
+      font-size: 1.375rem;
+      font-weight: 700;
+      color: #1B2B6B;
+      white-space: nowrap;
+      line-height: 1.2;
+    }
+
+    .ledger-info {
+      position: relative;
+      display: inline-grid;
+      place-items: center;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 999px;
+      color: #4B5563;
+      transition: color 180ms cubic-bezier(0.23, 1, 0.32, 1),
+                  background-color 180ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .ledger-info:hover { color: #7E6221; background-color: rgba(184, 150, 62, 0.14); }
+    .ledger-info:active { transform: scale(0.92); }
+    /* Target sentuh 44x44 tanpa mengubah ukuran visual ikon. */
+    .ledger-info::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 44px;
+      height: 44px;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Progress bar dianimasikan dengan clip-path, bukan width.
+       width memicu layout tiap frame; clip-path jalan di compositor
+       dan gradiennya tidak ikut melar. */
+    .ledger-bar {
+      width: 100%;
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(90deg, #B8963E, #d6b460);
+      transition: clip-path 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    /* Pull-quote: rule 1px, bukan pita warna tebal di sisi kiri. */
+    .pull-quote {
+      padding: 0.25rem 0 0.25rem 1.5rem;
+      border-left: 1px solid #B8963E;
+    }
+    .pull-quote p { text-wrap: pretty; }
+
+    /* ==========================================================
+       DONOR ROLL
+       ========================================================== */
+    .donor-search {
+      width: 100%;
+      padding: 0.5625rem 2.25rem 0.5625rem 2.4rem;
+      font-size: 0.8125rem;
+      color: #1B2B6B;
+      background: #ffffff;
+      border: 1px solid rgba(13, 27, 75, 0.14);
+      border-radius: 999px;
+      transition: border-color 180ms cubic-bezier(0.23, 1, 0.32, 1),
+                  box-shadow 180ms cubic-bezier(0.23, 1, 0.32, 1);
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .donor-search::placeholder { color: #9CA3AF; }
+    .donor-search::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+    .donor-search:hover { border-color: rgba(13, 27, 75, 0.24); }
+    .donor-search:focus {
+      outline: none;
+      border-color: #B8963E;
+      box-shadow: 0 0 0 3px rgba(184, 150, 62, 0.18);
+    }
+
+    .donor-search-clear {
+      position: absolute;
+      right: 0.375rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: grid;
+      place-items: center;
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 999px;
+      color: #9CA3AF;
+      transition: color 180ms cubic-bezier(0.23, 1, 0.32, 1),
+                  background-color 180ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .donor-search-clear:hover { color: #1B2B6B; background-color: rgba(13, 27, 75, 0.06); }
+    .donor-search-clear:active { transform: translateY(-50%) scale(0.9); }
+
+    .donor-row {
+      display: grid;
+      grid-template-columns: 1.75rem 1fr auto;
+      align-items: baseline;
+      gap: 0.5rem;
+      padding: 0.6875rem 0.5rem 0.6875rem 0;
+      border-bottom: 1px solid rgba(13, 27, 75, 0.06);
+      transition: background-color 160ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .donor-row:hover { background-color: rgba(184, 150, 62, 0.05); }
+    }
+    .donor-no {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: #7E6221;
+      text-align: right;
+    }
+    .donor-name {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: #374151;
+      line-height: 1.45;
+      overflow-wrap: break-word;
+      min-width: 0;
+    }
+    .donor-amount {
+      font-family: 'Lora', serif;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: #1B2B6B;
+      white-space: nowrap;
+    }
+
+    .donor-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.625rem 0;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #7E6221;
+      transition: color 180ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .donor-toggle:hover { color: #1B2B6B; }
+    .donor-toggle:active { transform: scale(0.985); }
+    .donor-toggle-icon {
+      transition: transform 220ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .donor-toggle-icon.is-open { transform: rotate(180deg); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ledger-bar, .donor-toggle-icon { transition: none; }
+    }
+
+
+    /* ==========================================================
+       UPDATE TERKINI — satu blok unggulan di atas grid lapangan
+       ========================================================== */
+    .latest-update {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      background: #ffffff;
+      border: 1px solid rgba(13, 27, 75, 0.10);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    @media (min-width: 768px) {
+      .latest-update { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+    }
+
+    .latest-update-media {
+      position: relative;
+      /* Foto lapangan dari HP itu potret 3:4. Bingkai lanskap akan
+         memotong bangunannya, jadi di mobile rasionya diikutkan. */
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      background: #F5F3EE;
+    }
+    @media (min-width: 480px) {
+      .latest-update-media { aspect-ratio: 4 / 3; }
+    }
+    @media (min-width: 768px) {
+      .latest-update-media { aspect-ratio: auto; height: 100%; min-height: 320px; }
+    }
+    .latest-update-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 62%;
+    }
+
+    .latest-update-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(13, 27, 75, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #E8D08A;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .latest-update-body {
+      padding: 1.75rem 1.5rem 1.875rem;
+    }
+    @media (min-width: 768px) {
+      .latest-update-body { padding: 2.25rem 2.25rem 2.25rem 2rem; }
+    }
+
+    .latest-update-body h3 {
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      color: #1B2B6B;
+      font-size: 1.375rem;
+      line-height: 1.25;
+      margin-bottom: 0.625rem;
+    }
+    @media (min-width: 768px) {
+      .latest-update-body h3 { font-size: 1.625rem; }
+    }
+    .latest-update-body > p {
+      font-size: 0.875rem;
+      line-height: 1.65;
+      color: #4B5563;
+      max-width: 56ch;
+    }
+
+    /* Daftar status: rule 1px sebagai pemisah, bukan kartu bersarang */
+    .latest-update-list {
+      margin-top: 1.375rem;
+      border-top: 1px solid rgba(13, 27, 75, 0.08);
+    }
+    .latest-update-list li {
+      display: grid;
+      grid-template-columns: 1.125rem 1fr;
+      align-items: start;
+      gap: 0.625rem;
+      padding: 0.6875rem 0;
+      border-bottom: 1px solid rgba(13, 27, 75, 0.08);
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      color: #374151;
+    }
+    .latest-update-list li:last-child { border-bottom: 0; }
+    .latest-update-list .ico { margin-top: 1px; }
+    .latest-update-list .ico-done { color: #059669; }
+    .latest-update-list .ico-wip  { color: #7E6221; }
+    .latest-update-list strong { color: #1B2B6B; font-weight: 600; }
+
+    /* ==========================================================
+       SURGICAL OVERRIDES & FIXES FOR THE 8 SPECIFIC TASKS
+       ========================================================== */
+
+    /* General section padding override (FIX 8) */
+    section:not(#hero) {
+      padding-top: 5rem !important; /* py-20 */
+      padding-bottom: 5rem !important; /* py-20 */
+    }
+
+    /* FIX 1 — HERO BACKGROUND */
+    #hero {
+      background: #0D1B4B !important;
+      position: relative !important;
+    }
+    #hero .hero-bg-image {
+      display: none !important;
+    }
+    #hero-container {
+      position: relative !important;
+      z-index: 1 !important;
+    }
+    #hero h1 {
+      color: #ffffff !important;
+    }
+    #hero blockquote p {
+      color: rgba(255,255,255,0.8) !important;
+    }
+    #hero blockquote cite {
+      color: rgba(255,255,255,0.4) !important;
+    }
+    #hero p.reveal-delay-3 {
+      color: rgba(255,255,255,0.7) !important;
+    }
+    #hero-badge {
+      color: #B8963E !important;
+      border-color: rgba(201,168,76,0.5) !important;
+      background: rgba(201, 168, 76, 0.1) !important;
+    }
+    #hero-progress-label {
+      color: rgba(255,255,255,0.6) !important;
+    }
+    #hero-progress-val {
+      color: #ffffff !important;
+      font-weight: 600 !important;
+    }
+    #hero-progress-bg {
+      background: rgba(255,255,255,0.2) !important;
+    }
+    #hero-progress-bar {
+      background: #B8963E !important;
+    }
+
+    /* FIX 2 — HERO RENDER 3D CARD */
+    #hero-glass-card {
+      background: rgba(255,255,255,0.08) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border: 1px solid rgba(255,255,255,0.15) !important;
+      border-radius: 16px !important;
+      padding: 16px !important;
+    }
+    #hero-glass-card img {
+      border-radius: 12px !important;
+      width: 100% !important;
+      object-fit: cover !important;
+    }
+
+    /* FIX 3 — PROGRESS SECTION METRIC CARDS */
+    #progress-metric-grid {
+      margin-top: 2rem !important;
+    }
+    #progress-metric-grid .metric-card {
+      background: #ffffff !important;
+      border: 1px solid rgba(13,27,75,0.08) !important;
+      border-radius: 16px !important;
+      padding: 20px 24px !important;
+      transition: border-color 0.3s, transform 0.3s !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      justify-content: space-between !important;
+      gap: 12px !important;
+    }
+    #progress-metric-grid .metric-card:hover {
+      transform: translateY(-4px) !important;
+      border-color: #B8963E !important;
+    }
+    #progress-metric-grid .metric-card-highlighted {
+      border: 2px solid #B8963E !important;
+    }
+
+    /* FIX 4 — TAHAPAN SECTION BACKGROUND */
+    #tahapan {
+      background: #0D1B4B !important;
+    }
+    #tahapan .section-label {
+      color: #B8963E !important;
+    }
+    #tahapan h2 {
+      color: #ffffff !important;
+    }
+    #tahapan h2 + p {
+      color: rgba(255,255,255,0.6) !important;
+    }
+    #tahapan-footer-note {
+      color: rgba(255,255,255,0.4) !important;
+    }
+    #tahapan .glass {
+      background: rgba(255,255,255,0.06) !important;
+      border: 1px solid rgba(255,255,255,0.12) !important;
+      border-radius: 16px !important;
+      padding: 24px !important;
+      color: #ffffff !important;
+    }
+    #tahapan .glass h3 {
+      color: #ffffff !important;
+      font-weight: 600 !important;
+    }
+    #tahapan .glass p {
+      color: rgba(255,255,255,0.65) !important;
+    }
+    #tahapan .glass .font-semibold {
+      color: rgba(255,255,255,0.5) !important;
+    }
+    #tahapan .glass .bg-white\/10 {
+      background: rgba(255,255,255,0.15) !important;
+    }
+    #tahapan .glass .h-full {
+      background: #B8963E !important;
+    }
+    .badge-running {
+      background: rgba(5,150,105,0.2) !important; 
+      color: #34d399 !important; 
+      border: 1px solid rgba(52,211,153,0.3) !important;
+    }
+    .badge-pending {
+      background: rgba(255,255,255,0.1) !important; 
+      color: rgba(255,255,255,0.4) !important;
+      border: 1px solid rgba(255,255,255,0.1) !important;
+    }
+
+    /* FIX 5 — GALERI SECTION GRID */
+    #gallery-grid-desain, #gallery-grid-lapangan {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 16px !important;
+    }
+    #gallery-grid-desain .img-card, #gallery-grid-lapangan .img-card {
+      border-radius: 12px !important;
+      overflow: hidden !important;
+      aspect-ratio: 4/3 !important;
+    }
+    #gallery-grid-desain .img-card img, #gallery-grid-lapangan .img-card img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    #gallery-grid-desain .img-card:hover img, #gallery-grid-lapangan .img-card:hover img {
+      transform: scale(1.04) !important;
+    }
+    @media (max-width: 768px) {
+      #gallery-grid-desain, #gallery-grid-lapangan {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* FIX 6 — REKENING UTAMA BSI CARD */
+    #bsi-rekening-card {
+      background: #1B2B6B !important;
+      border: 1px solid rgba(201,168,76,0.35) !important;
+      border-radius: 20px !important;
+      padding: 32px !important;
+      max-width: 480px !important;
+      margin: 0 auto !important;
+    }
+    #bsi-card-bank-label {
+      color: rgba(255,255,255,0.6) !important;
+      font-size: 12px !important; 
+      letter-spacing: 0.1em !important;
+      background: transparent !important;
+      padding: 0 !important;
+    }
+    #bsi-card-main-label {
+      color: #B8963E !important;
+      font-size: 12px !important;
+    }
+    #bsi-card-norek-label {
+      color: rgba(255,255,255,0.6) !important;
+      font-size: 12px !important;
+    }
+    #bsi-card-number {
+      color: #ffffff !important;
+      font-size: 2rem !important;
+      font-weight: 700 !important; 
+      letter-spacing: 0.06em !important;
+      font-family: 'Lora', serif !important;
+    }
+    #bsi-card-copy-btn {
+      border: 1px solid rgba(201,168,76,0.4) !important;
+      color: #B8963E !important;
+      background: transparent !important;
+      border-radius: 10px !important;
+      padding: 10px 16px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    #bsi-card-an {
+      color: rgba(255,255,255,0.8) !important;
+    }
+    .btn-wa-confirm {
+      background: #B8963E !important;
+      color: #0D1B4B !important;
+      font-weight: 700 !important;
+      border-radius: 10px !important;
+      padding: 14px 24px !important;
+      width: 100% !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      transition: transform 0.2s, box-shadow 0.2s !important;
+    }
+    .btn-wa-confirm:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 10px 25px rgba(201,168,76,0.3) !important;
+    }
+
+    /* FIX 7 — DONASI SECTION BACKGROUND */
+    #donasi {
+      background: #0D1B4B !important;
+    }
+    #donasi .section-label {
+      color: #B8963E !important;
+    }
+    #donasi h2 {
+      color: #ffffff !important;
+    }
+    #donasi h2 + p {
+      color: rgba(255,255,255,0.7) !important;
+    }
+    #alternative-account-label {
+      color: rgba(255,255,255,0.4) !important;
+    }
+    
+    /* Additional Custom Responsive Grids */
+    @media(max-width:600px){
+      .galeri-grid-wrap { grid-template-columns: 1fr !important; }
+    }
+    @media(max-width:1024px){
+      .tahap-grid { grid-template-columns:repeat(2,1fr) !important; }
+    }
+    @media(max-width:600px){
+      .tahap-grid { grid-template-columns:1fr !important; }
+    }
+    @media(max-width:768px){
+      #footer .footer-3col { grid-template-columns:1fr !important; }
+    }
+
+    @media (max-width:1024px) {
+      .progress-outer-grid {
+        grid-template-columns: 300px 1fr !important;
+      }
+    }
+    @media (max-width:768px) {
+      .progress-outer-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .metric-cards-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* DKM contrast and branding consistency */
+    #dkm {
+      background: linear-gradient(180deg, #ffffff 0%, #f8f7f3 100%);
+    }
+    #dkm .dkm-card-soft {
+      background: #ffffff;
+      border: 1px solid rgba(13, 27, 75, 0.08);
+      box-shadow: 0 10px 28px rgba(13, 27, 75, 0.04);
+    }
+    #dkm .dkm-division-card {
+      background: #f5f3ee;
+      border: 1px solid rgba(13, 27, 75, 0.06);
+    }
+    #dkm-featured-card {
+      background: linear-gradient(140deg, #1b2b6b 0%, #122254 100%) !important;
+      border: 1px solid rgba(184, 150, 62, 0.48) !important;
+      box-shadow: 0 22px 46px rgba(13, 27, 75, 0.22);
+    }
+    #dkm-featured-card .dkm-featured-role {
+      background: rgba(184, 150, 62, 0.18);
+      color: #e8d08a;
+      border: 1px solid rgba(184, 150, 62, 0.35);
+    }
+    #dkm-featured-card .dkm-featured-name {
+      color: #ffffff !important;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    }
+    #dkm-featured-card .dkm-featured-subtitle {
+      color: rgba(255, 255, 255, 0.78) !important;
+    }
+    #dkm-featured-card .dkm-featured-cta {
+      color: #e8d08a !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 12px;
+      margin-top: 14px;
+    }
+    #dkm-featured-card .dkm-featured-cta:hover {
+      color: #ffffff !important;
+    }

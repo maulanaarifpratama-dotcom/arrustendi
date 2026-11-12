@@ -1,0 +1,108 @@
+  <header x-data="{ mobileMenu: false }" id="main-header" class="fixed top-0 left-0 right-0 z-50 border-b border-transparent transition-all duration-400 ease-out" style="position:fixed;top:0;left:0;right:0;z-index:100;background:transparent;">
+    <div class="max-w-[1240px] mx-auto px-6 md:px-12 h-[72px] md:h-[80px] flex items-center justify-between">
+      
+   <a href="/" id="logo-link"
+     style="display:flex;align-items:center;gap:10px;
+       text-decoration:none;flex-shrink:0;">
+     
+     <img 
+       src="/images/Logo_Atas.png"
+       alt="Masjid Ar-Rustendi"
+       id="header-logo"
+       style="height:44px;width:auto;object-fit:contain;
+         display:block;
+         filter:brightness(0) invert(1);
+         transition:filter 0.35s ease;"
+     >
+     
+     <div style="display:flex;flex-direction:column;
+       gap:1px;line-height:1;">
+       <span id="header-nama"
+         style="font-family:'Lora',serif;font-weight:700;
+           font-size:15px;letter-spacing:0.01em;
+           color:#ffffff;
+           transition:color 0.35s ease;
+           white-space:nowrap;">
+         Masjid Ar-Rustendi
+       </span>
+       <span id="header-sub"
+         style="font-family:'Plus Jakarta Sans',sans-serif;
+           font-size:10px;font-weight:600;
+           letter-spacing:0.12em;text-transform:uppercase;
+           color:rgba(255,255,255,0.55);
+           transition:color 0.35s ease;
+           white-space:nowrap;">
+         Rumpin · Kab. Bogor
+       </span>
+     </div>
+   </a>
+
+      <!-- Desktop Center Menu links -->
+      <nav class="hidden lg:flex items-center gap-8">
+        <a href="/#tentang" class="nav-link text-white/85 text-[14px] header-nav-link">Tentang</a>
+        <a href="/#progress" class="nav-link text-white/85 text-[14px] header-nav-link">Progress</a>
+        <a href="/#tahapan" class="nav-link text-white/85 text-[14px] header-nav-link">Tahapan</a>
+        <a href="/#rab" class="nav-link text-white/85 text-[14px] header-nav-link">RAB</a>
+        <a href="/#donatur" class="nav-link text-white/85 text-[14px] header-nav-link">Donatur</a>
+        <a href="/#dkm" class="nav-link text-white/85 text-[14px] header-nav-link">DKM</a>
+        <a href="/berita" class="nav-link text-white/85 text-[14px] header-nav-link">Berita</a>
+        <a href="/artikel" class="nav-link text-white/85 text-[14px] header-nav-link">Artikel</a>
+        <a href="/#lokasi" class="nav-link text-white/85 text-[14px] header-nav-link">Lokasi</a>
+        <a href="https://kitabisa.com/campaign/wakafmumesempurnakanmasjidimpiansantrirumpinbogor" target="_blank" class="nav-link text-white/85 text-[14px] header-nav-link">Donasi</a>
+      </nav>
+
+      <!-- CTA Button (Desktop) / Hamburger Trigger (Mobile) -->
+      <div class="flex items-center gap-4">
+        <a href="https://kitabisa.com/campaign/wakafmumesempurnakanmasjidimpiansantrirumpinbogor" target="_blank" class="hidden sm:inline-flex btn-gold rounded-full px-5 py-2.5 text-xs tracking-wider uppercase font-semibold">
+          Donasi Sekarang
+        </a>
+        <button @click="mobileMenu = !mobileMenu" aria-label="Toggle Menu" class="lg:hidden p-2 text-white header-icon-color focus:outline-none">
+          <i x-show="!mobileMenu" data-lucide="menu" class="w-6 h-6"></i>
+          <i x-show="mobileMenu" data-lucide="x" class="w-6 h-6" x-cloak></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div x-show="mobileMenu" 
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 -translate-y-4"
+         x-transition:enter-end="opacity-100 translate-y-0"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100 translate-y-0"
+         x-transition:leave-end="opacity-0 -translate-y-4"
+         class="lg:hidden bg-white border-t border-gray-100 py-6 px-6 shadow-xl" x-cloak>
+      <nav class="flex flex-col gap-4">
+        <a href="/#tentang" @click="mobileMenu = false" class="text-navy-primary font-semibold text-base py-2 border-b border-gray-50 flex items-center justify-between">
+          <span>Tentang Masjid</span> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+        </a>
+        <a href="/#progress" @click="mobileMenu = false" class="text-navy-primary font-semibold text-base py-2 border-b border-gray-50 flex items-center justify-between">
+          <span>Progress & Anggaran</span> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+        </a>
+        <a href="/#tahapan" @click="mobileMenu = false" class="text-navy-primary font-semibold text-base py-2 border-b border-gray-50 flex items-center justify-between">
+          <span>Tahapan Konstruksi</span> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+        </a>
+        <a href="/#rab" @click="mobileMenu = false" class="text-navy-primary font-semibold text-base py-2 border-b border-gray-50 flex items-center justify-between">
+          <span>Uraian RAB</span> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+        </a>
+        <a href="/#donatur" @click="mobileMenu = false" class="text-navy-primary font-semibold text-base py-2 border-b border-gray-50 flex items-center justify-between">
+          <span>Daftar Donatur</span> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+        </a>
+        <a href="/#dkm" @click="mobileMenu = false" class="text-navy-primary font-semibold text-base py-2 border-b border-gray-50 flex items-center justify-between">
+          <span>DKM Pengurus</span> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+        </a>
+        <a href="/berita" @click="mobileMenu = false" class="text-navy-primary font-semibold text-base py-2 border-b border-gray-50 flex items-center justify-between">
+          <span>Berita Pembangunan</span> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+        </a>
+        <a href="/artikel" @click="mobileMenu = false" class="text-navy-primary font-semibold text-base py-2 border-b border-gray-50 flex items-center justify-between">
+          <span>Artikel Sedekah Masjid</span> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+        </a>
+        <a href="/#lokasi" @click="mobileMenu = false" class="text-navy-primary font-semibold text-base py-2 border-b border-gray-50 flex items-center justify-between">
+          <span>Alamat & Lokasi</span> <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+        </a>
+        <a href="https://kitabisa.com/campaign/wakafmumesempurnakanmasjidimpiansantrirumpinbogor" target="_blank" class="btn-gold rounded-xl py-3 text-center text-sm font-semibold tracking-wide uppercase mt-4">
+          Salurkan Donasi
+        </a>
+      </nav>
+    </div>
+  </header>

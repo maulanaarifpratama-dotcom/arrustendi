@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import TrustBand from '../components/TrustBand.astro';
+import Tentang from '../components/Tentang.astro';
+import Progress from '../components/Progress.astro';
+import Tahapan from '../components/Tahapan.astro';
+import Rab from '../components/Rab.astro';
+import Galeri from '../components/Galeri.astro';
+import Dkm from '../components/Dkm.astro';
+import Lokasi from '../components/Lokasi.astro';
+import Donasi from '../components/Donasi.astro';
+import Faq from '../components/Faq.astro';
+import Donatur from '../components/Donatur.astro';
+import LatestPosts from '../components/LatestPosts.astro';
+import Testimoni from '../components/Testimoni.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import { waqafState as w, rupiah, persenID } from '../data/waqaf';
+
+const title = 'Masjid Jami Ar-Rustendi: Bantu Kami Membangun Rumah Allah';
+const description = `Dukung pembangunan Masjid Jami Ar-Rustendi di Kp. Rumpin, Kabupaten Bogor. Dana progres ${rupiah(w.danaProgres)} dari ${rupiah(w.totalRAB)} (${persenID(w.persen)}%). Terdaftar di SIMAS Kemenag. Setiap donasi adalah amal jariyah.`;
+---
+<Base title={title} description={description}>
+  <main>
+    <Hero />
+    <TrustBand />
+    <Tentang />
+    <Progress />
+    <Tahapan />
+    <Rab />
+    <Galeri />
+    <Dkm />
+    <Lokasi />
+    <Donasi />
+    <Donatur />
+    <LatestPosts />
+    <Faq />
+    <Testimoni />
+    <CtaBanner />
+  </main>
+</Base>

@@ -1,0 +1,204 @@
+---
+import { waqafState as w, rupiah, persenID } from '../data/waqaf';
+---
+  <section id="progress" class="py-24 md:py-32 bg-white">
+    <div class="max-w-[1240px] mx-auto px-6 md:px-12 relative z-10">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="section-label">Transparansi Dana</span>
+        <div class="divider-gold mx-auto mt-3 mb-4"></div>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-navy-primary">Kondisi Pengumpulan Dana</h2>
+        <p class="text-gray-500 text-sm md:text-base mt-4">
+          Laporan keuangan pembangunan yang valid dan diperbarui berkala secara transparan.
+        </p>
+      </div>
+
+      <!-- SVG Gauge & Metric Panel -->
+      <div class="progress-outer-grid" style="display:grid;
+        grid-template-columns:340px 1fr;
+        gap:24px;
+        align-items:start;
+        width:100%;
+        min-width:0;">
+        
+        <!-- Sektor Kiri - Semicircle Progress Gauge -->
+        <div class="reveal flex flex-col items-center justify-center shadow-sm" style="width:340px;
+          flex-shrink:0;
+          min-width:0;
+          background:#ffffff;
+          border:1px solid rgba(13,27,75,0.1);
+          border-radius:16px;
+          padding:24px;">
+          <span class="text-xs uppercase font-bold text-navy-primary tracking-widest mb-6">Pencapaian Anggaran</span>
+          
+          <div class="relative w-72 h-44 flex items-center justify-center overflow-hidden">
+            <svg viewBox="-10 -10 220 130" class="w-full">
+              <!-- Semicircle background track -->
+              <path class="gauge-track" d="M 10 100 A 90 90 0 0 1 190 100"/>
+              <!-- Semicircle progress fill -->
+              <path id="gauge-fill" class="gauge-fill animate-gauge" d="M 10 100 A 90 90 0 0 1 190 100" stroke-dasharray="282.7" stroke-dashoffset="282.7"/>
+            </svg>
+            <div class="absolute bottom-2 text-center">
+              <span id="gauge-percent-text" class="block font-display text-4xl font-bold text-navy-primary">0%</span>
+              <span class="block text-[11px] text-gray-400 font-medium uppercase tracking-wider mt-1">Terpenuhi</span>
+            </div>
+          </div>
+          
+          <div class="w-full border-t border-gray-100 pt-5 text-center mt-2 flex items-center justify-between px-4 text-xs text-gray-400">
+            <span>Nilai Kontrak: <strong class="text-navy-primary">Rp 625.050.247</strong></span>
+            <span>Update: <strong class="text-navy-primary">20 Juni 2026</strong></span>
+          </div>
+        </div>
+
+        <!-- Sektor Kanan - Angka-Angka Metrik Penting -->
+        <div id="progress-metric-grid" class="metric-cards-grid" style="display:grid;
+          grid-template-columns:repeat(3,1fr);
+          gap:12px;
+          min-width:0;
+          width:100%;">
+          
+          <!-- Metrik 1: Total Anggaran -->
+          <div class="reveal reveal-delay-1 metric-card bg-white rounded-2xl p-6 flex flex-col justify-between gap-4" style="min-width:0; overflow:hidden; word-break:break-word;">
+            <div class="flex items-start gap-4">
+              <div class="p-3.5 rounded-xl bg-navy-primary/5 text-navy-primary flex-shrink-0">
+                <i data-lucide="target" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <span class="block" style="font-size:11px;
+                  font-weight:700;
+                  letter-spacing:0.08em;
+                  text-transform:uppercase;
+                  color:#6B7280;
+                  line-height:1.4;
+                  word-break:break-word;">Total Rencana Anggaran Biaya</span>
+                <span class="block text-xs text-gray-500 mt-1">Total kebutuhan dana pembangunan</span>
+              </div>
+            </div>
+            <div class="text-left">
+              <span class="block" style="font-family:'Lora',serif;
+                font-weight:700;
+                font-size:clamp(1rem,2vw,1.5rem);
+                color:#1B2B6B;
+                line-height:1.2;
+                word-break:break-word;
+                overflow-wrap:break-word;" id="metric-rab" class="tnum">Rp 625.050.247</span>
+              <span class="block text-[11px] text-gray-400 mt-1 uppercase tracking-wide">RAB Keseluruhan</span>
+            </div>
+          </div>
+
+          <!-- Metrik 2: Terkumpul -->
+          <div class="reveal reveal-delay-2 metric-card metric-card-highlighted bg-white border-2 border-gold rounded-2xl p-6 flex flex-col justify-between gap-4 relative overflow-hidden" style="min-width:0; overflow:hidden; word-break:break-word;">
+            <div class="absolute top-0 right-0 px-3 py-1 bg-gold text-navy-deepest text-[9px] font-bold uppercase tracking-widest rounded-bl-xl">✓ Terkumpul</div>
+            <div class="flex items-start gap-4">
+              <div class="p-3.5 rounded-xl bg-gold/10 text-gold flex-shrink-0">
+                <i data-lucide="trending-up" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <span class="block" style="font-size:11px;
+                  font-weight:700;
+                  letter-spacing:0.08em;
+                  text-transform:uppercase;
+                  color:#6B7280;
+                  line-height:1.4;
+                  word-break:break-word;">Dana Progres (Modal + Donasi)</span>
+                <span class="block text-xs text-emerald-600 font-semibold mt-1">✓ Laporan Terverifikasi Akurat</span>
+              </div>
+            </div>
+            <div class="text-left">
+              <span id="counter-terkumpul" class="block tnum" style="font-family:'Lora',serif;
+                font-weight:700;
+                font-size:clamp(1rem,2vw,1.5rem);
+                color:#1B2B6B;
+                line-height:1.2;
+                word-break:break-word;
+                overflow-wrap:break-word;">Rp 0</span>
+              <span class="block text-[11px] text-gray-400 mt-1"><span id="metric-persen" class="tnum">{persenID(w.persen)}</span>% dari Anggaran RAB</span>
+            </div>
+          </div>
+
+          <!-- Metrik 3: Sisa -->
+          <div class="reveal reveal-delay-3 metric-card bg-white rounded-2xl p-6 flex flex-col justify-between gap-4" style="min-width:0; overflow:hidden; word-break:break-word;">
+            <div class="flex items-start gap-4">
+              <div class="p-3.5 rounded-xl bg-red-500/5 text-red-500 flex-shrink-0">
+                <i data-lucide="info" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <span class="block" style="font-size:11px;
+                  font-weight:700;
+                  letter-spacing:0.08em;
+                  text-transform:uppercase;
+                  color:#6B7280;
+                  line-height:1.4;
+                  word-break:break-word;">Sisa Kekurangan Anggaran</span>
+                <span class="block text-xs text-gray-500 mt-1">Sisa kebutuhan dana pembangunan</span>
+              </div>
+            </div>
+            <div class="text-left">
+              <span class="block" style="font-family:'Lora',serif;
+                font-weight:700;
+                font-size:clamp(1rem,2vw,1.5rem);
+                color:#1B2B6B;
+                line-height:1.2;
+                word-break:break-word;
+                overflow-wrap:break-word;" id="metric-sisa" class="tnum">{rupiah(w.sisa)}</span>
+              <span class="block text-[11px] text-red-500 font-semibold mt-1 uppercase tracking-wide">Kekurangan <span id="metric-kekurangan" class="tnum">{persenID(100 - w.persen)}</span>%</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Mini Donation Interactive Calculator -->
+      <div class="reveal reveal-delay-4 max-w-xl mx-auto mt-16 bg-white border border-gray-100 rounded-2xl p-6 md:p-8 shadow-sm">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="p-2.5 rounded-lg bg-navy-primary/5 text-navy-primary">
+            <i data-lucide="calculator" class="w-5 h-5"></i>
+          </div>
+          <h3 class="font-display text-lg font-bold text-navy-primary">Simulasi Kontribusi Donasi Anda</h3>
+        </div>
+
+        <div x-data="{ nominal: 1000000, get sisa() { return WAQAF.sisa }, get persen() { return ((this.nominal / this.sisa) * 100).toFixed(4).replace('.', ',') }, get orang() { return Math.ceil(this.sisa / (this.nominal || 1)) } }">
+          <label for="donation-calc" class="block text-xs uppercase font-bold text-gray-400 tracking-wider mb-2">Rencana Nominal Donasi Anda</label>
+          <div class="relative rounded-xl overflow-hidden mb-4">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-navy-primary text-base">Rp</span>
+            <input id="donation-calc" type="number" x-model.number="nominal" class="w-full bg-offwhite rounded-xl py-3.5 pl-12 pr-4 text-base font-bold text-navy-primary focus:outline-none focus:ring-2 focus:ring-gold border border-transparent transition-all">
+          </div>
+
+          <div class="bg-gold/5 rounded-xl p-4 border border-gold/10 mb-6">
+            <p class="text-sm text-gray-700 leading-relaxed">
+              Donasi senilai <strong class="text-navy-primary" x-text="'Rp ' + Math.round(nominal).toLocaleString('id-ID')"></strong> setara dengan <strong class="gold-ink" x-text="persen + '%'"></strong> dari sisa total kebutuhan dana.
+            </p>
+            <p class="text-[11px] text-gray-500 mt-2 leading-relaxed">
+              Jika <strong class="text-navy-primary" x-text="orang.toLocaleString('id')"></strong> orang sholeh berdonasi dengan nominal yang sama seperti Anda, maka target pembangunan masjid segera tercapai!
+            </p>
+          </div>
+
+          <a :href="`https://wa.me/6285780694377?text=Assalamu'alaikum%20Pak%20Hari,%20saya%20berencana%20berdonasi%20senilai%20Rp%20` + Math.round(nominal).toLocaleString('id-ID') + `%20untuk%20Masjid%20Ar-Rustendi.%20Mohon%20panduan%20verifikasinya.`" target="_blank" class="btn-navy w-full rounded-xl py-3.5 flex items-center justify-center gap-2 text-sm tracking-wide uppercase font-semibold">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            <span>Konfirmasi Donasi via WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Share Action buttons row -->
+      <div class="flex flex-wrap gap-4 items-center justify-center mt-12 text-sm text-gray-500">
+        <span class="font-medium">Bantu sebarkan halaman:</span>
+        <a href="https://api.whatsapp.com/send?text=Mari%20bantu%20pembangunan%20Masjid%20Ar-Rustendi%20Rumpin%20Bogor.%20https://arrustendi.vercel.app" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 text-emerald-600 rounded-full hover:bg-emerald-500/20 transition-colors">
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          <span>WhatsApp</span>
+        </a>
+        <a href="https://twitter.com/intent/tweet?text=Bantu%20pembangunan%20Masjid%20Ar-Rustendi%20Rumpin%20Bogor%20&url=https://arrustendi.vercel.app" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-sky-500/10 text-sky-600 rounded-full hover:bg-sky-500/20 transition-colors">
+          <svg class="w-4 h-4 fill-currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.244 2.25h3.308l-7.227 7.746 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.286L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+          <span>Twitter</span>
+        </a>
+        <button onclick="copyToClipboard('https://arrustendi.vercel.app')" class="inline-flex items-center gap-2 px-4 py-2 bg-navy-primary/5 text-navy-primary rounded-full hover:bg-navy-primary/10 transition-colors">
+          <i data-lucide="link" class="w-4 h-4"></i>
+          <span>Salin Tautan</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+

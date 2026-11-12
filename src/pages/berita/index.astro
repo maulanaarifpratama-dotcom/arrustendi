@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+
+const posts = (await getCollection('berita', (p) => !p.data.draft)).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+<Base title="Berita Pembangunan | Masjid Jami Ar-Rustendi" description="Kabar terbaru progres pembangunan dan penghimpunan dana Masjid Jami Ar-Rustendi, Rumpin, Bogor." solidHeader>
+  <main class="pt-32 pb-24 bg-offwhite min-h-screen">
+    <div class="max-w-[1240px] mx-auto px-6 md:px-12">
+      <span class="section-label">Kabar Terbaru</span>
+      <div class="divider-gold mt-3 mb-4"></div>
+      <h1 class="font-display text-3xl md:text-5xl font-bold text-navy-primary">Berita Pembangunan</h1>
+      <p class="text-gray-500 mt-4 max-w-2xl">Progres lapangan, pembaruan donasi, dan kabar dari panitia.</p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+        {posts.map((p) => <PostCard href={`/berita/${p.id}`} title={p.data.title} description={p.data.description} date={p.data.date} image={p.data.image} imageAlt={p.data.imageAlt} label="Berita" />)}
+      </div>
+    </div>
+  </main>
+</Base>

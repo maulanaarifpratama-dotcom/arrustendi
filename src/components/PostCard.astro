@@ -1,0 +1,30 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  description: string;
+  date: Date;
+  image?: string;
+  imageAlt?: string;
+  label?: string;
+}
+const { href, title, description, date, image, imageAlt = '', label } = Astro.props;
+const tanggal = date.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+---
+<a href={href} class="group flex flex-col bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-2xs hover:border-gold hover:shadow-md transition-all duration-300">
+  {image && (
+    <div class="aspect-[16/10] overflow-hidden bg-offwhite">
+      <img src={image} alt={imageAlt} loading="lazy" width="640" height="400" class="card-img group-hover:scale-105 transition-transform duration-500" />
+    </div>
+  )}
+  <div class="p-5 md:p-6 flex flex-col gap-2 flex-1">
+    <div class="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gold-ink">
+      {label && <span>{label}</span>}
+      {label && <span aria-hidden="true">·</span>}
+      <time datetime={date.toISOString()} class="text-gray-500 normal-case tracking-normal font-medium">{tanggal}</time>
+    </div>
+    <h3 class="font-display text-lg font-bold text-navy-primary leading-snug">{title}</h3>
+    <p class="text-sm text-gray-500 leading-relaxed">{description}</p>
+    <span class="mt-auto pt-3 text-xs font-bold uppercase tracking-wider text-navy-primary">Baca selengkapnya →</span>
+  </div>
+</a>

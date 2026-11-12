@@ -6,3 +6,6 @@ desktop.ini
 .env.local
 node_modules/
 INSTRUKSI_GAMBAR_ANTIGRAVITY.md
+dist/
+.astro/
+.claude/

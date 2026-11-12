@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-deepest: #0D1B4B;
+  --color-navy-primary: #1B2B6B;
+  --color-navy-hover: #2A3F8F;
+  --color-gold: #B8963E;
+  --color-gold-light: #E8D08A;
+  /* Gold pekat untuk teks kecil di latar terang (5,7:1). #B8963E hanya 2,81:1. */
+  --color-gold-ink: #7E6221;
+  --color-offwhite: #F5F3EE;
+  --font-display: 'Lora', serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+@import "./legacy.css";
+
+/* Gambar baru: legacy.css punya `img { height:auto; max-width:100% }` tanpa layer,
+   yang mengalahkan utility Tailwind, jadi ukuran dipasang lewat kelas khusus. */
+.logo-img { height: 2.5rem; width: auto; max-width: 120px; object-fit: contain; }
+.logo-seal { height: 3.5rem; width: 3.5rem; max-width: none; object-fit: contain; flex-shrink: 0; }
+.partner-logo { height: 3rem; width: 6rem; max-width: none; object-fit: contain; flex-shrink: 0; }
+.card-img { width: 100%; height: 100%; object-fit: cover; }
+.post-hero { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; }

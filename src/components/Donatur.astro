@@ -1,0 +1,179 @@
+---
+import { DONORS, PARTNERS, waqafState, rupiah, persenID } from '../data/waqaf';
+const w = waqafState;
+---
+  <section id="donatur" class="py-24 md:py-32 bg-white">
+    <div class="max-w-[1240px] mx-auto px-6 md:px-12">
+
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="section-label">Transparansi Donasi</span>
+        <div class="divider-gold mx-auto mt-3 mb-4"></div>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-navy-primary">Daftar Donatur Waqaf</h2>
+        <p class="text-gray-500 text-sm md:text-base mt-4">
+          Setiap rupiah yang masuk dicatat dan dibuka. Di bawah ini rincian pemasukan waqaf beserta nama para donatur yang telah menyalurkan amal jariyahnya.
+        </p>
+      </div>
+
+
+      <!-- Mitra kelembagaan -->
+      <div class="reveal max-w-3xl mx-auto mb-12">
+        <p class="text-center text-[11px] font-bold uppercase tracking-[0.12em] text-gray-500 mb-4">Dukungan Lembaga &amp; Mitra</p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          {PARTNERS.map((p) => (
+            <div class="flex items-center gap-4 rounded-2xl border border-navy-primary/10 bg-white p-5">
+              <img src={p.logo} alt={'Logo ' + p.name} class="partner-logo" loading="lazy" width="96" height="48" />
+              <div>
+                <strong class="block text-navy-primary text-sm">{p.name}</strong>
+                <span class="block text-xs text-gray-500 mt-0.5">{p.note}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- ============================================================
+           LEDGER — rincian pemasukan yang benar-benar berjumlah
+           ============================================================ -->
+      <div x-data="waqafLedger()" class="reveal max-w-3xl mx-auto mb-12">
+
+        <div class="rounded-2xl border border-navy-primary/10 bg-offwhite/60 overflow-hidden">
+
+          <div class="flex flex-wrap items-center justify-between gap-3 px-6 md:px-8 py-4 border-b border-navy-primary/10 bg-white">
+            <h3 class="font-display text-base md:text-lg font-bold text-navy-primary">Rincian Pemasukan Waqaf</h3>
+            <span class="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-navy-primary/70">
+              <i data-lucide="calendar-check-2" class="w-3.5 h-3.5 text-gold" aria-hidden="true"></i>
+              Per {w.updated}
+            </span>
+          </div>
+
+          <dl class="px-6 md:px-8 py-2">
+            <div class="ledger-row">
+              <dt class="ledger-label"><span class="tnum" x-text="donors.length">{DONORS.length}</span>donatur tercatat</dt>
+              <dd class="ledger-value tnum" x-text="rp(rollTotal)">{rupiah(w.rollTotal)}</dd>
+            </div>
+            <div class="ledger-row">
+              <dt class="ledger-label">
+                Pemasukan belum dirinci
+                <button type="button"
+                        @click="showNote = !showNote"
+                        :aria-expanded="showNote"
+                        aria-controls="ledger-note"
+                        class="ledger-info"
+                        aria-label="Penjelasan pemasukan belum dirinci">
+                  <i data-lucide="help-circle" class="w-3.5 h-3.5" aria-hidden="true"></i>
+                </button>
+              </dt>
+              <dd class="ledger-value tnum" x-text="rp(unlisted)">{rupiah(w.unlisted)}</dd>
+            </div>
+
+            <div id="ledger-note" x-show="showNote" x-transition.opacity x-cloak
+                 class="mb-3 -mt-1 text-xs leading-relaxed text-gray-600 bg-white rounded-xl border border-navy-primary/10 p-4">
+              Pemasukan yang sudah diterima dan diverifikasi panitia, namun rinciannya belum dipublikasikan atas permintaan donatur. Bukti penerimaannya tetap tersimpan dan dapat diperiksa.
+            </div>
+
+            <div class="ledger-row ledger-row-sum">
+              <dt class="ledger-label-sum">Total pemasukan waqaf</dt>
+              <dd class="ledger-value-sum tnum" x-text="rp(totalWaqaf)">{rupiah(w.totalWaqaf)}</dd>
+            </div>
+            <div class="ledger-row">
+              <dt class="ledger-label">Modal awal pembangunan</dt>
+              <dd class="ledger-value tnum" x-text="rp(modalAwal)">Rp 300.000.000</dd>
+            </div>
+            <div class="ledger-row ledger-row-total">
+              <dt class="ledger-label-total">Dana progres terkumpul</dt>
+              <dd class="ledger-value-total tnum" x-text="rp(danaProgres)">{rupiah(w.danaProgres)}</dd>
+            </div>
+          </dl>
+
+          <div class="px-6 md:px-8 pb-6 pt-2">
+            <div class="flex items-baseline justify-between mb-2 gap-3">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-gray-500">Progres terhadap RAB</span>
+              <span class="text-sm font-bold text-navy-primary tnum text-right">
+                <span x-text="persenLabel">{persenID(w.persen)}</span>% <span class="font-normal text-gray-400">dari <span class="tnum" x-text="rp(totalRAB)">{rupiah(w.totalRAB)}</span></span>
+              </span>
+            </div>
+            <div class="h-2.5 rounded-full bg-navy-primary/10 overflow-hidden"
+                 role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                 :aria-valuenow="Math.round(persen)"
+                 :aria-label="'Progres dana ' + persenLabel + ' persen dari total RAB'">
+              <div class="ledger-bar" :style="'clip-path: inset(0 ' + (100 - persen).toFixed(1) + '% 0 0)'" style={`clip-path:inset(0 ${(100 - w.persen).toFixed(1)}% 0 0)`}></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           DONOR ROLL — satu sumber data, bisa dicari
+           ============================================================ -->
+      <div x-data="donorRoll()" class="reveal reveal-delay-1 max-w-3xl mx-auto">
+
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
+          <h3 class="font-display text-base md:text-lg font-bold text-navy-primary">
+            Nama Donatur <span class="text-gray-400 font-body font-medium text-sm tnum">(<span x-text="donors.length">{DONORS.length}</span>)</span>
+          </h3>
+
+          <div class="relative sm:w-64">
+            <label for="donor-search" class="sr-only">Cari nama donatur</label>
+            <i data-lucide="search" class="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" aria-hidden="true"></i>
+            <input id="donor-search" type="search" x-model="query" autocomplete="off"
+                   placeholder="Cari nama donatur"
+                   class="donor-search">
+            <button type="button" x-show="query.length > 0" x-cloak @click="clearQuery()"
+                    class="donor-search-clear"
+                    aria-label="Hapus pencarian">
+              <i data-lucide="x" class="w-3.5 h-3.5" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+
+        <ol id="donor-roll-list" class="grid sm:grid-cols-2 gap-x-8 border-t border-navy-primary/10">
+          <template x-for="(d, i) in donors" :key="i">
+            <li x-show="isVisible(d, i)" x-cloak class="donor-row">
+              <span class="donor-no tnum" x-text="i + 1"></span>
+              <span class="donor-name" x-text="d.n"></span>
+              <span class="donor-amount tnum" x-text="rp(d.v)"></span>
+            </li>
+          </template>
+        </ol>
+
+        <!-- Empty state -->
+        <div x-show="matchCount === 0" x-cloak class="py-12 text-center">
+          <div class="mx-auto mb-3 w-11 h-11 rounded-full bg-navy-primary/5 grid place-items-center">
+            <i data-lucide="search-x" class="w-5 h-5 text-gray-400" aria-hidden="true"></i>
+          </div>
+          <p class="text-sm text-gray-600">Tidak ada nama yang cocok dengan &ldquo;<span class="font-semibold text-navy-primary" x-text="query"></span>&rdquo;.</p>
+          <p class="text-xs text-gray-400 mt-1.5">Donasi Anda belum tercatat? Hubungi panitia lewat konfirmasi transfer.</p>
+        </div>
+
+        <!-- Footer: subtotal + disclosure -->
+        <div class="border-t-2 border-navy-primary/15">
+          <div class="flex items-baseline justify-between gap-3 py-4">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-gray-500">
+              <span x-show="!query">Subtotal <span class="tnum" x-text="donors.length">{DONORS.length}</span>&nbsp;donatur</span>
+              <span x-show="query" x-cloak><span class="tnum" x-text="matchCount"></span>&nbsp;nama cocok</span>
+            </span>
+            <span class="font-display font-bold text-navy-primary tnum" x-text="rp(visibleTotal)">{rupiah(w.rollTotal)}</span>
+          </div>
+
+          <div x-show="!query && donors.length > previewCount" x-cloak class="pb-1">
+            <button type="button" @click="expanded = !expanded" :aria-expanded="expanded" aria-controls="donor-roll-list"
+                    class="donor-toggle">
+              <span x-text="expanded ? 'Tampilkan lebih sedikit' : 'Tampilkan semua ' + donors.length + ' donatur'">Tampilkan semua {DONORS.length} donatur</span>
+              <i data-lucide="chevron-down" class="w-4 h-4 donor-toggle-icon" :class="expanded ? 'is-open' : ''" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Callout Note -->
+      <div class="reveal reveal-delay-2 mt-10 max-w-3xl mx-auto flex items-start gap-4 p-5 bg-gold/5 rounded-2xl border border-gold/15">
+        <div class="p-2 rounded-xl bg-gold/10 text-gold flex-shrink-0 mt-0.5">
+          <i data-lucide="heart" class="w-5 h-5" aria-hidden="true"></i>
+        </div>
+        <div class="text-xs md:text-sm text-gray-600 leading-relaxed">
+          Seluruh donasi digunakan sepenuhnya untuk pembangunan Masjid Jami Ar-Rustendi. Invoice, bukti pembayaran material, dan laporan penggunaan dana terbuka untuk diperiksa. Semoga menjadi amal jariyah bagi seluruh donatur. Aamiin.
+        </div>
+      </div>
+
+    </div>
+  </section>
